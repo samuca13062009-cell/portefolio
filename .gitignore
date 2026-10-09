@@ -1,0 +1,8 @@
+# Chave da API do Brevo e outras definições privadas
+.env
+# Mensagens recebidas e estatísticas de visitas
+data/messages.json
+data/stats.json
+data/*.tmp
+node_modules/
+.claude/

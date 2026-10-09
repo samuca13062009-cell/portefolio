@@ -1,0 +1,316 @@
+{
+  "site": {
+    "name": "Samuel Camargo",
+    "role": {
+      "pt": "Estudante de Gestão e Programação de Sistemas Informáticos",
+      "en": "IT Systems Management and Programming student"
+    },
+    "location": { "pt": "Torres Vedras, Portugal", "en": "Torres Vedras, Portugal" },
+    "linkedin": "https://www.linkedin.com/in/samuelcamargo-dev",
+    "github": "https://github.com/samuca13062009-cell",
+    "description": {
+      "pt": "Portefólio de Samuel Camargo, estudante de Gestão e Programação de Sistemas Informáticos em Torres Vedras. Projetos web, Android e Arduino.",
+      "en": "Portfolio of Samuel Camargo, an IT Systems Management and Programming student in Torres Vedras, Portugal. Web, Android and Arduino projects."
+    }
+  },
+  "home": {
+    "kicker": {
+      "pt": "Desenvolvimento web e Android · Torres Vedras",
+      "en": "Web and Android development · Torres Vedras"
+    },
+    "title": { "pt": "Olá, sou o Samuel.", "en": "Hi, I'm Samuel." },
+    "lead": {
+      "pt": "Sou finalista do curso profissional de Gestão e Programação de Sistemas Informáticos. Desenvolvo aplicações web e Android e procuro a minha primeira oportunidade na área tecnológica.",
+      "en": "I'm a final-year vocational student in IT Systems Management and Programming. I build web and Android applications and I'm looking for my first opportunity in tech."
+    },
+    "facts": [
+      {
+        "label": { "pt": "Formação", "en": "Education" },
+        "value": { "pt": "ESCO, 12.º ano em curso", "en": "ESCO, final year in progress" }
+      },
+      {
+        "label": { "pt": "Procuro", "en": "Looking for" },
+        "value": { "pt": "Estágio ou primeira função júnior", "en": "Internship or entry-level role" }
+      },
+      {
+        "label": { "pt": "Áreas", "en": "Areas" },
+        "value": { "pt": "Software, web design, cibersegurança", "en": "Software, web design, cybersecurity" }
+      },
+      {
+        "label": { "pt": "Línguas", "en": "Languages" },
+        "value": { "pt": "Português nativo, inglês C1", "en": "Native Portuguese, C1 English" }
+      }
+    ]
+  },
+  "about": {
+    "title": {
+      "pt": "Programo para a web e para Android, e aprendi a trabalhar com pessoas a servir à mesa.",
+      "en": "I code for the web and Android, and I learned to work with people waiting tables."
+    },
+    "paragraphs": {
+      "pt": [
+        "Sou finalista do curso profissional de Programação de Sistemas Informáticos, em Torres Vedras, e procuro a minha primeira oportunidade na área tecnológica.",
+        "Desenvolvo projetos em três frentes: aplicações web, aplicações Android e, cada vez mais, segurança aplicacional. Entre eles estão um site de restaurante com sistema de reservas e painel de administração, e uma aplicação Android de percursos de pistas com base de dados local e partilha por código QR.",
+        "A experiência em restauração e em trabalho operacional deu-me aquilo que não se aprende a programar: comunicação direta com clientes, gestão de prioridades sob pressão, trabalho em equipa e sentido de responsabilidade.",
+        "Procuro um estágio ou uma primeira função júnior em desenvolvimento de software, web design ou cibersegurança, onde possa aprender com profissionais experientes e contribuir desde o primeiro dia."
+      ],
+      "en": [
+        "I am a final-year student in IT Systems Programming, based in Torres Vedras, Portugal, looking for my first opportunity in the tech industry.",
+        "I build projects across three areas: web applications, Android applications and, increasingly, application security. They include a restaurant website with a booking system and admin panel, and an Android scavenger-hunt app with a local database and QR code sharing.",
+        "My experience in hospitality and hands-on operational work taught me what coding alone does not: clear communication with customers, prioritising under pressure, teamwork and accountability.",
+        "I am seeking an internship or entry-level role in software development, web design or cybersecurity, where I can learn from experienced professionals and contribute from day one."
+      ]
+    }
+  },
+  "experience": [
+    {
+      "role": { "pt": "Empregado de Mesa", "en": "Waiter" },
+      "org": "Restaurante O Polvo",
+      "period": { "pt": "Jul. 2025 — hoje", "en": "Jul 2025 — present" },
+      "bullets": {
+        "pt": [
+          "Atendimento e interação direta com clientes, assegurando um serviço rigoroso e uma experiência positiva.",
+          "Gestão simultânea de várias mesas em períodos de elevada afluência, com priorização de tarefas sob pressão.",
+          "Coordenação com a equipa de sala e de cozinha para garantir a fluidez do serviço.",
+          "Resolução de pedidos e reclamações com diplomacia e orientação para a solução."
+        ],
+        "en": [
+          "Delivered attentive, accurate customer service through direct interaction with guests.",
+          "Managed multiple tables during peak hours, prioritising tasks under pressure.",
+          "Coordinated with floor and kitchen staff to keep service running smoothly.",
+          "Handled requests and complaints with diplomacy and a solution-focused approach."
+        ]
+      }
+    },
+    {
+      "role": { "pt": "Estagiário de Programação (FCT)", "en": "Programming Intern (work placement)" },
+      "org": "LabCenter · Torres Vedras",
+      "period": { "pt": "Jul. 2026 — Set. 2026", "en": "Jul 2026 — Sep 2026" },
+      "bullets": {
+        "pt": [
+          "Formação em Contexto de Trabalho do curso Técnico de Gestão e Programação de Sistemas Informáticos (ESCO).",
+          "Desenvolvimento de uma aplicação Android em Java (Android Studio) para controlar um Arduino Uno por Bluetooth (módulo HC-05).",
+          "Integração de LED, relé, servo motor e sensor de temperatura e humidade DHT11.",
+          "Preparação de pens USB de arranque com Rufus e Ventoy para instalação de Linux e Windows."
+        ],
+        "en": [
+          "Work placement for the vocational diploma in IT Systems Management and Programming (ESCO).",
+          "Built an Android app in Java (Android Studio) to control an Arduino Uno over Bluetooth (HC-05 module).",
+          "Integrated an LED, a relay, a servo motor and a DHT11 temperature and humidity sensor.",
+          "Prepared bootable USB drives with Rufus and Ventoy to install Linux and Windows."
+        ]
+      }
+    }
+  ],
+  "education": [
+    {
+      "title": {
+        "pt": "Curso Profissional de Técnico de Gestão e Programação de Sistemas Informáticos",
+        "en": "Vocational Diploma in IT Systems Management and Programming"
+      },
+      "org": "ESCO — Escola de Serviços e Comércio do Oeste",
+      "period": { "pt": "2024 — 2027", "en": "2024 — 2027" },
+      "note": { "pt": "12.º ano em curso.", "en": "Final year in progress." }
+    }
+  ],
+  "skills": [
+    {
+      "group": { "pt": "Linguagens", "en": "Languages" },
+      "items": ["C#", "Java", "Kotlin", "JavaScript", "HTML", "CSS", "Groovy (Gradle)"]
+    },
+    {
+      "group": { "pt": "Web e segurança", "en": "Web and security" },
+      "items": [
+        "Node.js",
+        "Web Design",
+        { "pt": "Cibersegurança (fundamentos)", "en": "Cybersecurity (fundamentals)" }
+      ]
+    },
+    {
+      "group": { "pt": "Android e hardware", "en": "Android and hardware" },
+      "items": [
+        { "pt": "Desenvolvimento Android", "en": "Android development" },
+        "Jetpack Compose",
+        "SQLite",
+        "Arduino"
+      ]
+    },
+    {
+      "group": { "pt": "Interpessoais", "en": "Interpersonal" },
+      "items": [
+        { "pt": "Atendimento ao cliente", "en": "Customer service" },
+        { "pt": "Trabalho em equipa", "en": "Teamwork" },
+        { "pt": "Comunicação", "en": "Communication" }
+      ]
+    }
+  ],
+  "languages": [
+    { "name": { "pt": "Português", "en": "Portuguese" }, "level": { "pt": "nativo", "en": "native" } },
+    { "name": { "pt": "Inglês", "en": "English" }, "level": { "pt": "C1", "en": "C1" } }
+  ],
+  "categories": {
+    "web": { "pt": "Web", "en": "Web" },
+    "android": { "pt": "Android", "en": "Android" },
+    "jogo": { "pt": "Jogos", "en": "Games" }
+  },
+  "projects": [
+    {
+      "slug": "o-polvo",
+      "published": true,
+      "featured": true,
+      "category": "web",
+      "cover": "O Polvo",
+      "title": {
+        "pt": "O Polvo: site de restaurante com sistema de reservas",
+        "en": "O Polvo: restaurant website with booking system"
+      },
+      "summary": {
+        "pt": "Menu digital, reservas online e painel de administração, num servidor Node.js sem dependências.",
+        "en": "Digital menu, online bookings and an admin panel, on a dependency-free Node.js server."
+      },
+      "description": {
+        "pt": [
+          "Site completo com menu digital, reservas online e painel de administração para gerir reservas e definições.",
+          "O servidor é escrito em Node.js sem dependências externas, com autenticação por sessão, limitação de pedidos e escrita segura de dados. As reservas ficam guardadas num ficheiro JSON."
+        ],
+        "en": [
+          "A full website with a digital menu, online bookings and an admin panel for managing reservations and settings.",
+          "The server is written in Node.js with no external dependencies, with session authentication, rate limiting and safe data writes. Bookings are stored in a JSON file."
+        ]
+      },
+      "features": {
+        "pt": [
+          "Menu digital e página de apresentação do restaurante",
+          "Formulário de reservas com validação",
+          "Painel de administração para gerir reservas e definições",
+          "Autenticação por sessão e limitação de pedidos no servidor"
+        ],
+        "en": [
+          "Digital menu and restaurant landing page",
+          "Booking form with validation",
+          "Admin panel for managing reservations and settings",
+          "Session authentication and rate limiting on the server"
+        ]
+      },
+      "tech": ["HTML", "CSS", "JavaScript", "Node.js"],
+      "repo": "https://github.com/samuca13062009-cell/o-polvo"
+    },
+    {
+      "slug": "skillconnect",
+      "published": true,
+      "featured": true,
+      "category": "android",
+      "cover": "SkillConnect",
+      "title": {
+        "pt": "SkillConnect: plataforma web e aplicação Android",
+        "en": "SkillConnect: web platform and Android app"
+      },
+      "summary": {
+        "pt": "Plataforma que junta pessoas com competências diferentes, primeiro como site e depois como aplicação Android.",
+        "en": "A platform that brings together people with different skills, first as a website and then as an Android app."
+      },
+      "description": {
+        "pt": [
+          "Website focado em unir diversas competências entre pessoas. Foi desenvolvido primeiro como site e depois como aplicação Android, com criação de conta, início de sessão e área de administração.",
+          "Na versão Android, as contas ficam guardadas numa base de dados SQLite local, com as palavras-passe em hash com salt."
+        ],
+        "en": [
+          "A website focused on bringing together diverse skills among people. Built first as a website and then as an Android app, with sign-up, login and an admin area.",
+          "In the Android version, accounts are stored in a local SQLite database, with salted and hashed passwords."
+        ]
+      },
+      "features": {
+        "pt": [
+          "Criação de conta e início de sessão",
+          "Área de administração protegida por palavra-passe",
+          "Base de dados SQLite local com palavras-passe em hash com salt"
+        ],
+        "en": [
+          "Sign-up and login",
+          "Password-protected admin area",
+          "Local SQLite database with salted, hashed passwords"
+        ]
+      },
+      "tech": ["Kotlin", "Jetpack Compose", "SQLite"],
+      "repo": "https://github.com/samuca13062009-cell/skillconnect-android"
+    },
+    {
+      "slug": "saltaplanetas",
+      "published": true,
+      "featured": true,
+      "category": "jogo",
+      "cover": "Saltaplanetas",
+      "title": {
+        "pt": "Saltaplanetas: jogo 3D para o navegador",
+        "en": "Saltaplanetas: 3D browser game"
+      },
+      "summary": {
+        "pt": "Jogo 3D em que o jogador salta entre planetas, com cenário, iluminação e física programados de raiz.",
+        "en": "A 3D game where the player jumps between planets, with scenery, lighting and physics coded from scratch."
+      },
+      "description": {
+        "pt": [
+          "Jogo 3D para o navegador em que o jogador salta entre planetas. O cenário, a iluminação e a física foram programados de raiz.",
+          "Todo o jogo vive num único ficheiro HTML, com o Three.js a tratar do WebGL."
+        ],
+        "en": [
+          "A 3D browser game where the player jumps between planets. The scenery, lighting and physics were coded from scratch.",
+          "The whole game lives in a single HTML file, with Three.js handling WebGL."
+        ]
+      },
+      "features": {
+        "pt": [
+          "Cenário e iluminação 3D",
+          "Física de salto entre planetas programada de raiz",
+          "Corre diretamente no navegador, sem instalação"
+        ],
+        "en": [
+          "3D scenery and lighting",
+          "Planet-to-planet jump physics coded from scratch",
+          "Runs straight in the browser, nothing to install"
+        ]
+      },
+      "tech": ["JavaScript", "Three.js", "WebGL"],
+      "repo": "https://github.com/samuca13062009-cell/saltaplanetas"
+    },
+    {
+      "slug": "arduino-bluetooth",
+      "published": true,
+      "featured": false,
+      "category": "android",
+      "cover": "Arduino BT",
+      "title": {
+        "pt": "Controlo de Arduino por Bluetooth",
+        "en": "Arduino control over Bluetooth"
+      },
+      "summary": {
+        "pt": "Aplicação Android em Java que controla um Arduino Uno por Bluetooth, feita no estágio na LabCenter.",
+        "en": "An Android app in Java that controls an Arduino Uno over Bluetooth, built during my internship at LabCenter."
+      },
+      "description": {
+        "pt": [
+          "Aplicação Android desenvolvida em Java, no Android Studio, para controlar um Arduino Uno por Bluetooth através do módulo HC-05.",
+          "Foi o projeto principal da minha Formação em Contexto de Trabalho na LabCenter, entre julho e setembro de 2026."
+        ],
+        "en": [
+          "An Android app written in Java, in Android Studio, to control an Arduino Uno over Bluetooth using the HC-05 module.",
+          "It was the main project of my work placement at LabCenter, from July to September 2026."
+        ]
+      },
+      "features": {
+        "pt": [
+          "Ligação Bluetooth entre o telemóvel e o Arduino (HC-05)",
+          "Controlo de LED, relé e servo motor",
+          "Leitura do sensor de temperatura e humidade DHT11"
+        ],
+        "en": [
+          "Bluetooth link between the phone and the Arduino (HC-05)",
+          "Control of an LED, a relay and a servo motor",
+          "Readings from the DHT11 temperature and humidity sensor"
+        ]
+      },
+      "tech": ["Java", "Android Studio", "Arduino", "Bluetooth"],
+      "repo": ""
+    }
+  ]
+}

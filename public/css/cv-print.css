@@ -1,0 +1,23 @@
+/* Folha A4 usada para gerar o PDF do CV (tools/build-cv.js). */
+@page { size: A4; margin: 14mm 14mm; }
+body.cv-print { background: #FFFFFF; font-size: 9.6pt; line-height: 1.4; }
+.cv-print .cv-sheet { border: 0; border-radius: 0; padding: 0; gap: 9mm; flex-wrap: nowrap; }
+.cv-print .cv-side { flex: 0 0 50mm; gap: 5mm; }
+.cv-print .cv-side > div { gap: 1.5mm; }
+.cv-print .cv-main { flex: 1 1 auto; gap: 5mm; }
+.cv-print .cv-main section { gap: 1.5mm; }
+.cv-print .cv-name { font-size: 20pt; }
+.cv-print .cv-h { font-size: 13pt; }
+.cv-print .mono { font-size: 7.4pt; }
+.cv-print .mono-plain { font-size: 8pt; }
+.cv-print .row { padding: 2.5mm 0; gap: 1mm 5mm; flex-wrap: nowrap; }
+.cv-print .row-when { flex: 0 0 30mm; padding-top: 0.5mm; }
+.cv-print .row-what { flex: 1 1 auto; gap: 0.8mm; }
+.cv-print .row-what h3 { font-size: 10.5pt; }
+.cv-print .bullets { gap: 0.6mm; padding-top: 0.8mm; }
+.cv-print .bullets li { padding-left: 4mm; }
+.cv-print .bullets li::before { width: 1.4mm; height: 1.4mm; }
+.cv-print .cv-proj { padding: 1.8mm 0; break-inside: avoid; }
+.cv-print .cv-proj h3 { font-size: 10pt; }
+.cv-print .row, .cv-print .cv-side > div { break-inside: avoid; }
+.cv-print a { color: inherit; text-decoration: none; }

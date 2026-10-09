@@ -1,0 +1,13 @@
+{
+  "name": "portefolio",
+  "version": "1.0.0",
+  "description": "Portefólio profissional de Samuel Camargo",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "cv": "node tools/build-cv.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
