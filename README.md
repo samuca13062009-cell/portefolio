@@ -40,6 +40,24 @@ Sem estas definições o formulário continua a funcionar, mas as mensagens fica
 guardadas em `data/messages.json`. O ficheiro `.env`, as mensagens e as estatísticas
 não fazem parte do repositório.
 
+## Backoffice
+
+Em `http://localhost:4180/admin`. Permite gerir o site sem alterar o código:
+
+- **Dashboard:** projetos publicados, mensagens por ler, visitas dos últimos 30 dias e descargas do CV
+- **Projetos:** criar, editar, publicar ou deixar em rascunho, destacar na Home e eliminar
+- **Conteúdos:** dados gerais e SEO, Home, Sobre mim, experiência, formação, competências e línguas, em português e inglês
+- **Contactos:** ler, marcar como lida, responder por email e eliminar mensagens
+- **Conta:** alterar a palavra-passe e terminar sessão
+
+Na primeira execução é criada a conta `admin` e a palavra-passe inicial fica no ficheiro
+`PRIMEIRA-PALAVRA-PASSE.txt`, que é apagado quando a palavra-passe é alterada.
+
+Segurança: palavra-passe guardada com scrypt e salt, sessão em cookie `HttpOnly` e
+`SameSite=Strict` com validade de 8 horas, token CSRF em todos os pedidos que alteram
+dados, limite de 5 tentativas de login por 15 minutos e validação de tudo o que é
+guardado. A conta, as mensagens e as estatísticas não fazem parte do repositório.
+
 ## Atualizar o PDF do CV
 
 Depois de alterar `data/content.json`:
@@ -55,6 +73,8 @@ Usa o Chrome ou o Edge instalados para gerar `public/cv/*.pdf`.
 ```
 server.js          servidor, rotas, API de contacto e Brevo
 lib/render.js      geração das páginas (PT e EN)
+lib/admin.js       autenticação e API do backoffice
+public/admin/      interface do backoffice
 data/content.json  todos os conteúdos do site
 public/            CSS, JavaScript, favicon e PDF do CV
 tools/build-cv.js  gera os PDF do CV

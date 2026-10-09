@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const { renderer, ROUTES, esc } = require('./lib/render');
+const createAdmin = require('./lib/admin');
 
 const ROOT = __dirname;
 const PUBLIC = path.join(ROOT, 'public');
@@ -75,7 +76,7 @@ function rateLimited(ip, max, windowMs) {
 }
 setInterval(() => {
   const now = Date.now();
-  for (const [ip, list] of hits) if (!list.some((t) => now - t < 600000)) hits.delete(ip);
+  for (const [ip, list] of hits) if (!list.some((t) => now - t < 900000)) hits.delete(ip);
 }, 600000).unref();
 
 // ---------- Respostas ----------
@@ -105,7 +106,7 @@ function serveStatic(res, pathname) {
   if (!file.startsWith(PUBLIC + path.sep)) return false;
   let data;
   try { data = fs.readFileSync(file); } catch { return false; }
-  send(res, 200, data, { 'Content-Type': MIME[ext], 'Cache-Control': 'public, max-age=3600' });
+  send(res, 200, data, { 'Content-Type': MIME[ext], 'Cache-Control': pathname.startsWith('/admin/') ? 'no-cache' : 'public, max-age=3600' });
   return true;
 }
 
@@ -189,6 +190,13 @@ async function handleContact(req, res, ip) {
   sendJson(res, 200, { ok: true });
 }
 
+// ---------- Backoffice ----------
+const admin = createAdmin({
+  ROOT, readJson, writeJson, sendJson, readBody, rateLimited,
+  getStats: () => stats,
+  secureCookies: SITE_URL.startsWith('https://'),
+});
+
 // ---------- Páginas ----------
 function matchPage(pathname) {
   for (const lang of ['pt', 'en']) {
@@ -220,6 +228,7 @@ const server = http.createServer(async (req, res) => {
     let pathname = decodeURIComponent(url.pathname);
     const ip = req.socket.remoteAddress || '';
 
+    if (await admin.handle(req, res, pathname, ip)) return;
     if (pathname === '/api/contact') {
       if (req.method !== 'POST') return sendJson(res, 405, { ok: false });
       return await handleContact(req, res, ip);
@@ -229,7 +238,7 @@ const server = http.createServer(async (req, res) => {
     const content = getContent();
     if (!content) return send(res, 500, 'Conteúdo em falta (data/content.json).', { 'Content-Type': 'text/plain; charset=utf-8' });
 
-    if (pathname === '/robots.txt') return send(res, 200, `User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: ${SITE_URL}/sitemap.xml\n`, { 'Content-Type': 'text/plain; charset=utf-8' });
+    if (pathname === '/robots.txt') return send(res, 200, `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin\nSitemap: ${SITE_URL}/sitemap.xml\n`, { 'Content-Type': 'text/plain; charset=utf-8' });
     if (pathname === '/sitemap.xml') return send(res, 200, sitemap(content), { 'Content-Type': 'application/xml; charset=utf-8' });
 
     if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
@@ -242,7 +251,13 @@ const server = http.createServer(async (req, res) => {
         return sendHtml(res, 200, html);
       }
     }
-    if (serveStatic(res, pathname)) return;
+    if (pathname === '/admin') {
+      return send(res, 200, fs.readFileSync(path.join(PUBLIC, 'admin', 'index.html')), { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+    }
+    if (serveStatic(res, pathname)) {
+      if (pathname.startsWith('/cv/') && pathname.endsWith('.pdf')) countVisit('cv-pdf', req);
+      return;
+    }
 
     const lang = pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'pt';
     sendHtml(res, 404, renderer(content, lang, SITE_URL).notFound(pathname));

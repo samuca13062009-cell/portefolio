@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Backoffice — Portefólio</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/admin/admin.css">
+<script src="/js/theme.js"></script>
+</head>
+<body class="admin">
+
+<div class="login" id="login" hidden>
+<div class="login-brand">
+<div class="brand">Portefólio</div>
+<div>
+<p class="mono">Backoffice</p>
+<p class="login-claim">Gere o teu portefólio sem tocar no código.</p>
+</div>
+<p class="small">Projetos · Conteúdos · Contactos</p>
+</div>
+<main class="login-main">
+<form id="login-form" novalidate>
+<div>
+<h1 class="display sm">Iniciar sessão</h1>
+<p class="muted">Área reservada ao administrador do website.</p>
+</div>
+<div class="field"><label for="l-user">Utilizador</label><input id="l-user" type="text" autocomplete="username" required></div>
+<div class="field"><label for="l-pass">Palavra-passe</label><input id="l-pass" type="password" autocomplete="current-password" required></div>
+<p class="error" id="login-error" role="alert" hidden></p>
+<button class="btn primary big" type="submit">Entrar</button>
+<a class="text-link center" href="/">Voltar ao website</a>
+</form>
+</main>
+</div>
+
+<div class="app" id="app" hidden>
+<aside class="side">
+<div class="side-head">
+<div class="brand">Portefólio</div>
+<div class="mono">Backoffice</div>
+</div>
+<nav class="side-nav" aria-label="Backoffice">
+<button type="button" class="side-link" data-view="dashboard">Dashboard</button>
+<button type="button" class="side-link" data-view="projects">Projetos</button>
+<button type="button" class="side-link" data-view="content">Conteúdos</button>
+<button type="button" class="side-link" data-view="messages">Contactos <span class="badge" id="unread-badge" hidden></span></button>
+<button type="button" class="side-link" data-view="account">Conta</button>
+</nav>
+<div class="side-nav side-foot">
+<a class="side-link" href="/" target="_blank" rel="noopener">Ver website</a>
+<button type="button" class="side-link" id="logout">Terminar sessão</button>
+</div>
+</aside>
+<main class="main" id="main" tabindex="-1"></main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/admin/admin.js" defer></script>
+</body>
+</html>

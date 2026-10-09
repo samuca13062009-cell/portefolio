@@ -5,7 +5,10 @@
       "pt": "Estudante de Gestão e Programação de Sistemas Informáticos",
       "en": "IT Systems Management and Programming student"
     },
-    "location": { "pt": "Torres Vedras, Portugal", "en": "Torres Vedras, Portugal" },
+    "location": {
+      "pt": "Torres Vedras, Portugal",
+      "en": "Torres Vedras, Portugal"
+    },
     "linkedin": "https://www.linkedin.com/in/samuelcamargo-dev",
     "github": "https://github.com/samuca13062009-cell",
     "description": {
@@ -18,27 +21,54 @@
       "pt": "Desenvolvimento web e Android · Torres Vedras",
       "en": "Web and Android development · Torres Vedras"
     },
-    "title": { "pt": "Olá, sou o Samuel.", "en": "Hi, I'm Samuel." },
+    "title": {
+      "pt": "Olá, sou o Samuel.",
+      "en": "Hi, I'm Samuel."
+    },
     "lead": {
       "pt": "Sou finalista do curso profissional de Gestão e Programação de Sistemas Informáticos. Desenvolvo aplicações web e Android e procuro a minha primeira oportunidade na área tecnológica.",
       "en": "I'm a final-year vocational student in IT Systems Management and Programming. I build web and Android applications and I'm looking for my first opportunity in tech."
     },
     "facts": [
       {
-        "label": { "pt": "Formação", "en": "Education" },
-        "value": { "pt": "ESCO, 12.º ano em curso", "en": "ESCO, final year in progress" }
+        "label": {
+          "pt": "Formação",
+          "en": "Education"
+        },
+        "value": {
+          "pt": "ESCO, 12.º ano em curso",
+          "en": "ESCO, final year in progress"
+        }
       },
       {
-        "label": { "pt": "Procuro", "en": "Looking for" },
-        "value": { "pt": "Estágio ou primeira função júnior", "en": "Internship or entry-level role" }
+        "label": {
+          "pt": "Procuro",
+          "en": "Looking for"
+        },
+        "value": {
+          "pt": "Estágio ou primeira função júnior",
+          "en": "Internship or entry-level role"
+        }
       },
       {
-        "label": { "pt": "Áreas", "en": "Areas" },
-        "value": { "pt": "Software, web design, cibersegurança", "en": "Software, web design, cybersecurity" }
+        "label": {
+          "pt": "Áreas",
+          "en": "Areas"
+        },
+        "value": {
+          "pt": "Software, web design, cibersegurança",
+          "en": "Software, web design, cybersecurity"
+        }
       },
       {
-        "label": { "pt": "Línguas", "en": "Languages" },
-        "value": { "pt": "Português nativo, inglês C1", "en": "Native Portuguese, C1 English" }
+        "label": {
+          "pt": "Línguas",
+          "en": "Languages"
+        },
+        "value": {
+          "pt": "Português nativo, inglês C1",
+          "en": "Native Portuguese, C1 English"
+        }
       }
     ]
   },
@@ -64,9 +94,15 @@
   },
   "experience": [
     {
-      "role": { "pt": "Empregado de Mesa", "en": "Waiter" },
+      "role": {
+        "pt": "Empregado de Mesa",
+        "en": "Waiter"
+      },
       "org": "Restaurante O Polvo",
-      "period": { "pt": "Jul. 2025 — hoje", "en": "Jul 2025 — present" },
+      "period": {
+        "pt": "Jul. 2025 — hoje",
+        "en": "Jul 2025 — present"
+      },
       "bullets": {
         "pt": [
           "Atendimento e interação direta com clientes, assegurando um serviço rigoroso e uma experiência positiva.",
@@ -83,9 +119,15 @@
       }
     },
     {
-      "role": { "pt": "Estagiário de Programação (FCT)", "en": "Programming Intern (work placement)" },
+      "role": {
+        "pt": "Estagiário de Programação (FCT)",
+        "en": "Programming Intern (work placement)"
+      },
       "org": "LabCenter · Torres Vedras",
-      "period": { "pt": "Jul. 2026 — Set. 2026", "en": "Jul 2026 — Sep 2026" },
+      "period": {
+        "pt": "Jul. 2026 — Set. 2026",
+        "en": "Jul 2026 — Sep 2026"
+      },
       "bullets": {
         "pt": [
           "Formação em Contexto de Trabalho do curso Técnico de Gestão e Programação de Sistemas Informáticos (ESCO).",
@@ -109,49 +151,117 @@
         "en": "Vocational Diploma in IT Systems Management and Programming"
       },
       "org": "ESCO — Escola de Serviços e Comércio do Oeste",
-      "period": { "pt": "2024 — 2027", "en": "2024 — 2027" },
-      "note": { "pt": "12.º ano em curso.", "en": "Final year in progress." }
+      "period": {
+        "pt": "2024 — 2027",
+        "en": "2024 — 2027"
+      },
+      "note": {
+        "pt": "12.º ano em curso.",
+        "en": "Final year in progress."
+      }
     }
   ],
   "skills": [
     {
-      "group": { "pt": "Linguagens", "en": "Languages" },
-      "items": ["C#", "Java", "Kotlin", "JavaScript", "HTML", "CSS", "Groovy (Gradle)"]
-    },
-    {
-      "group": { "pt": "Web e segurança", "en": "Web and security" },
+      "group": {
+        "pt": "Linguagens",
+        "en": "Languages"
+      },
       "items": [
-        "Node.js",
-        "Web Design",
-        { "pt": "Cibersegurança (fundamentos)", "en": "Cybersecurity (fundamentals)" }
+        "C#",
+        "Java",
+        "Kotlin",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Groovy (Gradle)"
       ]
     },
     {
-      "group": { "pt": "Android e hardware", "en": "Android and hardware" },
+      "group": {
+        "pt": "Web e segurança",
+        "en": "Web and security"
+      },
       "items": [
-        { "pt": "Desenvolvimento Android", "en": "Android development" },
+        "Node.js",
+        "Web Design",
+        {
+          "pt": "Cibersegurança (fundamentos)",
+          "en": "Cybersecurity (fundamentals)"
+        }
+      ]
+    },
+    {
+      "group": {
+        "pt": "Android e hardware",
+        "en": "Android and hardware"
+      },
+      "items": [
+        {
+          "pt": "Desenvolvimento Android",
+          "en": "Android development"
+        },
         "Jetpack Compose",
         "SQLite",
         "Arduino"
       ]
     },
     {
-      "group": { "pt": "Interpessoais", "en": "Interpersonal" },
+      "group": {
+        "pt": "Interpessoais",
+        "en": "Interpersonal"
+      },
       "items": [
-        { "pt": "Atendimento ao cliente", "en": "Customer service" },
-        { "pt": "Trabalho em equipa", "en": "Teamwork" },
-        { "pt": "Comunicação", "en": "Communication" }
+        {
+          "pt": "Atendimento ao cliente",
+          "en": "Customer service"
+        },
+        {
+          "pt": "Trabalho em equipa",
+          "en": "Teamwork"
+        },
+        {
+          "pt": "Comunicação",
+          "en": "Communication"
+        }
       ]
     }
   ],
   "languages": [
-    { "name": { "pt": "Português", "en": "Portuguese" }, "level": { "pt": "nativo", "en": "native" } },
-    { "name": { "pt": "Inglês", "en": "English" }, "level": { "pt": "C1", "en": "C1" } }
+    {
+      "name": {
+        "pt": "Português",
+        "en": "Portuguese"
+      },
+      "level": {
+        "pt": "nativo",
+        "en": "native"
+      }
+    },
+    {
+      "name": {
+        "pt": "Inglês",
+        "en": "English"
+      },
+      "level": {
+        "pt": "C1",
+        "en": "C1"
+      }
+    }
   ],
   "categories": {
-    "web": { "pt": "Web", "en": "Web" },
-    "android": { "pt": "Android", "en": "Android" },
-    "jogo": { "pt": "Jogos", "en": "Games" }
+    "web": {
+      "pt": "Web",
+      "en": "Web"
+    },
+    "android": {
+      "pt": "Android",
+      "en": "Android"
+    },
+    "jogo": {
+      "pt": "Jogos",
+      "en": "Games"
+    }
   },
   "projects": [
     {
@@ -192,7 +302,12 @@
           "Session authentication and rate limiting on the server"
         ]
       },
-      "tech": ["HTML", "CSS", "JavaScript", "Node.js"],
+      "tech": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Node.js"
+      ],
       "repo": "https://github.com/samuca13062009-cell/o-polvo"
     },
     {
@@ -231,7 +346,11 @@
           "Local SQLite database with salted, hashed passwords"
         ]
       },
-      "tech": ["Kotlin", "Jetpack Compose", "SQLite"],
+      "tech": [
+        "Kotlin",
+        "Jetpack Compose",
+        "SQLite"
+      ],
       "repo": "https://github.com/samuca13062009-cell/skillconnect-android"
     },
     {
@@ -270,7 +389,11 @@
           "Runs straight in the browser, nothing to install"
         ]
       },
-      "tech": ["JavaScript", "Three.js", "WebGL"],
+      "tech": [
+        "JavaScript",
+        "Three.js",
+        "WebGL"
+      ],
       "repo": "https://github.com/samuca13062009-cell/saltaplanetas"
     },
     {
@@ -309,7 +432,12 @@
           "Readings from the DHT11 temperature and humidity sensor"
         ]
       },
-      "tech": ["Java", "Android Studio", "Arduino", "Bluetooth"],
+      "tech": [
+        "Java",
+        "Android Studio",
+        "Arduino",
+        "Bluetooth"
+      ],
       "repo": ""
     }
   ]

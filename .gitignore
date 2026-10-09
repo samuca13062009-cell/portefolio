@@ -6,3 +6,6 @@ data/stats.json
 data/*.tmp
 node_modules/
 .claude/
+# Conta de administração do backoffice
+data/admin.json
+PRIMEIRA-PALAVRA-PASSE.txt
