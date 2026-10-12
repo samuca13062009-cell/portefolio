@@ -67,6 +67,7 @@ a:hover { color: var(--accent); }
 .tools { display: flex; align-items: center; gap: 8px; }
 .pill-btn, .icon-btn { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink); font-family: var(--mono); font-size: 0.8125rem; text-decoration: none; cursor: pointer; padding: 0 14px; }
 .icon-btn { padding: 0; }
+.skin-select { width: auto; padding: 0 12px; appearance: auto; background: var(--bg); }
 .pill-btn:hover, .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
 .site-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; padding: 20px 0 32px; border-top: 1px solid var(--line); font-size: 0.875rem; color: var(--muted); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 0 24px; }

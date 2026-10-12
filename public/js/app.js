@@ -14,6 +14,22 @@
     });
   }
 
+  // ---------- Escolha de tema pelo visitante ----------
+  var skinSelect = $('skin-select');
+  if (skinSelect) {
+    var root = document.documentElement;
+    skinSelect.value = root.getAttribute('data-skin');
+    // Um tema guardado que já não existe volta ao tema por omissão do site.
+    if (skinSelect.selectedIndex === -1) {
+      root.setAttribute('data-skin', root.getAttribute('data-skin-default'));
+      skinSelect.value = root.getAttribute('data-skin-default');
+    }
+    skinSelect.addEventListener('change', function () {
+      root.setAttribute('data-skin', skinSelect.value);
+      try { localStorage.setItem('skin', skinSelect.value); } catch (e) { /* ignora */ }
+    });
+  }
+
   // ---------- Modo escuro ----------
   var toggle = $('theme-toggle');
   if (toggle) {
