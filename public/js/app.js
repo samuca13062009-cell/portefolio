@@ -27,6 +27,8 @@
     skinSelect.addEventListener('change', function () {
       root.setAttribute('data-skin', skinSelect.value);
       try { localStorage.setItem('skin', skinSelect.value); } catch (e) { /* ignora */ }
+      // Numa pré-visualização (?tema=) o endereço prendia o tema: escolher outro sai dela.
+      if (root.hasAttribute('data-skin-locked')) window.location.replace(window.location.pathname);
     });
   }
 
