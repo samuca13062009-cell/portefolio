@@ -76,6 +76,14 @@ td.nowrap { white-space: nowrap; }
 .save-bar { position: sticky; bottom: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 16px 0; background: var(--bg); border-top: 1px solid var(--line); }
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
 
+/* Temas */
+.theme-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+.theme-card.active { border-color: var(--accent); border-width: 2px; }
+.swatches { display: flex; height: 72px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line-strong); }
+.swatch { flex: 1 1 0; }
+.swatch:first-child { flex-grow: 3; }
+.btn[disabled] { cursor: default; }
+
 /* Mensagens */
 .msg { display: flex; flex-direction: column; gap: 12px; }
 .msg-meta { display: flex; flex-wrap: wrap; gap: 4px 24px; color: var(--muted); font-size: 0.9375rem; }

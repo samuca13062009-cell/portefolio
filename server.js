@@ -106,7 +106,7 @@ function serveStatic(res, pathname) {
   if (!file.startsWith(PUBLIC + path.sep)) return false;
   let data;
   try { data = fs.readFileSync(file); } catch { return false; }
-  send(res, 200, data, { 'Content-Type': MIME[ext], 'Cache-Control': pathname.startsWith('/admin/') ? 'no-cache' : 'public, max-age=3600' });
+  send(res, 200, data, { 'Content-Type': MIME[ext], 'Cache-Control': /\.(css|js)$/.test(pathname) ? 'no-cache' : 'public, max-age=3600' });
   return true;
 }
 
@@ -244,7 +244,7 @@ const server = http.createServer(async (req, res) => {
     if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
     const page = matchPage(pathname);
     if (page) {
-      const r = renderer(content, page.lang, SITE_URL);
+      const r = renderer(content, page.lang, SITE_URL, url.searchParams.get('tema') || '');
       const html = page.key === 'project' ? r.project(page.slug) : r[page.key]();
       if (html) {
         if (page.key !== 'cvPrint') countVisit(pathname, req);

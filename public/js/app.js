@@ -3,6 +3,17 @@
   var en = document.documentElement.lang.indexOf('en') === 0;
   var $ = function (id) { return document.getElementById(id); };
 
+  // ---------- Pré-visualização de tema ----------
+  // Com ?tema= no endereço, as ligações internas mantêm o tema enquanto se navega.
+  var bar = document.querySelector('.preview-bar');
+  if (bar) {
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="/"]'), function (a) {
+      var href = a.getAttribute('href');
+      if (bar.contains(a) || href.indexOf('/admin') === 0 || /\.pdf$/.test(href)) return;
+      a.setAttribute('href', href + '?tema=' + encodeURIComponent(bar.dataset.preview));
+    });
+  }
+
   // ---------- Modo escuro ----------
   var toggle = $('theme-toggle');
   if (toggle) {

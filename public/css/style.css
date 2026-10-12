@@ -119,9 +119,9 @@ a:hover { color: var(--accent); }
 .card:hover .cover { transform: translateY(-4px); }
 .cover-tech { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.85; }
 .cover-name { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 0.95; letter-spacing: -0.03em; overflow-wrap: anywhere; }
-.cover.c-web { background: #2B4BFF; color: #FFFFFF; }
-.cover.c-android { background: #10130E; color: #EEF0EA; border: 1px solid var(--line-strong); }
-.cover.c-jogo { background: #C9F26B; color: #10130E; }
+.cover.c-web { background: var(--cover-a-bg, #2B4BFF); color: var(--cover-a-ink, #FFFFFF); }
+.cover.c-android { background: var(--cover-b-bg, #10130E); color: var(--cover-b-ink, #EEF0EA); border: 1px solid var(--line-strong); }
+.cover.c-jogo { background: var(--cover-c-bg, #C9F26B); color: var(--cover-c-ink, #10130E); }
 .cover.wide { aspect-ratio: 16 / 7; min-height: 220px; border-radius: 16px; padding: clamp(20px, 4vw, 40px); }
 .cover.wide .cover-name { font-size: clamp(2.75rem, 8vw, 7rem); }
 

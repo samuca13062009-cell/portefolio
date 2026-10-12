@@ -407,6 +407,34 @@
       h('div', { class: 'save-bar' }, save, pdf, h('span', { class: 'hint' }, 'O PDF do CV só muda quando o atualizas.')));
   };
 
+  // ---------- Aparência ----------
+  VIEWS.themes = async () => {
+    const r = await api('GET', '/api/admin/content');
+    if (!r.ok) return;
+    const active = r.data.theme;
+    const cards = Object.entries(r.data.themes).map(([id, t]) => {
+      const isActive = id === active;
+      const use = h('button', { type: 'button', class: 'btn primary small', disabled: isActive }, isActive ? 'Tema em uso' : 'Usar este tema');
+      use.addEventListener('click', async () => {
+        use.disabled = true;
+        const res = await api('POST', '/api/admin/theme', { theme: id });
+        if (!res.ok) { use.disabled = false; toast('Não foi possível mudar o tema.', true); return; }
+        toast(`Tema ${t.name} aplicado ao website.`);
+        go('themes');
+      });
+      return h('section', { class: isActive ? 'box theme-card active' : 'box theme-card' },
+        h('div', { class: 'swatches', 'aria-hidden': 'true' }, t.swatches.map((c) => { const s = h('span', { class: 'swatch' }); s.style.background = c; return s; })),
+        h('div', { class: 'box-head' }, h('h2', null, t.name), isActive && h('span', { class: 'state new' }, 'Em uso')),
+        h('p', { class: 'muted' }, t.description),
+        h('div', { class: 'row-actions' }, use, h('a', { class: 'btn small', href: `/?tema=${id}`, target: '_blank', rel: 'noopener' }, 'Pré-visualizar')));
+    });
+    main.replaceChildren(
+      head('Aparência', 'Temas'),
+      h('p', { class: 'lead' }, 'Cada tema muda as cores e as letras de todo o website, nas versões clara e escura. A pré-visualização abre o site com o tema sem o aplicar.'),
+      h('div', { class: 'theme-grid' }, cards),
+      h('p', { class: 'hint' }, 'O PDF do CV usa o tema em uso: depois de mudar, atualiza-o em Conteúdos.'));
+  };
+
   // ---------- Contactos ----------
   const DELIVERY = { enviado: 'Enviada por email (Brevo)', falhou: 'O envio por email falhou', 'brevo-por-configurar': 'Guardada; Brevo por configurar' };
   VIEWS.messages = async () => {
