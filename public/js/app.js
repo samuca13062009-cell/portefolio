@@ -15,20 +15,44 @@
   }
 
   // ---------- Escolha de tema pelo visitante ----------
-  var skinSelect = $('skin-select');
-  if (skinSelect) {
+  var skinToggle = $('skin-toggle');
+  if (skinToggle) {
     var root = document.documentElement;
-    skinSelect.value = root.getAttribute('data-skin');
+    var skinList = $('skin-list');
+    var skinOpts = Array.prototype.slice.call(skinList.querySelectorAll('.skin-opt'));
+    var known = skinOpts.map(function (o) { return o.dataset.skinValue; });
+    var showSkin = function (value) {
+      skinOpts.forEach(function (o) { o.setAttribute('aria-pressed', String(o.dataset.skinValue === value)); });
+    };
+    var openSkins = function (open) {
+      skinList.hidden = !open;
+      skinToggle.setAttribute('aria-expanded', String(open));
+    };
     // Um tema guardado que já não existe volta ao tema por omissão do site.
-    if (skinSelect.selectedIndex === -1) {
-      root.setAttribute('data-skin', root.getAttribute('data-skin-default'));
-      skinSelect.value = root.getAttribute('data-skin-default');
-    }
-    skinSelect.addEventListener('change', function () {
-      root.setAttribute('data-skin', skinSelect.value);
-      try { localStorage.setItem('skin', skinSelect.value); } catch (e) { /* ignora */ }
-      // Numa pré-visualização (?tema=) o endereço prendia o tema: escolher outro sai dela.
-      if (root.hasAttribute('data-skin-locked')) window.location.replace(window.location.pathname);
+    if (known.indexOf(root.getAttribute('data-skin')) === -1) root.setAttribute('data-skin', root.getAttribute('data-skin-default'));
+    showSkin(root.getAttribute('data-skin'));
+
+    skinToggle.addEventListener('click', function () { openSkins(skinList.hidden); });
+    skinOpts.forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        var value = opt.dataset.skinValue;
+        root.setAttribute('data-skin', value);
+        showSkin(value);
+        openSkins(false);
+        try {
+          localStorage.setItem('skin', value);
+          localStorage.setItem('skinBase', root.getAttribute('data-skin-default'));
+        } catch (e) { /* ignora */ }
+        // Numa pré-visualização (?tema=) o endereço prendia o tema: escolher outro sai dela.
+        if (root.hasAttribute('data-skin-locked')) window.location.replace(window.location.pathname);
+        else skinToggle.focus();
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (!skinList.hidden && !skinList.contains(e.target) && e.target !== skinToggle) openSkins(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !skinList.hidden) { openSkins(false); skinToggle.focus(); }
     });
   }
 

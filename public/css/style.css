@@ -67,7 +67,11 @@ a:hover { color: var(--accent); }
 .tools { display: flex; align-items: center; gap: 8px; }
 .pill-btn, .icon-btn { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink); font-family: var(--mono); font-size: 0.8125rem; text-decoration: none; cursor: pointer; padding: 0 14px; }
 .icon-btn { padding: 0; }
-.skin-select { width: auto; padding: 0 12px; appearance: auto; background: var(--bg); }
+.skin-menu { position: relative; }
+.skin-list { position: absolute; left: 0; top: calc(100% + 8px); z-index: 30; min-width: 180px; padding: 6px; display: flex; flex-direction: column; gap: 2px; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18); }
+.skin-opt { min-height: 44px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 0; border-radius: 8px; background: transparent; color: var(--ink); font-family: var(--body); font-size: 0.9375rem; font-weight: 500; text-align: left; cursor: pointer; }
+.skin-opt:hover { background: var(--soft); }
+.skin-opt[aria-pressed="true"] { background: var(--ink); color: var(--bg); font-weight: 600; }
 .pill-btn:hover, .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
 .site-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; padding: 20px 0 32px; border-top: 1px solid var(--line); font-size: 0.875rem; color: var(--muted); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 0 24px; }
