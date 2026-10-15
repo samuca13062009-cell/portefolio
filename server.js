@@ -11,7 +11,6 @@ const { PRIVACY_VERSION } = require('./lib/legal');
 
 const ROOT = __dirname;
 const PUBLIC = path.join(ROOT, 'public');
-const DATA = path.join(ROOT, 'data');
 
 // ---------- Configuração (.env) ----------
 function loadEnv() {
@@ -24,6 +23,14 @@ function loadEnv() {
   }
 }
 loadEnv();
+
+// Pasta dos dados. Num alojamento, DATA_DIR aponta para um disco persistente;
+// na primeira vez recebe uma cópia do content.json do repositório.
+const DATA = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(ROOT, 'data');
+fs.mkdirSync(DATA, { recursive: true });
+if (!fs.existsSync(path.join(DATA, 'content.json'))) {
+  fs.copyFileSync(path.join(ROOT, 'data', 'content.json'), path.join(DATA, 'content.json'));
+}
 
 const PORT = Number(process.env.PORT) || 4180;
 const SITE_URL = (process.env.SITE_URL || `http://localhost:${PORT}`).replace(/\/$/, '');

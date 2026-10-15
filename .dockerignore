@@ -1,0 +1,9 @@
+.git
+.env
+.claude
+data/messages.json
+data/stats.json
+data/admin.json
+PRIMEIRA-PALAVRA-PASSE.txt
+PALAVRA-PASSE-BACKOFFICE.txt
+node_modules
