@@ -9,6 +9,9 @@
     "fonts": "node tools/fetch-fonts.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.4"
   }
 }

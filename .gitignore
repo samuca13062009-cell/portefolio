@@ -10,3 +10,6 @@ node_modules/
 data/admin.json
 PRIMEIRA-PALAVRA-PASSE.txt
 PALAVRA-PASSE-BACKOFFICE.txt
+data/ratelimit.json
+data/secret.json
+.netlify/

@@ -18,7 +18,8 @@ Disponível em português e inglês, com modo escuro.
 
 ## Tecnologias
 
-HTML, CSS e JavaScript no cliente; Node.js no servidor, sem dependências externas.
+HTML, CSS e JavaScript no cliente; Node.js no servidor. Localmente não há dependências
+externas; no Netlify usa-se só o pacote `@netlify/blobs`.
 As páginas são geradas no servidor a partir de `data/content.json`, por isso os
 conteúdos mudam sem tocar no código.
 
@@ -31,6 +32,28 @@ node server.js
 ```
 
 O site fica em `http://localhost:4180`. No Windows também se pode abrir o `iniciar.bat`.
+
+## Publicar no Netlify
+
+O site está preparado para o Netlify (`netlify.toml`): os ficheiros de `public/` são servidos
+diretamente e as páginas e APIs correm na função `netlify/functions/site.mjs`, com os dados
+(conteúdos editados, mensagens, conta, estatísticas) guardados no Netlify Blobs.
+
+1. Em netlify.com, **Add new site > Import an existing project > GitHub** e escolher este repositório.
+   As definições de build vêm do `netlify.toml`.
+2. Em **Site configuration > Environment variables**, criar:
+   - `ADMIN_PASSWORD`: palavra-passe inicial do backoffice (10 caracteres ou mais)
+   - `PUBLIC_EMAIL`: email para pedidos de privacidade
+   - `BREVO_API_KEY`, `BREVO_SENDER_EMAIL`, `BREVO_SENDER_NAME`, `CONTACT_TO`: envio das mensagens
+   - `SITE_URL`: só se usar um domínio próprio (por omissão usa o endereço do Netlify)
+3. **Deploy**. A conta do backoffice é criada no primeiro acesso a `/admin` com a `ADMIN_PASSWORD`;
+   depois de a mudar em Backoffice > Conta, a variável deixa de ser usada.
+
+Notas:
+- Depois da primeira edição no backoffice, os conteúdos passam a viver no Netlify Blobs:
+  alterações posteriores ao `data/content.json` no GitHub já não se aplicam ao site publicado.
+- O botão "Atualizar PDF do CV" só funciona localmente (precisa do Chrome). No Netlify,
+  gera-se o PDF no computador com `npm run cv` e envia-se para o GitHub.
 
 ## Configurar o Brevo
 
@@ -84,7 +107,10 @@ Usa o Chrome ou o Edge instalados para gerar `public/cv/*.pdf`.
 ## Estrutura
 
 ```
-server.js          servidor, rotas, API de contacto e Brevo
+server.js          servidor local
+lib/app.js         núcleo do site: páginas, contacto e Brevo (local e Netlify)
+lib/store.js       armazenamento: ficheiros locais ou Netlify Blobs
+netlify/functions/ função do Netlify
 lib/render.js      geração das páginas (PT e EN)
 lib/admin.js       autenticação e API do backoffice
 lib/legal.js       textos legais (privacidade, cookies, termos)

@@ -4,6 +4,7 @@
   const main = $('main');
   let csrf = '';
   let content = null;
+  let canBuildCv = false;
   let view = 'dashboard';
 
   // ---------- Utilitários ----------
@@ -224,7 +225,7 @@
   }
   async function loadContent() {
     const r = await api('GET', '/api/admin/content');
-    if (r.ok) content = r.data.content;
+    if (r.ok) { content = r.data.content; canBuildCv = Boolean(r.data.canBuildCv); }
     return r.ok;
   }
 
@@ -405,7 +406,9 @@
       head('Gestão de conteúdos', 'Conteúdos'),
       tabs,
       h('section', { class: 'box' }, h('h2', null, title), form.el),
-      h('div', { class: 'save-bar' }, save, pdf, h('span', { class: 'hint' }, 'O PDF do CV só muda quando o atualizas.')));
+      h('div', { class: 'save-bar' }, save, canBuildCv ? pdf : null, h('span', { class: 'hint' }, canBuildCv
+        ? 'O PDF do CV só muda quando o atualizas.'
+        : 'O PDF do CV atualiza-se no computador (npm run cv) e envia-se para o GitHub.')));
   };
 
   // ---------- Aparência ----------
@@ -490,7 +493,7 @@
       if (v.next.length < 10) { toast('A nova palavra-passe precisa de pelo menos 10 caracteres.', true); return; }
       if (v.next !== v.repeat) { toast('As duas palavras-passe novas não coincidem.', true); return; }
       const r = await api('POST', '/api/admin/password', { current: v.current, next: v.next });
-      if (r.ok) { toast('Palavra-passe alterada.'); go('account'); return; }
+      if (r.ok) { csrf = r.data.csrf || csrf; toast('Palavra-passe alterada.'); go('account'); return; }
       toast(r.data.error === 'current' ? 'A palavra-passe atual não está correta.' : 'Não foi possível alterar a palavra-passe.', true);
     });
     main.replaceChildren(head('Conta', 'Conta'), h('section', { class: 'box' }, h('h2', null, 'Alterar palavra-passe'), wrapForm));
