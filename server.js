@@ -7,6 +7,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { renderer, ROUTES, esc } = require('./lib/render');
 const createAdmin = require('./lib/admin');
+const { PRIVACY_VERSION } = require('./lib/legal');
 
 const ROOT = __dirname;
 const PUBLIC = path.join(ROOT, 'public');
@@ -31,9 +32,12 @@ const BREVO = {
   senderEmail: process.env.BREVO_SENDER_EMAIL || '',
   senderName: process.env.BREVO_SENDER_NAME || 'Portefólio',
   to: process.env.CONTACT_TO || '',
-  listId: Number(process.env.BREVO_LIST_ID) || 0,
 };
 const brevoReady = Boolean(BREVO.key && BREVO.senderEmail && BREVO.to);
+// Email mostrado nas páginas legais para pedidos de privacidade (fica fora do repositório).
+const PUBLIC_EMAIL = EMAIL_OK(process.env.PUBLIC_EMAIL) ? process.env.PUBLIC_EMAIL.trim() : '';
+function EMAIL_OK(v) { return typeof v === 'string' && /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/.test(v.trim()); }
+const RETENTION_DAYS = 365;
 
 // ---------- Dados ----------
 const readJson = (file, fallback) => {
@@ -64,6 +68,20 @@ setInterval(() => {
   try { writeJson('stats.json', stats); } catch (e) { console.error('Estatísticas:', e.message); }
 }, 15000).unref();
 
+// ---------- Prazo de conservação das mensagens ----------
+function purgeOldMessages() {
+  const limit = Date.now() - RETENTION_DAYS * 86400000;
+  const all = readJson('messages.json', null);
+  if (!Array.isArray(all)) return;
+  const kept = all.filter((m) => Date.parse(m.date) >= limit);
+  if (kept.length !== all.length) {
+    writeJson('messages.json', kept);
+    console.log(`Apagadas ${all.length - kept.length} mensagens com mais de ${RETENTION_DAYS} dias.`);
+  }
+}
+try { purgeOldMessages(); } catch (e) { console.error('Conservação:', e.message); }
+setInterval(() => { try { purgeOldMessages(); } catch (e) { console.error('Conservação:', e.message); } }, 86400000).unref();
+
 // ---------- Limitação de pedidos ----------
 const hits = new Map();
 function rateLimited(ip, max, windowMs) {
@@ -85,8 +103,9 @@ const SECURITY = {
   'X-Frame-Options': 'DENY',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-  'Content-Security-Policy': "default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+  'Content-Security-Policy': "default-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; script-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
 };
+if (SITE_URL.startsWith('https://')) SECURITY['Strict-Transport-Security'] = 'max-age=31536000';
 function send(res, status, body, headers = {}) {
   res.writeHead(status, { ...SECURITY, ...headers });
   res.end(body);
@@ -97,7 +116,7 @@ const sendJson = (res, status, obj) => send(res, status, JSON.stringify(obj), { 
 const MIME = {
   '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp',
-  '.pdf': 'application/pdf', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8',
+  '.pdf': 'application/pdf', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8',
 };
 function serveStatic(res, pathname) {
   const ext = path.extname(pathname).toLowerCase();
@@ -114,12 +133,14 @@ function serveStatic(res, pathname) {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 function validateContact(b) {
   const clean = (v) => (typeof v === 'string' ? v.trim() : '');
-  const data = { name: clean(b.name), email: clean(b.email), subject: clean(b.subject), message: clean(b.message) };
+  const line = (v) => clean(v).replace(/[\r\n\t]+/g, ' ');
+  const data = { name: line(b.name), email: clean(b.email), subject: line(b.subject), message: clean(b.message) };
   const errors = {};
   if (data.name.length < 2 || data.name.length > 80) errors.name = true;
   if (!EMAIL_RE.test(data.email) || data.email.length > 120) errors.email = true;
   if (data.subject.length < 2 || data.subject.length > 120) errors.subject = true;
   if (data.message.length < 10 || data.message.length > 4000) errors.message = true;
+  if (b.consent !== true) errors.consent = true;
   return { data, errors };
 }
 
@@ -141,11 +162,6 @@ async function sendViaBrevo(m) {
     subject: `[Portefólio] ${m.subject}`,
     htmlContent: `<p><strong>Nome:</strong> ${esc(m.name)}<br><strong>Email:</strong> ${esc(m.email)}<br><strong>Assunto:</strong> ${esc(m.subject)}</p><p>${esc(m.message).replace(/\n/g, '<br>')}</p>`,
   });
-  if (BREVO.listId) {
-    await brevo('contacts', {
-      email: m.email, attributes: { NOME: m.name }, listIds: [BREVO.listId], updateEnabled: true,
-    }).catch((e) => console.error(e.message));
-  }
 }
 
 function readBody(req, limit) {
@@ -173,7 +189,11 @@ async function handleContact(req, res, ip) {
   const { data, errors } = validateContact(body);
   if (Object.keys(errors).length) return sendJson(res, 422, { ok: false, error: 'validation', fields: errors });
 
-  const message = { id: crypto.randomUUID(), date: new Date().toISOString(), ...data, read: false, delivery: 'pendente' };
+  const now = new Date().toISOString();
+  const message = {
+    id: crypto.randomUUID(), date: now, ...data, read: false, delivery: 'pendente',
+    consent: { at: now, policy: PRIVACY_VERSION },
+  };
   if (brevoReady) {
     try { await sendViaBrevo(data); message.delivery = 'enviado'; } catch (e) { message.delivery = 'falhou'; console.error(e.message); }
   } else {
@@ -201,7 +221,7 @@ const admin = createAdmin({
 function matchPage(pathname) {
   for (const lang of ['pt', 'en']) {
     const R = ROUTES[lang];
-    for (const key of ['home', 'about', 'projects', 'cv', 'cvPrint', 'contact']) {
+    for (const key of ['home', 'about', 'projects', 'cv', 'cvPrint', 'contact', 'privacy', 'terms', 'cookies']) {
       if (pathname === R[key]) return { lang, key };
     }
     if (pathname.startsWith(R.projects + '/')) {
@@ -216,7 +236,7 @@ function sitemap(content) {
   const urls = [];
   for (const lang of ['pt', 'en']) {
     const R = ROUTES[lang];
-    urls.push(R.home, R.about, R.projects, R.cv, R.contact);
+    urls.push(R.home, R.about, R.projects, R.cv, R.contact, R.privacy, R.terms, R.cookies);
     for (const p of content.projects) if (p.published !== false) urls.push(`${R.projects}/${p.slug}`);
   }
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `<url><loc>${esc(SITE_URL + u)}</loc></url>`).join('\n')}\n</urlset>\n`;
@@ -244,7 +264,7 @@ const server = http.createServer(async (req, res) => {
     if (pathname.length > 1 && pathname.endsWith('/')) pathname = pathname.slice(0, -1);
     const page = matchPage(pathname);
     if (page) {
-      const r = renderer(content, page.lang, SITE_URL, url.searchParams.get('tema') || '');
+      const r = renderer(content, page.lang, SITE_URL, url.searchParams.get('tema') || '', { publicEmail: PUBLIC_EMAIL });
       const html = page.key === 'project' ? r.project(page.slug) : r[page.key]();
       if (html) {
         if (page.key !== 'cvPrint') countVisit(pathname, req);
@@ -260,7 +280,7 @@ const server = http.createServer(async (req, res) => {
     }
 
     const lang = pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'pt';
-    sendHtml(res, 404, renderer(content, lang, SITE_URL).notFound(pathname));
+    sendHtml(res, 404, renderer(content, lang, SITE_URL, '', { publicEmail: PUBLIC_EMAIL }).notFound(pathname));
   } catch (e) {
     console.error(e);
     if (!res.headersSent) send(res, 500, 'Erro interno', { 'Content-Type': 'text/plain; charset=utf-8' });

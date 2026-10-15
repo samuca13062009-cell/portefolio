@@ -294,6 +294,7 @@
     const isNew = !p;
     const form = build([
       { key: 'title', type: 'bi', label: 'Título' },
+      { key: 'role', type: 'bi', label: 'O meu papel', hint: 'Opcional. Só aparece no site se estiver preenchido. Num trabalho de grupo, diz exatamente o que fizeste.' },
       { key: 'cover', label: 'Nome curto para a capa', hint: 'Aparece em grande no cartão do projeto.', max: 40 },
       { key: 'category', type: 'select', label: 'Categoria', options: Object.entries(content.categories).map(([k, v]) => [k, v.pt]) },
       { key: 'summary', type: 'bi', area: true, rows: 2, label: 'Resumo' },
@@ -321,7 +322,7 @@
     main.replaceChildren(
       head(isNew ? 'Novo projeto' : 'Editar projeto', isNew ? 'Novo projeto' : p.title.pt, h('button', { type: 'button', class: 'btn', onclick: () => go('projects') }, 'Voltar à lista')),
       h('section', { class: 'box' }, flags.el, form.el),
-      h('div', { class: 'save-bar' }, save, !isNew && p.published !== false && h('a', { class: 'text-link', href: `/projetos/${p.slug}`, target: '_blank', rel: 'noopener' }, 'Ver no website')));
+      h('div', { class: 'save-bar' }, save, !isNew && p.published !== false && h('a', { class: 'text-link', href: `/projetos/${p.slug}`, target: '_blank', rel: 'noopener' }, 'Ver no website', h('span', { class: 'sr' }, ' (abre noutro separador)'))));
     main.focus();
   }
 
@@ -426,7 +427,7 @@
         h('div', { class: 'swatches', 'aria-hidden': 'true' }, t.swatches.map((c) => { const s = h('span', { class: 'swatch' }); s.style.background = c; return s; })),
         h('div', { class: 'box-head' }, h('h2', null, t.name), isActive && h('span', { class: 'state new' }, 'Em uso')),
         h('p', { class: 'muted' }, t.description),
-        h('div', { class: 'row-actions' }, use, h('a', { class: 'btn small', href: `/?tema=${id}`, target: '_blank', rel: 'noopener' }, 'Pré-visualizar')));
+        h('div', { class: 'row-actions' }, use, h('a', { class: 'btn small', href: `/?tema=${id}`, target: '_blank', rel: 'noopener' }, 'Pré-visualizar', h('span', { class: 'sr' }, ' (abre noutro separador)'))));
     });
     main.replaceChildren(
       head('Aparência', 'Temas'),
@@ -451,7 +452,7 @@
       main.replaceChildren(
         head('Mensagem', m.subject, h('button', { type: 'button', class: 'btn', onclick: () => go('messages') }, 'Voltar à lista')),
         h('section', { class: 'box msg' },
-          h('div', { class: 'msg-meta' }, h('span', null, h('strong', null, m.name)), h('a', { href: `mailto:${m.email}` }, m.email), h('span', null, date(m.date)), h('span', null, DELIVERY[m.delivery] || m.delivery)),
+          h('div', { class: 'msg-meta' }, h('span', null, h('strong', null, m.name)), h('a', { href: `mailto:${m.email}` }, m.email), h('span', null, date(m.date)), h('span', null, DELIVERY[m.delivery] || m.delivery), m.consent && h('span', null, `Consentimento: ${date(m.consent.at)}`)),
           h('div', { class: 'msg-body' }, m.message),
           h('div', { class: 'row-actions' },
             h('a', { class: 'btn primary small', href: `mailto:${m.email}?subject=${encodeURIComponent('Re: ' + m.subject)}` }, 'Responder por email'),

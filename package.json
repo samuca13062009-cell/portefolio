@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "cv": "node tools/build-cv.js"
+    "cv": "node tools/build-cv.js",
+    "fonts": "node tools/fetch-fonts.js"
   },
   "engines": {
     "node": ">=18"

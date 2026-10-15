@@ -4,7 +4,7 @@
 /* ---------- Terminal ---------- */
 :root[data-skin="terminal"] {
   --bg: #F1F5EE; --surface: #FFFFFF; --ink: #0B1A10; --muted: #4A5D50;
-  --line: #CFD9CC; --line-strong: #7F9484; --accent: #0B6B34; --accent-ink: #FFFFFF;
+  --line: #CFD9CC; --line-strong: #6E8373; --accent: #0B6B34; --accent-ink: #FFFFFF;
   --inv-bg: #0B1A10; --inv-ink: #E6F5E9; --soft: #DDE6DA; --err: #A8201A;
   --cover-a-bg: #0B6B34; --cover-a-ink: #FFFFFF;
   --cover-b-bg: #0B0F0C; --cover-b-ink: #4ADE80;
@@ -35,7 +35,7 @@
 /* ---------- Editorial ---------- */
 :root[data-skin="editorial"] {
   --bg: #F6F1E7; --surface: #FFFDF8; --ink: #1E1A16; --muted: #5E554B;
-  --line: #DDD3C2; --line-strong: #9A8E7C; --accent: #B3371A; --accent-ink: #FFFFFF;
+  --line: #DDD3C2; --line-strong: #877A68; --accent: #B3371A; --accent-ink: #FFFFFF;
   --inv-bg: #1E1A16; --inv-ink: #F6F1E7; --soft: #E9E0CF; --err: #A8201A;
   --cover-a-bg: #B3371A; --cover-a-ink: #FFFFFF;
   --cover-b-bg: #1E1A16; --cover-b-ink: #F6F1E7;
@@ -63,7 +63,7 @@
 /* ---------- Atlântico ---------- */
 :root[data-skin="atlantico"] {
   --bg: #EEF4F5; --surface: #FFFFFF; --ink: #0A2230; --muted: #486270;
-  --line: #CCDCE0; --line-strong: #7D98A3; --accent: #0A6C78; --accent-ink: #FFFFFF;
+  --line: #CCDCE0; --line-strong: #6A8590; --accent: #0A6C78; --accent-ink: #FFFFFF;
   --inv-bg: #0A2230; --inv-ink: #EEF4F5; --soft: #DAE7EA; --err: #A8201A;
   --cover-a-bg: #0A6C78; --cover-a-ink: #FFFFFF;
   --cover-b-bg: #0A2230; --cover-b-ink: #EEF4F5;

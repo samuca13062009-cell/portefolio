@@ -11,7 +11,10 @@ Disponível em português e inglês, com modo escuro.
 - Formulário de contacto com validação no navegador e no servidor
 - Envio das mensagens pelo Brevo, feito no servidor: a chave da API nunca chega ao navegador
 - Versão em inglês (`/en`), modo escuro, SEO (meta, Open Graph, `sitemap.xml`, `robots.txt`)
-- Contagem de visitas por página e por dia
+- Contagem de visitas por página e por dia, sem cookies nem endereços IP
+- Política de Privacidade, Política de Cookies e Termos de Utilização (PT e EN)
+- Consentimento obrigatório no formulário e mensagens apagadas automaticamente ao fim de 12 meses
+- Fontes alojadas no próprio servidor: nenhum pedido a serviços de terceiros ao visitar o site
 
 ## Tecnologias
 
@@ -34,7 +37,8 @@ O site fica em `http://localhost:4180`. No Windows também se pode abrir o `inic
 1. Copiar `.env.example` para `.env`.
 2. Preencher `BREVO_API_KEY`, `BREVO_SENDER_EMAIL` (remetente verificado no Brevo) e
    `CONTACT_TO` (caixa que recebe as mensagens).
-3. Reiniciar o servidor.
+3. Preencher `PUBLIC_EMAIL` com o email que aparece nas páginas legais para pedidos de privacidade.
+4. Reiniciar o servidor.
 
 Sem estas definições o formulário continua a funcionar, mas as mensagens ficam apenas
 guardadas em `data/messages.json`. O ficheiro `.env`, as mensagens e as estatísticas
@@ -58,6 +62,15 @@ Segurança: palavra-passe guardada com scrypt e salt, sessão em cookie `HttpOnl
 dados, limite de 5 tentativas de login por 15 minutos e validação de tudo o que é
 guardado. A conta, as mensagens e as estatísticas não fazem parte do repositório.
 
+## Fontes
+
+As fontes estão em `public/fonts` (licença SIL Open Font License 1.1, ver `public/fonts/LICENCAS.txt`).
+Para voltar a descarregá-las depois de mudar a lista em `lib/themes.js`:
+
+```bash
+npm run fonts
+```
+
 ## Atualizar o PDF do CV
 
 Depois de alterar `data/content.json`:
@@ -74,6 +87,8 @@ Usa o Chrome ou o Edge instalados para gerar `public/cv/*.pdf`.
 server.js          servidor, rotas, API de contacto e Brevo
 lib/render.js      geração das páginas (PT e EN)
 lib/admin.js       autenticação e API do backoffice
+lib/legal.js       textos legais (privacidade, cookies, termos)
+lib/themes.js      temas visuais
 public/admin/      interface do backoffice
 data/content.json  todos os conteúdos do site
 public/            CSS, JavaScript, favicon e PDF do CV

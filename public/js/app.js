@@ -22,7 +22,11 @@
     var skinOpts = Array.prototype.slice.call(skinList.querySelectorAll('.skin-opt'));
     var known = skinOpts.map(function (o) { return o.dataset.skinValue; });
     var showSkin = function (value) {
-      skinOpts.forEach(function (o) { o.setAttribute('aria-pressed', String(o.dataset.skinValue === value)); });
+      skinOpts.forEach(function (o) {
+        var on = o.dataset.skinValue === value;
+        o.setAttribute('aria-pressed', String(on));
+        if (on && $('skin-current')) $('skin-current').textContent = o.textContent;
+      });
     };
     var openSkins = function (open) {
       skinList.hidden = !open;
@@ -59,6 +63,11 @@
   // ---------- Modo escuro ----------
   var toggle = $('theme-toggle');
   if (toggle) {
+    var isDark = function () {
+      var t = document.documentElement.getAttribute('data-theme');
+      return t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    };
+    toggle.setAttribute('aria-pressed', String(isDark()));
     toggle.addEventListener('click', function () {
       var root = document.documentElement;
       var current = root.getAttribute('data-theme') ||
@@ -66,6 +75,7 @@
       var next = current === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       try { localStorage.setItem('tema', next); } catch (e) { /* ignora */ }
+      toggle.setAttribute('aria-pressed', String(next === 'dark'));
     });
   }
 
@@ -115,6 +125,7 @@
       email: 'Enter a valid email, like name@example.com.',
       subject: 'Enter the subject of your message.',
       message: 'Write at least 10 characters.',
+      consent: 'To send, tick the box to accept the Privacy Policy.',
       rate: 'Too many messages in a short time. Try again in a few minutes.',
       server: 'The message could not be sent. Try again, or contact me on LinkedIn.',
       sending: 'Sending…'
@@ -123,6 +134,7 @@
       email: 'Escreva um email válido, como nome@exemplo.pt.',
       subject: 'Indique o assunto da mensagem.',
       message: 'Escreva pelo menos 10 caracteres.',
+      consent: 'Para enviar, marque a caixa de aceitação da Política de Privacidade.',
       rate: 'Demasiadas mensagens em pouco tempo. Tente de novo daqui a uns minutos.',
       server: 'Não foi possível enviar a mensagem. Tente de novo ou contacte-me pelo LinkedIn.',
       sending: 'A enviar…'
@@ -131,8 +143,10 @@
       { key: 'name', id: 'nome', bad: function (v) { return v.length < 2; } },
       { key: 'email', id: 'email', bad: function (v) { return !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); } },
       { key: 'subject', id: 'assunto', bad: function (v) { return v.length < 2; } },
-      { key: 'message', id: 'mensagem', bad: function (v) { return v.length < 10; } }
+      { key: 'message', id: 'mensagem', bad: function (v) { return v.length < 10; } },
+      { key: 'consent', id: 'consentimento', check: true, bad: function (v) { return v !== true; } }
     ];
+    var val = function (f) { var el = $(f.id); return f.check ? el.checked : el.value.trim(); };
     var button = $('enviar');
     var buttonHtml = button.innerHTML;
     var sendError = $('erro-envio');
@@ -149,7 +163,7 @@
     var validate = function () {
       var firstBad = null;
       FIELDS.forEach(function (f) {
-        var isBad = f.bad($(f.id).value.trim());
+        var isBad = f.bad(val(f));
         mark(f, isBad);
         if (isBad && !firstBad) firstBad = $(f.id);
       });
@@ -157,7 +171,7 @@
     };
     FIELDS.forEach(function (f) {
       $(f.id).addEventListener('input', function () {
-        if (tried) mark(f, f.bad($(f.id).value.trim()));
+        if (tried) mark(f, f.bad(val(f)));
       });
     });
 
@@ -169,7 +183,7 @@
       if (firstBad) { firstBad.focus(); return; }
 
       var payload = { website: $('website').value };
-      FIELDS.forEach(function (f) { payload[f.key] = $(f.id).value.trim(); });
+      FIELDS.forEach(function (f) { payload[f.key] = val(f); });
       button.disabled = true;
       button.textContent = MSG.sending;
 
