@@ -8,8 +8,7 @@ IBM Plex Mono        licencas/ibmplexmono-OFL.txt
 JetBrains Mono       licencas/jetbrainsmono-OFL.txt
 Fraunces             licencas/fraunces-OFL.txt
 Source Sans 3        licencas/sourcesans3-OFL.txt
-Outfit               licencas/outfit-OFL.txt
-DM Sans              licencas/dmsans-OFL.txt
-DM Mono              licencas/dmmono-OFL.txt
 
 Fonte dos ficheiros: Google Fonts (https://fonts.google.com) e repositório google/fonts.
+Archivo              licencas/archivo-OFL.txt
+Hanken Grotesk       licencas/hankengrotesk-OFL.txt

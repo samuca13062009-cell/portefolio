@@ -65,9 +65,9 @@
   --cover-a-bg: #0A6C78; --cover-a-ink: #FFFFFF;
   --cover-b-bg: #0A2230; --cover-b-ink: #EEF4F5;
   --cover-c-bg: #7CB9E8; --cover-c-ink: #0A2230;
-  --display: 'Outfit', system-ui, sans-serif;
-  --body: 'DM Sans', system-ui, sans-serif;
-  --mono: 'DM Mono', ui-monospace, monospace;
+  --display: 'Archivo', system-ui, sans-serif;
+  --body: 'Hanken Grotesk', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root[data-skin="atlantico"]:not([data-theme="light"]) {
@@ -81,7 +81,9 @@
   --line: #1B3743; --line-strong: #56707B; --accent: #5FD4DE; --accent-ink: #071A24;
   --inv-bg: #E6F2F4; --inv-ink: #071A24; --soft: #12303D; --err: #FF9C93;
 }
-[data-skin="atlantico"] .display { font-weight: 600; letter-spacing: -0.035em; }
+[data-skin="atlantico"] .display { font-weight: 800; font-stretch: 118%; letter-spacing: -0.02em; }
+[data-skin="atlantico"] .display.xl { font-size: clamp(2.75rem, 6.4vw, 5.5rem); }
+[data-skin="atlantico"] .feature-title, [data-skin="atlantico"] .card-title, [data-skin="atlantico"] .pager-name, [data-skin="atlantico"] .brand { font-weight: 800; font-stretch: 112%; letter-spacing: -0.01em; }
 
 /* Faixa de pré-visualização (quando o endereço tem ?tema=) */
 .preview-bar { position: sticky; top: 0; z-index: 15; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 16px; padding: 10px 16px; background: var(--inv-bg); color: var(--inv-ink); font-size: 0.9375rem; text-align: center; }
@@ -92,6 +94,13 @@
 :root[data-skin="editorial"] { --signal: #E8C24A; --signal-ink: #1E1A16; }
 :root[data-skin="atlantico"] { --signal: #FFB199; --signal-ink: #0A2230; }
 
+
 /* Raio dos cantos de cada tema */
-:root[data-skin="terminal"] { --r: 6px; }
-:root[data-skin="atlantico"] { --r: 18px; }
+:root[data-skin="terminal"] { --r: 3px; --rc: 3px; }
+:root[data-skin="editorial"] { --r: 4px; --rc: 4px; }
+:root[data-skin="atlantico"] { --r: 6px; --rc: 6px; }
+
+/* Faixas de oceano de cada tema */
+:root[data-skin="terminal"] { --deep: #07120B; --deep-2: #0F1E14; --deep-ink: #D7F5DD; --deep-muted: #8FB39A; --deep-line: #1F3326; --deep-line-strong: #4E6A57; --sun: #FFD23F; }
+:root[data-skin="editorial"] { --deep: #241A14; --deep-2: #33261D; --deep-ink: #F6EDE0; --deep-muted: #C2B4A1; --deep-line: #4A3A2E; --deep-line-strong: #8A7663; --sun: #E8C24A; }
+:root[data-skin="atlantico"] { --deep: #0A2230; --deep-2: #103245; --deep-ink: #EAF3F4; --deep-muted: #A9C3CB; --deep-line: #1E4255; --deep-line-strong: #4F7A8A; --sun: #FF9A6B; }
