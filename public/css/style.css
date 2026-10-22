@@ -54,7 +54,7 @@ h1, h2, h3, p, dl, dd, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: var(--ink); text-underline-offset: 0.2em; text-decoration-thickness: 0.07em; }
-a:hover { color: var(--accent); }
+a:hover { color: var(--accent); text-decoration-thickness: 0.14em; }
 ::selection { background: var(--accent); color: var(--accent-ink); }
 input, textarea { caret-color: var(--accent); }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }

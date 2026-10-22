@@ -1,22 +1,22 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-22T13:29:40.602Z",
+  "generatedAt": "2026-10-22T13:42:03.710Z",
   "title": "Design System: Samuel Camargo, Portefólio",
   "extensions": {
     "colorMeta": {
-      "teal-accent": {
+      "night-navy": {
         "role": "primary",
-        "displayName": "Atlantic Teal",
-        "canonical": "oklch(48.7% 0.081 208.5)",
+        "displayName": "Night Navy",
+        "canonical": "oklch(26.9% 0.081 268.7)",
         "tonalRamp": [
-          "#00121D",
-          "#002D39",
-          "#004B56",
-          "#056A76",
-          "#378B97",
-          "#5BADB9",
-          "#7FD0DD",
-          "#A6F8FF"
+          "#02042C",
+          "#15214C",
+          "#303F6D",
+          "#4E5F8F",
+          "#6E80B3",
+          "#90A3D9",
+          "#B3C8FF",
+          "#E8EEFF"
         ]
       },
       "accent-ink": {
@@ -25,238 +25,238 @@
         "canonical": "oklch(100.0% 0.000 89.9)",
         "tonalRamp": [
           "#0B0B0B",
-          "#242424",
-          "#404040",
-          "#5D5D5D",
-          "#7D7D7D",
-          "#9E9E9E",
-          "#C1C1C1",
-          "#E8E8E8"
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
         ]
       },
-      "mist-ground": {
+      "paper-ground": {
         "role": "neutral",
-        "displayName": "Mist Ground",
-        "canonical": "oklch(96.3% 0.007 208.8)",
+        "displayName": "Paper Ground",
+        "canonical": "oklch(95.7% 0.015 80.7)",
         "tonalRamp": [
-          "#080C0D",
-          "#212526",
-          "#3C4142",
-          "#5A5F5F",
-          "#797E7F",
-          "#9AA0A0",
-          "#BCC2C3",
-          "#E3E9EA"
+          "#0E0B05",
+          "#29241D",
+          "#464139",
+          "#666058",
+          "#878279",
+          "#AAA49B",
+          "#CEC8BF",
+          "#F4EEE4"
         ]
       },
-      "surface-white": {
+      "cream-surface": {
         "role": "neutral",
-        "displayName": "Surface White",
-        "canonical": "oklch(100.0% 0.000 89.9)",
+        "displayName": "Cream Surface",
+        "canonical": "oklch(98.7% 0.011 76.6)",
         "tonalRamp": [
-          "#0B0B0B",
-          "#242424",
-          "#404040",
-          "#5D5D5D",
-          "#7D7D7D",
-          "#9E9E9E",
-          "#C1C1C1",
-          "#E8E8E8"
+          "#0E0B07",
+          "#28241F",
+          "#45413C",
+          "#65615B",
+          "#86827B",
+          "#A9A49E",
+          "#CDC8C2",
+          "#F3EEE7"
         ]
       },
-      "abyss-ink": {
+      "night-ink": {
         "role": "neutral",
-        "displayName": "Abyss Ink",
-        "canonical": "oklch(24.1% 0.040 237.3)",
+        "displayName": "Night Ink",
+        "canonical": "oklch(22.7% 0.044 284.3)",
         "tonalRamp": [
-          "#000D1A",
-          "#0F2735",
-          "#2B4352",
-          "#486172",
-          "#678192",
-          "#88A3B5",
-          "#AAC5D8",
-          "#D0EDFF"
+          "#0A081D",
+          "#23223A",
+          "#3F3F59",
+          "#5E5E7A",
+          "#7F7F9C",
+          "#A1A2C0",
+          "#C5C6E6",
+          "#ECEDFF"
         ]
       },
-      "slate-muted": {
+      "dusk-muted": {
         "role": "neutral",
-        "displayName": "Slate Muted",
-        "canonical": "oklch(48.1% 0.038 232.1)",
+        "displayName": "Dusk Muted",
+        "canonical": "oklch(43.2% 0.032 297.1)",
         "tonalRamp": [
-          "#000D18",
-          "#0E2733",
-          "#2A4351",
-          "#486270",
-          "#678290",
-          "#87A3B2",
-          "#A9C6D6",
-          "#CFEDFE"
+          "#0D0817",
+          "#272233",
+          "#443F51",
+          "#635E71",
+          "#847F93",
+          "#A7A1B7",
+          "#CBC5DC",
+          "#F0EBFE"
         ]
       },
-      "hairline": {
+      "sand-hairline": {
         "role": "neutral",
-        "displayName": "Hairline",
-        "canonical": "oklch(88.4% 0.018 214.4)",
+        "displayName": "Sand Hairline",
+        "canonical": "oklch(88.3% 0.027 80.2)",
         "tonalRamp": [
-          "#030D10",
-          "#1A2629",
-          "#354246",
-          "#526064",
-          "#728084",
-          "#92A2A5",
-          "#B4C4C8",
-          "#DBEBEF"
+          "#110A01",
+          "#2C2416",
+          "#4A4132",
+          "#696050",
+          "#8B8170",
+          "#AEA492",
+          "#D3C8B6",
+          "#F8EDDB"
         ]
       },
-      "hairline-strong": {
+      "driftwood-line": {
         "role": "neutral",
-        "displayName": "Hairline Strong",
-        "canonical": "oklch(60.0% 0.035 224.6)",
+        "displayName": "Driftwood Line",
+        "canonical": "oklch(58.8% 0.039 76.8)",
         "tonalRamp": [
-          "#000E16",
-          "#0F2831",
-          "#2B444E",
-          "#48626D",
-          "#67828D",
-          "#88A4AF",
-          "#AAC6D2",
-          "#D0EEFA"
+          "#120900",
+          "#30220E",
+          "#4E3F2A",
+          "#6E5F48",
+          "#908069",
+          "#B3A28A",
+          "#D8C6AE",
+          "#FEECD2"
         ]
       },
-      "soft-wash": {
+      "linen-wash": {
         "role": "neutral",
-        "displayName": "Soft Wash",
-        "canonical": "oklch(91.9% 0.015 213.1)",
+        "displayName": "Linen Wash",
+        "canonical": "oklch(92.8% 0.021 79.1)",
         "tonalRamp": [
-          "#050D0F",
-          "#1C2628",
-          "#374244",
-          "#556062",
-          "#748082",
-          "#95A1A4",
-          "#B7C4C6",
-          "#DEEBEE"
+          "#100A03",
+          "#2B2419",
+          "#484136",
+          "#686054",
+          "#898174",
+          "#ACA497",
+          "#D1C8BA",
+          "#F6EDDF"
         ]
       },
-      "error-red": {
+      "brick-error": {
         "role": "error",
-        "displayName": "Error Red",
-        "canonical": "oklch(47.6% 0.172 28.5)",
+        "displayName": "Brick Error",
+        "canonical": "oklch(47.2% 0.163 29.6)",
         "tonalRamp": [
-          "#320000",
-          "#5B0000",
-          "#840000",
-          "#A9221B",
-          "#D0493D",
-          "#F76D5E",
-          "#FF9281",
-          "#FFC2B1"
+          "#1F0000",
+          "#4D0100",
+          "#800301",
+          "#AA2E22",
+          "#D25444",
+          "#FA7866",
+          "#FFB3A7",
+          "#FFE9E5"
         ]
       },
-      "deep-ocean": {
+      "deep-night": {
         "role": "neutral",
-        "displayName": "Deep Ocean",
-        "canonical": "oklch(24.1% 0.040 237.3)",
+        "displayName": "Deep Night",
+        "canonical": "oklch(18.0% 0.042 269.3)",
         "tonalRamp": [
-          "#000D1A",
-          "#0F2735",
-          "#2B4352",
-          "#486172",
-          "#678192",
-          "#88A3B5",
-          "#AAC5D8",
-          "#D0EDFF"
+          "#05091D",
+          "#1D243A",
+          "#394159",
+          "#57617A",
+          "#78829C",
+          "#9AA4C0",
+          "#BEC9E6",
+          "#E8EEFE"
         ]
       },
-      "deep-ocean-raised": {
+      "deep-night-raised": {
         "role": "neutral",
-        "displayName": "Deep Ocean Raised",
-        "canonical": "oklch(30.2% 0.052 236.7)",
+        "displayName": "Deep Night Raised",
+        "canonical": "oklch(22.6% 0.054 269.3)",
         "tonalRamp": [
-          "#000D1E",
-          "#04273A",
-          "#234458",
-          "#406277",
-          "#608299",
-          "#80A4BB",
-          "#A2C7DF",
-          "#C8EEFF"
+          "#040821",
+          "#1B233F",
+          "#36415F",
+          "#556080",
+          "#7581A3",
+          "#97A4C8",
+          "#BBC8ED",
+          "#E8EEFE"
         ]
       },
-      "foam-ink": {
+      "moon-ink": {
         "role": "neutral",
-        "displayName": "Foam Ink",
-        "canonical": "oklch(95.8% 0.010 204.9)",
+        "displayName": "Moon Ink",
+        "canonical": "oklch(95.6% 0.011 274.9)",
         "tonalRamp": [
-          "#070C0D",
-          "#1F2526",
-          "#3A4142",
-          "#585F60",
-          "#777F80",
-          "#98A0A1",
-          "#BAC3C4",
-          "#E1EAEB"
+          "#0A0B10",
+          "#23252A",
+          "#404248",
+          "#5F6168",
+          "#808289",
+          "#A3A5AC",
+          "#C7C9D0",
+          "#ECEEF6"
         ]
       },
-      "foam-muted": {
+      "moon-muted": {
         "role": "neutral",
-        "displayName": "Foam Muted",
-        "canonical": "oklch(80.0% 0.030 218.3)",
+        "displayName": "Moon Muted",
+        "canonical": "oklch(79.1% 0.035 272.7)",
         "tonalRamp": [
-          "#000E14",
-          "#11282E",
-          "#2D444B",
-          "#4B6269",
-          "#6A8289",
-          "#8AA3AB",
-          "#ACC6CE",
-          "#D2EDF6"
+          "#070A1A",
+          "#1F2436",
+          "#3C4155",
+          "#5A6076",
+          "#7B8198",
+          "#9DA4BC",
+          "#C1C8E1",
+          "#E9EEFE"
         ]
       },
       "deep-line": {
         "role": "neutral",
         "displayName": "Deep Line",
-        "canonical": "oklch(36.1% 0.053 233.9)",
+        "canonical": "oklch(27.0% 0.063 269.2)",
         "tonalRamp": [
-          "#000D1E",
-          "#012839",
-          "#204457",
-          "#3F6377",
-          "#5E8398",
-          "#7EA4BB",
-          "#A0C7DE",
-          "#C6EFFF"
+          "#030725",
+          "#192343",
+          "#344064",
+          "#536086",
+          "#7381A9",
+          "#95A4CD",
+          "#B8C8F3",
+          "#E8EEFF"
         ]
       },
       "deep-line-strong": {
         "role": "neutral",
         "displayName": "Deep Line Strong",
-        "canonical": "oklch(55.4% 0.054 223.5)",
+        "canonical": "oklch(59.1% 0.071 272.6)",
         "tonalRamp": [
-          "#000F1B",
-          "#002937",
-          "#1A4655",
-          "#3A6474",
-          "#598595",
-          "#7AA6B7",
-          "#9CC9DB",
-          "#C2F1FF"
+          "#050528",
+          "#1A2147",
+          "#353F67",
+          "#535F8A",
+          "#7480AD",
+          "#96A3D2",
+          "#B9C7F8",
+          "#E9EEFE"
         ]
       },
-      "sunset": {
+      "lamp-gold": {
         "role": "secondary",
-        "displayName": "Sunset",
-        "canonical": "oklch(78.1% 0.136 45.2)",
+        "displayName": "Lamp Gold",
+        "canonical": "oklch(85.2% 0.128 83.8)",
         "tonalRamp": [
-          "#300000",
-          "#520000",
-          "#751B00",
-          "#993E01",
-          "#BD5F2F",
-          "#E38052",
-          "#FFA374",
-          "#FFCA9A"
+          "#110A00",
+          "#312201",
+          "#553E00",
+          "#7C5B04",
+          "#A57B04",
+          "#CB9D37",
+          "#F1C260",
+          "#FFECC9"
         ]
       }
     },
@@ -334,7 +334,7 @@
       },
       {
         "name": "theme-reveal",
-        "value": "620ms circle clip-path from the toggle",
+        "value": "growing circle clip-path from the toggle (public/js/app.js)",
         "purpose": "Theme or light/dark change."
       },
       {
@@ -349,7 +349,7 @@
       },
       {
         "name": "social-hover",
-        "value": "0.25s translateY(-3px) with sunset fill",
+        "value": "0.25s translateY(-3px) with sun fill",
         "purpose": "Contact social buttons on hover or focus."
       },
       {
@@ -376,66 +376,206 @@
     "bands": [
       {
         "name": "deep",
-        "purpose": "Home hero, every page header, contact header, closing CTA. Remaps ink, muted, line, line-strong, surface, soft, accent (to sun) and accent-ink (to deep). Contours: public/img/contours.svg as a CSS mask, deep-line-strong at 55%."
+        "purpose": "Home hero, every page header, contact header, closing CTA. Remaps ink, muted, line, line-strong, surface, soft, accent (to sun) and accent-ink (to deep). Contours: public/img/contours.svg as a CSS mask, deep-line-strong at 55%. In dark mode deep and deep-2 take the theme's deepDark values."
       },
       {
         "name": "tint",
         "purpose": "Home \"Além do código\" section. Soft-wash ground, contours in line-strong at 22%."
       }
     ],
+    "themeSource": {
+      "definitions": "tools/make-themes.js (mirrored to tools/themes-data.json)",
+      "generated": "public/css/themes.css, :root[data-skin=\"<id>\"]",
+      "names": "lib/themes.js",
+      "default": "data/content.json site.theme"
+    },
+    "themesShared": {
+      "display": "Archivo 800, 118% width (titles 112%)",
+      "body": "Hanken Grotesk",
+      "mono": "JetBrains Mono",
+      "radius": "6px (--r and --rc)"
+    },
     "themes": [
       {
-        "name": "Atlântico",
+        "id": "polvo",
+        "name": "O Polvo",
         "default": true,
-        "radius": "6px",
-        "display": "Archivo 800, 118% width",
-        "body": "Hanken Grotesk",
-        "mono": "JetBrains Mono",
-        "accent": {
-          "light": "#0A6C78",
-          "dark": "#5FD4DE"
+        "light": {
+          "bg": "#F6F0E6",
+          "surface": "#FFFAF3",
+          "ink": "#1A1930",
+          "muted": "#524D60",
+          "line": "#E2D7C5",
+          "line-strong": "#8A7A63",
+          "accent": "#16224D",
+          "accent-ink": "#FFFFFF",
+          "inv-bg": "#0A1024",
+          "inv-ink": "#EEF0F8",
+          "soft": "#EFE6D8",
+          "err": "#A3261B"
         },
-        "deep": "#0A2230",
-        "sun": "#FF9A6B"
+        "dark": {
+          "bg": "#0A1024",
+          "surface": "#121A35",
+          "ink": "#EEF0F8",
+          "muted": "#B3BAD2",
+          "line": "#1A2445",
+          "line-strong": "#6F7BA8",
+          "accent": "#F6C765",
+          "accent-ink": "#1A1405",
+          "inv-bg": "#EEF0F8",
+          "inv-ink": "#0A1024",
+          "soft": "#1A2445",
+          "err": "#FF9D85"
+        },
+        "deep": {
+          "deep": "#0A1024",
+          "deep-2": "#121A35",
+          "deep-ink": "#EEF0F8",
+          "deep-muted": "#B3BAD2",
+          "deep-line": "#1A2445",
+          "deep-line-strong": "#6F7BA8",
+          "sun": "#F6C765"
+        },
+        "deepDark": {
+          "deep": "#121A35",
+          "deep-2": "#1A2445"
+        }
       },
       {
-        "name": "Cobalto",
-        "radius": "6px",
-        "display": "Bricolage Grotesque 700",
-        "body": "IBM Plex Sans",
-        "mono": "IBM Plex Mono",
-        "accent": {
-          "light": "#2B4BFF",
-          "dark": "#9DADFF"
+        "id": "saltaplanetas",
+        "name": "Saltaplanetas",
+        "light": {
+          "bg": "#F4F1FF",
+          "surface": "#FFFFFF",
+          "ink": "#1A1230",
+          "muted": "#4F4870",
+          "line": "#DDD6F3",
+          "line-strong": "#7E76A6",
+          "accent": "#7A43C8",
+          "accent-ink": "#FFFFFF",
+          "inv-bg": "#0B0820",
+          "inv-ink": "#F4F1FF",
+          "soft": "#E9E3FB",
+          "err": "#B0284F"
         },
-        "deep": "#121A3A",
-        "sun": "#C9F26B"
+        "dark": {
+          "bg": "#0B0820",
+          "surface": "#1A1230",
+          "ink": "#F4F1FF",
+          "muted": "#A9A3C9",
+          "line": "#2A2050",
+          "line-strong": "#6A5F9E",
+          "accent": "#FFD34D",
+          "accent-ink": "#1A1230",
+          "inv-bg": "#F4F1FF",
+          "inv-ink": "#0B0820",
+          "soft": "#2A2050",
+          "err": "#FF8FA3"
+        },
+        "deep": {
+          "deep": "#0B0820",
+          "deep-2": "#1A1230",
+          "deep-ink": "#F4F1FF",
+          "deep-muted": "#A9A3C9",
+          "deep-line": "#2A2050",
+          "deep-line-strong": "#6A5F9E",
+          "sun": "#FFD34D"
+        },
+        "deepDark": {
+          "deep": "#160F33",
+          "deep-2": "#221947"
+        }
       },
       {
-        "name": "Terminal",
-        "radius": "3px",
-        "display": "JetBrains Mono 700",
-        "body": "IBM Plex Sans",
-        "mono": "JetBrains Mono",
-        "accent": {
-          "light": "#0B6B34",
-          "dark": "#4ADE80"
+        "id": "skillconnect",
+        "name": "SkillConnect",
+        "light": {
+          "bg": "#F2F2F2",
+          "surface": "#FFFFFF",
+          "ink": "#0D0D0D",
+          "muted": "#4D4D4D",
+          "line": "#D6D6D6",
+          "line-strong": "#7A7A7A",
+          "accent": "#1B7F0A",
+          "accent-ink": "#FFFFFF",
+          "inv-bg": "#000000",
+          "inv-ink": "#F2F2F2",
+          "soft": "#E6E6E6",
+          "err": "#A8201A"
         },
-        "deep": "#07120B",
-        "sun": "#FFD23F"
+        "dark": {
+          "bg": "#0D0D0D",
+          "surface": "#161616",
+          "ink": "#F2F2F2",
+          "muted": "#A0A0A0",
+          "line": "#2E2E2E",
+          "line-strong": "#6A6A6A",
+          "accent": "#39FF14",
+          "accent-ink": "#000000",
+          "inv-bg": "#F2F2F2",
+          "inv-ink": "#0D0D0D",
+          "soft": "#1F1F1F",
+          "err": "#FF8A80"
+        },
+        "deep": {
+          "deep": "#000000",
+          "deep-2": "#0D0D0D",
+          "deep-ink": "#F2F2F2",
+          "deep-muted": "#9A9A9A",
+          "deep-line": "#2E2E2E",
+          "deep-line-strong": "#5A5A5A",
+          "sun": "#39FF14"
+        },
+        "deepDark": {
+          "deep": "#000000",
+          "deep-2": "#161616"
+        }
       },
       {
-        "name": "Editorial",
-        "radius": "4px",
-        "display": "Fraunces 600",
-        "body": "Source Sans 3 (17px base)",
-        "mono": "IBM Plex Mono",
-        "accent": {
-          "light": "#B3371A",
-          "dark": "#FF8A66"
+        "id": "arduino",
+        "name": "Arduino",
+        "light": {
+          "bg": "#EEF5F5",
+          "surface": "#FFFFFF",
+          "ink": "#0F2A2B",
+          "muted": "#46605F",
+          "line": "#CFE0DF",
+          "line-strong": "#6E8C8B",
+          "accent": "#00797C",
+          "accent-ink": "#FFFFFF",
+          "inv-bg": "#003B3D",
+          "inv-ink": "#E9F7F7",
+          "soft": "#DDEBEA",
+          "err": "#A8201A"
         },
-        "deep": "#241A14",
-        "sun": "#E8C24A"
+        "dark": {
+          "bg": "#071B1C",
+          "surface": "#0E2A2B",
+          "ink": "#E9F7F7",
+          "muted": "#A6CFCF",
+          "line": "#1C3C3D",
+          "line-strong": "#5D8A8B",
+          "accent": "#3FC6CA",
+          "accent-ink": "#071B1C",
+          "inv-bg": "#E9F7F7",
+          "inv-ink": "#071B1C",
+          "soft": "#1C3C3D",
+          "err": "#FF9C93"
+        },
+        "deep": {
+          "deep": "#003234",
+          "deep-2": "#00494C",
+          "deep-ink": "#E9F7F7",
+          "deep-muted": "#A6CFCF",
+          "deep-line": "#0B5F62",
+          "deep-line-strong": "#4FA3A5",
+          "sun": "#F5964E"
+        },
+        "deepDark": {
+          "deep": "#003A3C",
+          "deep-2": "#00514F"
+        }
       }
     ]
   },
@@ -444,9 +584,9 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Teal accent button with 6px corners for the one main action per view; the arrow is pushed right on hover.",
+      "description": "Night-navy accent button with 6px corners for the one main action per view; the arrow is pushed right on hover.",
       "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Ver projetos <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:1.5px solid var(--ink);border-radius:var(--rc);background:transparent;color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease;} .ds-btn svg{transition:transform .25s var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-btn:hover{background:var(--soft);} .ds-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);} .ds-btn-primary:hover{background:var(--accent);filter:brightness(0.93);} .ds-btn-primary:hover svg{transform:translateX(4px);} "
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:1.5px solid var(--ink);border-radius:var(--rc);background:transparent;color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease;} .ds-btn svg{transition:transform .25s var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-btn:hover{background:var(--soft);} .ds-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);} .ds-btn-primary:hover{background:var(--accent);filter:brightness(0.93);} .ds-btn-primary:hover svg{transform:translateX(4px);} "
     },
     {
       "name": "Secondary Button",
@@ -454,31 +594,31 @@
       "refersTo": "button-secondary",
       "description": "Outlined ink button for the alternative action (Download CV); fills with soft wash on hover.",
       "html": "<a class=\"ds-btn\" href=\"#\">Descarregar CV <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 4v12M6 11l6 6 6-6M5 20h14\"/></svg></a>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:1.5px solid var(--ink);border-radius:var(--rc);background:transparent;color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease;} .ds-btn svg{transition:transform .25s var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-btn:hover{background:var(--soft);} .ds-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);} .ds-btn-primary:hover{background:var(--accent);filter:brightness(0.93);} .ds-btn-primary:hover svg{transform:translateX(4px);} .ds-btn:hover svg{transform:translateY(3px);}"
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:1.5px solid var(--ink);border-radius:var(--rc);background:transparent;color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease;} .ds-btn svg{transition:transform .25s var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-btn:hover{background:var(--soft);} .ds-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);} .ds-btn-primary:hover{background:var(--accent);filter:brightness(0.93);} .ds-btn-primary:hover svg{transform:translateX(4px);} .ds-btn:hover svg{transform:translateY(3px);}"
     },
     {
       "name": "Deep Band Hero",
       "kind": "custom",
       "refersTo": "deep-band",
-      "description": "Signature full-width deep-ocean band with contour lines; roles remap inside so the primary button turns sunset. Contours approximated here; the build masks public/img/contours.svg.",
+      "description": "Signature full-width deep band with contour lines; roles remap inside so the primary button turns lamp gold. Contours approximated here; the build masks public/img/contours.svg.",
       "html": "<section class=\"ds-deep ds-hero\"><h1 class=\"ds-h\">Olá, sou o <span class=\"ds-sun\">Samuel</span></h1><p class=\"ds-role\">Programador web e Android</p><div class=\"ds-actions\"><a class=\"ds-btn ds-btn-primary\" href=\"#\">Ver projetos <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a><a class=\"ds-btn\" href=\"#\">Descarregar CV <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 4v12M6 11l6 6 6-6M5 20h14\"/></svg></a></div></section>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:1.5px solid var(--ink);border-radius:var(--rc);background:transparent;color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease;} .ds-btn svg{transition:transform .25s var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-btn:hover{background:var(--soft);} .ds-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);} .ds-btn-primary:hover{background:var(--accent);filter:brightness(0.93);} .ds-btn-primary:hover svg{transform:translateX(4px);} .ds-deep{--ink:var(--deep-ink);--muted:var(--deep-muted);--line:var(--deep-line);--line-strong:var(--deep-line-strong);--surface:var(--deep-2);--soft:var(--deep-2);--accent:var(--sun);--accent-ink:var(--deep);position:relative;isolation:isolate;background:var(--deep);color:var(--deep-ink);overflow:hidden;} .ds-deep::before{content:\"\";position:absolute;inset:0;z-index:-1;opacity:.55;background:repeating-radial-gradient(ellipse at 80% 20%,transparent 0 22px,var(--deep-line-strong) 22px 23px);} .ds-hero{padding:clamp(72px,10vw,136px) 32px clamp(64px,8vw,112px);display:flex;flex-direction:column;gap:24px;} .ds-h{margin:0;font-family:var(--display);font-weight:800;font-stretch:118%;font-size:clamp(2.75rem,6.4vw,5.5rem);line-height:.96;letter-spacing:-0.02em;text-wrap:balance;} .ds-sun,.ds-role{color:var(--sun);} .ds-role{margin:0;font-family:var(--body);font-size:1.25rem;font-weight:600;} .ds-actions{display:flex;flex-wrap:wrap;gap:12px;}"
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:1.5px solid var(--ink);border-radius:var(--rc);background:transparent;color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease;} .ds-btn svg{transition:transform .25s var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-btn:hover{background:var(--soft);} .ds-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);} .ds-btn-primary:hover{background:var(--accent);filter:brightness(0.93);} .ds-btn-primary:hover svg{transform:translateX(4px);} .ds-deep{--ink:var(--deep-ink);--muted:var(--deep-muted);--line:var(--deep-line);--line-strong:var(--deep-line-strong);--surface:var(--deep-2);--soft:var(--deep-2);--accent:var(--sun);--accent-ink:var(--deep);position:relative;isolation:isolate;background:var(--deep);color:var(--deep-ink);overflow:hidden;} .ds-deep::before{content:\"\";position:absolute;inset:0;z-index:-1;opacity:.55;background:repeating-radial-gradient(ellipse at 80% 20%,transparent 0 22px,var(--deep-line-strong) 22px 23px);} .ds-hero{padding:clamp(72px,10vw,136px) 32px clamp(64px,8vw,112px);display:flex;flex-direction:column;gap:24px;} .ds-h{margin:0;font-family:var(--display);font-weight:800;font-stretch:118%;font-size:clamp(2.75rem,6.4vw,5.5rem);line-height:.96;letter-spacing:-0.02em;text-wrap:balance;} .ds-sun,.ds-role{color:var(--sun);} .ds-role{margin:0;font-family:var(--body);font-size:1.25rem;font-weight:600;} .ds-actions{display:flex;flex-wrap:wrap;gap:12px;}"
     },
     {
       "name": "CTA Band",
       "kind": "custom",
       "refersTo": "button-cta",
-      "description": "The closing deep band with a display heading and the big sunset button.",
+      "description": "The closing deep band with a display heading and the big sun-filled button.",
       "html": "<section class=\"ds-deep ds-cta\"><h2 class=\"ds-cta-h\">Tem um estágio, um projeto ou uma oportunidade?</h2><a class=\"ds-btn ds-btn-cta\" href=\"#\">Entrar em contacto <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></section>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:1.5px solid var(--ink);border-radius:var(--rc);background:transparent;color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease;} .ds-btn svg{transition:transform .25s var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-btn:hover{background:var(--soft);} .ds-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);} .ds-btn-primary:hover{background:var(--accent);filter:brightness(0.93);} .ds-btn-primary:hover svg{transform:translateX(4px);} .ds-deep{--ink:var(--deep-ink);--muted:var(--deep-muted);--line:var(--deep-line);--line-strong:var(--deep-line-strong);--surface:var(--deep-2);--soft:var(--deep-2);--accent:var(--sun);--accent-ink:var(--deep);position:relative;isolation:isolate;background:var(--deep);color:var(--deep-ink);overflow:hidden;} .ds-deep::before{content:\"\";position:absolute;inset:0;z-index:-1;opacity:.55;background:repeating-radial-gradient(ellipse at 80% 20%,transparent 0 22px,var(--deep-line-strong) 22px 23px);} .ds-cta{padding:clamp(64px,9vw,120px) 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;} .ds-cta-h{margin:0;flex:1 1 420px;font-family:var(--display);font-weight:800;font-stretch:118%;font-size:clamp(2rem,4vw,3.25rem);line-height:1.08;letter-spacing:-0.02em;text-wrap:balance;color:var(--deep-ink);} .ds-btn-cta{min-height:56px;padding:0 30px;font-size:1.0625rem;background:var(--sun);border-color:var(--sun);color:var(--deep);} .ds-btn-cta:hover{background:var(--sun);filter:brightness(0.94);} .ds-btn-cta:hover svg{transform:translateX(4px);}"
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:1.5px solid var(--ink);border-radius:var(--rc);background:transparent;color:var(--ink);font-family:var(--body);font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease;} .ds-btn svg{transition:transform .25s var(--ease-out);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-btn:hover{background:var(--soft);} .ds-btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);} .ds-btn-primary:hover{background:var(--accent);filter:brightness(0.93);} .ds-btn-primary:hover svg{transform:translateX(4px);} .ds-deep{--ink:var(--deep-ink);--muted:var(--deep-muted);--line:var(--deep-line);--line-strong:var(--deep-line-strong);--surface:var(--deep-2);--soft:var(--deep-2);--accent:var(--sun);--accent-ink:var(--deep);position:relative;isolation:isolate;background:var(--deep);color:var(--deep-ink);overflow:hidden;} .ds-deep::before{content:\"\";position:absolute;inset:0;z-index:-1;opacity:.55;background:repeating-radial-gradient(ellipse at 80% 20%,transparent 0 22px,var(--deep-line-strong) 22px 23px);} .ds-cta{padding:clamp(64px,9vw,120px) 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;} .ds-cta-h{margin:0;flex:1 1 420px;font-family:var(--display);font-weight:800;font-stretch:118%;font-size:clamp(2rem,4vw,3.25rem);line-height:1.08;letter-spacing:-0.02em;text-wrap:balance;color:var(--deep-ink);} .ds-btn-cta{min-height:56px;padding:0 30px;font-size:1.0625rem;background:var(--sun);border-color:var(--sun);color:var(--deep);} .ds-btn-cta:hover{background:var(--sun);filter:brightness(0.94);} .ds-btn-cta:hover svg{transform:translateX(4px);}"
     },
     {
       "name": "Social Buttons",
       "kind": "custom",
       "refersTo": "social-button",
-      "description": "Contact-band icon buttons for email, LinkedIn and GitHub; sunset fill and 3px lift on hover or focus.",
+      "description": "Contact-band icon buttons for email, LinkedIn and GitHub; sun fill and 3px lift on hover or focus.",
       "html": "<div class=\"ds-deep ds-wrap\"><ul class=\"ds-socials\"><li><a class=\"ds-social\" href=\"#\" aria-label=\"Email\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/></svg></a></li><li><a class=\"ds-social\" href=\"#\" aria-label=\"GitHub\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21\"/></svg></a></li></ul></div>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-deep{--ink:var(--deep-ink);--muted:var(--deep-muted);--line:var(--deep-line);--line-strong:var(--deep-line-strong);--surface:var(--deep-2);--soft:var(--deep-2);--accent:var(--sun);--accent-ink:var(--deep);position:relative;isolation:isolate;background:var(--deep);color:var(--deep-ink);overflow:hidden;} .ds-deep::before{content:\"\";position:absolute;inset:0;z-index:-1;opacity:.55;background:repeating-radial-gradient(ellipse at 80% 20%,transparent 0 22px,var(--deep-line-strong) 22px 23px);} .ds-wrap{padding:32px;} .ds-socials{display:flex;flex-wrap:wrap;gap:14px;list-style:none;margin:0;padding:0;} .ds-social{display:grid;place-items:center;width:68px;height:68px;border:1px solid var(--deep-line-strong);border-radius:var(--rc);background:var(--deep-2);color:var(--deep-ink);transition:background-color .2s,color .2s,transform .25s var(--ease-out),border-color .2s;} .ds-social:hover,.ds-social:focus-visible{background:var(--sun);border-color:var(--sun);color:var(--deep);transform:translateY(-3px);} .ds-social:focus-visible{outline:3px solid var(--sun);outline-offset:3px;}"
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-deep{--ink:var(--deep-ink);--muted:var(--deep-muted);--line:var(--deep-line);--line-strong:var(--deep-line-strong);--surface:var(--deep-2);--soft:var(--deep-2);--accent:var(--sun);--accent-ink:var(--deep);position:relative;isolation:isolate;background:var(--deep);color:var(--deep-ink);overflow:hidden;} .ds-deep::before{content:\"\";position:absolute;inset:0;z-index:-1;opacity:.55;background:repeating-radial-gradient(ellipse at 80% 20%,transparent 0 22px,var(--deep-line-strong) 22px 23px);} .ds-wrap{padding:32px;} .ds-socials{display:flex;flex-wrap:wrap;gap:14px;list-style:none;margin:0;padding:0;} .ds-social{display:grid;place-items:center;width:68px;height:68px;border:1px solid var(--deep-line-strong);border-radius:var(--rc);background:var(--deep-2);color:var(--deep-ink);transition:background-color .2s,color .2s,transform .25s var(--ease-out),border-color .2s;} .ds-social:hover,.ds-social:focus-visible{background:var(--sun);border-color:var(--sun);color:var(--deep);transform:translateY(-3px);} .ds-social:focus-visible{outline:3px solid var(--sun);outline-offset:3px;}"
     },
     {
       "name": "Filter Chips",
@@ -486,7 +626,7 @@
       "refersTo": "chip",
       "description": "Square-cornered toggles for project categories; selected fills with ink.",
       "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">Todos</button><button class=\"ds-chip\" aria-pressed=\"false\">Web</button><button class=\"ds-chip\" aria-pressed=\"false\">Android</button></div>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-chips{display:flex;flex-wrap:wrap;gap:8px;} .ds-chip{min-height:44px;padding:0 20px;background:transparent;color:var(--ink);border:1px solid var(--line-strong);border-radius:var(--rc);font-family:var(--body);font-size:.9375rem;font-weight:500;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s,transform .12s;} .ds-chip:hover{border-color:var(--ink);} .ds-chip:active{transform:scale(.96);} .ds-chip:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-chip[aria-pressed=\"true\"]{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600;}"
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-chips{display:flex;flex-wrap:wrap;gap:8px;} .ds-chip{min-height:44px;padding:0 20px;background:transparent;color:var(--ink);border:1px solid var(--line-strong);border-radius:var(--rc);font-family:var(--body);font-size:.9375rem;font-weight:500;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s,transform .12s;} .ds-chip:hover{border-color:var(--ink);} .ds-chip:active{transform:scale(.96);} .ds-chip:focus-visible{outline:3px solid var(--accent);outline-offset:3px;} .ds-chip[aria-pressed=\"true\"]{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600;}"
     },
     {
       "name": "Text Field",
@@ -494,7 +634,7 @@
       "refersTo": "input",
       "description": "Surface field with label above; accent border on focus, error red when invalid.",
       "html": "<div class=\"ds-field\"><label for=\"ds-n\">Nome</label><input id=\"ds-n\" class=\"ds-input\" placeholder=\"O seu nome\"></div>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-field{display:flex;flex-direction:column;gap:6px;font-family:var(--body);color:var(--ink);} .ds-field label{font-weight:600;font-size:.9375rem;} .ds-input{width:100%;min-height:50px;padding:0 14px;background:var(--surface);border:1px solid var(--line-strong);border-radius:4px;font-family:var(--body);font-size:1rem;color:var(--ink);caret-color:var(--accent);} .ds-input::placeholder{color:var(--muted);} .ds-input:hover{border-color:var(--ink);} .ds-input:focus-visible{outline:3px solid var(--accent);outline-offset:0;border-color:var(--accent);} .ds-input[aria-invalid=\"true\"]{border-color:var(--err);}"
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-field{display:flex;flex-direction:column;gap:6px;font-family:var(--body);color:var(--ink);} .ds-field label{font-weight:600;font-size:.9375rem;} .ds-input{width:100%;min-height:50px;padding:0 14px;background:var(--surface);border:1px solid var(--line-strong);border-radius:4px;font-family:var(--body);font-size:1rem;color:var(--ink);caret-color:var(--accent);} .ds-input::placeholder{color:var(--muted);} .ds-input:hover{border-color:var(--ink);} .ds-input:focus-visible{outline:3px solid var(--accent);outline-offset:0;border-color:var(--accent);} .ds-input[aria-invalid=\"true\"]{border-color:var(--err);}"
     },
     {
       "name": "Header Navigation",
@@ -502,7 +642,7 @@
       "refersTo": "",
       "description": "Brand mark and wide display name left, sentence-case links with an accent underline on the current page.",
       "html": "<header class=\"ds-head\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-mark\">SC</span>Samuel Camargo</a><nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Início<i></i></a><a href=\"#\">Sobre</a><a href=\"#\">Projetos</a><a href=\"#\">CV</a><a href=\"#\">Contacto</a></nav></header>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;padding:20px 0;border-bottom:1px solid var(--line);font-family:var(--body);background:var(--bg);} .ds-brand{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-family:var(--display);font-weight:800;font-stretch:112%;letter-spacing:-0.01em;font-size:1.1875rem;color:var(--ink);text-decoration:none;} .ds-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:4px;background:var(--ink);color:var(--bg);font-size:.875rem;} .ds-nav{display:flex;flex-wrap:wrap;gap:0 28px;} .ds-nav a{position:relative;display:inline-flex;align-items:center;min-height:44px;font-size:.9375rem;font-weight:500;color:var(--ink);text-decoration:none;} .ds-nav a:hover{color:var(--accent);} .ds-nav a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px;} .ds-nav a[aria-current=\"page\"]{font-weight:600;} .ds-nav i{position:absolute;left:0;right:0;bottom:6px;height:2px;border-radius:2px;background:var(--accent);}"
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;padding:20px 0;border-bottom:1px solid var(--line);font-family:var(--body);background:var(--bg);} .ds-brand{display:inline-flex;align-items:center;gap:12px;min-height:44px;font-family:var(--display);font-weight:800;font-stretch:112%;letter-spacing:-0.01em;font-size:1.1875rem;color:var(--ink);text-decoration:none;} .ds-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:4px;background:var(--ink);color:var(--bg);font-size:.875rem;} .ds-nav{display:flex;flex-wrap:wrap;gap:0 28px;} .ds-nav a{position:relative;display:inline-flex;align-items:center;min-height:44px;font-size:.9375rem;font-weight:500;color:var(--ink);text-decoration:none;} .ds-nav a:hover{color:var(--accent);} .ds-nav a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px;} .ds-nav a[aria-current=\"page\"]{font-weight:600;} .ds-nav i{position:absolute;left:0;right:0;bottom:6px;height:2px;border-radius:2px;background:var(--accent);}"
     },
     {
       "name": "Screenshot Frame",
@@ -510,7 +650,7 @@
       "refersTo": "screenshot-frame",
       "description": "Signature: a real project screenshot at 16:10 in a 6px-cornered, softly lifted frame that lifts 4px on hover. Shown in its no-screenshot fallback, the soft-wash name panel.",
       "html": "<a class=\"ds-media\" href=\"#\"><div class=\"ds-cover\"><span class=\"ds-tech\">Website</span><span class=\"ds-name\">O Polvo</span></div></a>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-media{display:block;text-decoration:none;color:var(--ink);max-width:520px;} .ds-cover{aspect-ratio:16/10;border-radius:var(--r);overflow:hidden;padding:22px;display:flex;flex-direction:column;justify-content:space-between;background:var(--soft);border:1px solid var(--line);transition:transform .45s var(--ease-out);font-family:var(--body);} .ds-media:hover .ds-cover{transform:translateY(-4px);} .ds-media:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px;} .ds-tech{font-size:.8125rem;font-weight:600;color:var(--muted);} .ds-name{font-family:var(--display);font-weight:800;font-stretch:112%;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1;letter-spacing:-0.03em;}"
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-media{display:block;text-decoration:none;color:var(--ink);max-width:520px;} .ds-cover{aspect-ratio:16/10;border-radius:var(--r);overflow:hidden;padding:22px;display:flex;flex-direction:column;justify-content:space-between;background:var(--soft);border:1px solid var(--line);transition:transform .45s var(--ease-out);font-family:var(--body);} .ds-media:hover .ds-cover{transform:translateY(-4px);} .ds-media:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px;} .ds-tech{font-size:.8125rem;font-weight:600;color:var(--muted);} .ds-name{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1;letter-spacing:-0.03em;}"
     },
     {
       "name": "Hairline Rows",
@@ -518,16 +658,17 @@
       "refersTo": "",
       "description": "Experience rows: strong top rule, hairline dividers, muted tabular date column, accent dot bullets.",
       "html": "<div class=\"ds-rows\"><div class=\"ds-row\"><p class=\"ds-when\">Jul 2025 – hoje</p><div class=\"ds-what\"><h3>Empregado de mesa, Restaurante O Polvo</h3><ul><li>Atendimento sob pressão e em equipa</li></ul></div></div><div class=\"ds-row\"><p class=\"ds-when\">Jul – Set 2026</p><div class=\"ds-what\"><h3>Estágio de programação, LabCenter</h3></div></div></div>",
-      "css": ":host{--bg:#EEF4F5;--surface:#FFFFFF;--ink:#0A2230;--muted:#486270;--line:#CCDCE0;--line-strong:#6A8590;--accent:#0A6C78;--accent-ink:#FFFFFF;--soft:#DAE7EA;--err:#A8201A;--deep:#0A2230;--deep-2:#103245;--deep-ink:#EAF3F4;--deep-muted:#A9C3CB;--deep-line:#1E4255;--deep-line-strong:#4F7A8A;--sun:#FF9A6B;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-rows{border-top:1px solid var(--line-strong);font-family:var(--body);color:var(--ink);} .ds-row{display:flex;flex-wrap:wrap;gap:4px 32px;padding:20px 0;border-bottom:1px solid var(--line);} .ds-when{margin:0;flex:0 0 170px;padding-top:3px;font-size:.9375rem;color:var(--muted);font-variant-numeric:tabular-nums;} .ds-what{flex:1 1 320px;} .ds-what h3{margin:0;font-size:1.1875rem;font-weight:600;line-height:1.3;} .ds-what ul{list-style:none;margin:0;padding:6px 0 0;color:var(--muted);} .ds-what li{position:relative;padding-left:18px;} .ds-what li::before{content:\"\";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--accent);}"
+      "css": ":host{--bg:#F6F0E6;--surface:#FFFAF3;--ink:#1A1930;--muted:#524D60;--line:#E2D7C5;--line-strong:#8A7A63;--accent:#16224D;--accent-ink:#FFFFFF;--inv-bg:#0A1024;--inv-ink:#EEF0F8;--soft:#EFE6D8;--err:#A3261B;--deep:#0A1024;--deep-2:#121A35;--deep-ink:#EEF0F8;--deep-muted:#B3BAD2;--deep-line:#1A2445;--deep-line-strong:#6F7BA8;--sun:#F6C765;--r:6px;--rc:6px;--ease-out:cubic-bezier(0.16,1,0.3,1);--shadow:0 22px 48px -24px rgba(16,19,14,0.38),0 2px 6px rgba(16,19,14,0.06);--display:\"Archivo\",system-ui,sans-serif;--body:\"Hanken Grotesk\",system-ui,sans-serif;} .ds-rows{border-top:1px solid var(--line-strong);font-family:var(--body);color:var(--ink);} .ds-row{display:flex;flex-wrap:wrap;gap:4px 32px;padding:20px 0;border-bottom:1px solid var(--line);} .ds-when{margin:0;flex:0 0 170px;padding-top:3px;font-size:.9375rem;color:var(--muted);font-variant-numeric:tabular-nums;} .ds-what{flex:1 1 320px;} .ds-what h3{margin:0;font-size:1.1875rem;font-weight:600;line-height:1.3;} .ds-what ul{list-style:none;margin:0;padding:6px 0 0;color:var(--muted);} .ds-what li{position:relative;padding-left:18px;} .ds-what li::before{content:\"\";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--accent);}"
     }
   ],
   "narrative": {
-    "northStar": "The Work on the Table, by the Atlantic",
-    "overview": "The site is the category standard for a developer portfolio, executed straight and at full craft, now set on the west-coast Atlantic at the end of the day. Real screenshots of shipped projects, framed and lifted, still carry almost all of the colour on a plain mist ground. Around them, full-width deep-ocean bands open every page and close the home page, drawn over with fine bathymetric contour lines and lit by a single sunset tone. No illustrative costume, no diagrams: the contours are a quiet chart texture confined to the bands, never a picture. The owner rejected a datasheet/chip world as cartoonish, and the build holds that line.\n\nDensity is relaxed and editorial. Content sits in a centred 1240px column while bands run edge to edge, padded by the same margin token so their content aligns with the column. Between bands, sections breathe (88px vertical padding) and are separated by single hairlines; experience, skills and \"more projects\" are quiet hairline rows rather than cards. \"Além do código\" sits on a light mist tint band with faint contours. Corners are nearly straight (6px). Motion is real but restrained: view transitions between pages, a shared-element cover morph, a circular reveal on theme or mode change, and a one-time word-focus on the home headline, all instant under reduced motion.\n\nThe system is themeable by design. Atlântico is the site default (documented as the frontmatter tokens) and one of four themes (Cobalto, Terminal, Editorial, Atlântico), each with light and dark variants. Themes swap colours, the deep-band palette and sun, the three font roles and the corner radius; layout, spacing, components and motion never change between themes.",
+    "northStar": "The Work on the Table, in Its Own Colours",
+    "overview": "The site is the category standard for a developer portfolio, executed straight and at full craft. Real screenshots of shipped projects, framed and lifted, carry almost all of the colour on a plain ground. Around them, full-width deep bands open every page and close the home page, drawn over with fine contour lines and lit by a single bright \"sun\" tone. The palette is not invented: every theme is lifted from one of the owner's own projects, and the default, O Polvo, wears the restaurant site's night navy, lamp gold and warm paper. No illustrative costume, no diagrams: the contours are a quiet chart texture confined to the bands, never a picture. The owner rejected a datasheet/chip world as cartoonish, and the build holds that line.\n\nDensity is relaxed and editorial. Content sits in a centred 1240px column while bands run edge to edge, padded by the same margin token so their content aligns with the column. Between bands, sections breathe (88px vertical padding) and are separated by single hairlines; experience, skills and \"more projects\" are quiet hairline rows rather than cards. \"Além do código\" sits on a light tint band with faint contours. Corners are nearly straight (6px). Motion is real but restrained: view transitions between pages, a shared-element cover morph, a circular reveal on theme or mode change, and a one-time word-focus on the home headline, all instant under reduced motion.\n\nThe system is themeable by colour only. O Polvo is the site default (documented as the frontmatter tokens) and one of four themes (O Polvo, Saltaplanetas, SkillConnect, Arduino), each with light and dark variants and its own deep-band palette. Themes swap colour values only; type, radius, layout, spacing, components and motion are shared by all four.",
     "keyCharacteristics": [
-      "Plain flat mist ground, one accent per theme, colour carried by screenshots.",
-      "Full-width deep-ocean bands with contour lines for every page header, the home hero and the closing call to action.",
-      "Wide, heavy display (Archivo 800 at 118% width) over a calm grotesque body (Hanken Grotesk).",
+      "Plain flat ground, one accent per theme, colour carried by screenshots.",
+      "Every theme's palette comes from a real project of the owner's; nothing is a stock palette.",
+      "Full-width deep bands with contour lines for every page header, the home hero and the closing call to action.",
+      "Wide, heavy display (Archivo 800 at 118% width) over a calm grotesque body (Hanken Grotesk), in every theme.",
       "Nearly straight corners (6px) on every control and frame; 44px minimum targets.",
       "Hairline rows for lists; framed, softly lifted screenshots for work.",
       "Motion as continuity (page, cover, theme), always with an instant fallback."
@@ -535,22 +676,27 @@
     "rules": [
       {
         "name": "The Screenshots Carry the Colour Rule",
-        "body": "The interface stays near-neutral; saturated colour belongs to the real project screenshots, one accent, and the sunset inside bands. Nothing else competes with the work.",
+        "body": "The interface stays near-neutral; saturated colour belongs to the real project screenshots, one accent, and the sun inside bands. Nothing else competes with the work.",
+        "section": "colors"
+      },
+      {
+        "name": "The Borrowed Palette Rule",
+        "body": "A theme's colours come from a real project of the owner's, named in its source comment and description. A new theme starts from a shipped project's own palette, never from an invented one.",
         "section": "colors"
       },
       {
         "name": "The One Accent Per Ground Rule",
-        "body": "The ground has exactly one accent (teal); a deep band has exactly one (sunset), applied by remapping the accent role inside the band. Neither fills large surfaces except the CTA button and hovered social buttons.",
+        "body": "The ground has exactly one accent; a deep band has exactly one (the sun), applied by remapping the accent role inside the band. Neither fills large surfaces except the CTA button and hovered social buttons.",
         "section": "colors"
       },
       {
         "name": "The Same Roles Rule",
-        "body": "A theme may only reassign values to the existing roles (bg, surface, ink, muted, line, line-strong, accent, accent-ink, inv-bg, inv-ink, soft, err, deep, deep-2, deep-ink, deep-muted, deep-line, deep-line-strong, sun), plus the display/body/mono families and the corner radius. Every theme ships a light and a dark variant that pass WCAG AA.",
+        "body": "A theme may only reassign values to the existing colour roles (bg, surface, ink, muted, line, line-strong, accent, accent-ink, inv-bg, inv-ink, soft, err, deep, deep-2, deep-ink, deep-muted, deep-line, deep-line-strong, sun). Fonts and radii are not theme properties. Every theme ships a light and a dark variant that pass WCAG AA.",
         "section": "colors"
       },
       {
         "name": "The Wide Heavy Display Rule",
-        "body": "In Atlântico, display text is Archivo 800 at 118% width with -0.02em tracking and `text-wrap: balance`; titles, card names and the brand use 112% width. Headings never use the body family at display sizes.",
+        "body": "Display text is Archivo 800 at 118% width with tight negative tracking and `text-wrap: balance`; titles, card names, CV headings and the brand use 800 at 112% width. Headings never use the body family at display sizes.",
         "section": "typography"
       },
       {
@@ -565,27 +711,29 @@
       },
       {
         "name": "The Contours Stay in the Water Rule",
-        "body": "Contour lines appear only on bands: deep-line-strong at 55% on deep bands, hairline-strong at 22% on the tint band. The mist ground between bands stays plain.",
+        "body": "Contour lines appear only on bands: deep-line-strong at 55% on deep bands, line-strong at 22% on the tint band. The ground between bands stays plain.",
         "section": "elevation"
       }
     ],
     "dos": [
       "Do let real project screenshots be the largest and most colourful things on the page, in the 16:10 frame with the soft lift.",
       "Do open every page with a full-width deep band and pad band content by the same margin token as the column.",
-      "Do rely on the role remapping inside bands (accent becomes sunset) rather than writing band-specific component variants.",
-      "Do keep every theme to the shared role set, including the deep-band roles and sun, and ship both light and dark, checked to WCAG AA.",
-      "Do use hairline rows (1px, strong rule on top) for experience, skills and secondary project lists.",
-      "Do keep controls at the theme control radius with at least 44px targets (52px for buttons).",
+      "Do rely on the role remapping inside bands (accent becomes the sun) rather than writing band-specific component variants.",
+      "Do build a new theme from a real project's own colours, add it to tools/make-themes.js and lib/themes.js, and regenerate themes.css rather than editing it by hand.",
+      "Do keep every theme to the shared colour roles, including the deep-band roles and sun, and ship both light and dark, checked to WCAG AA.",
+      "Do use hairline rows (1px, line-strong rule on top) for experience, skills and secondary project lists.",
+      "Do keep controls at the 6px control radius with at least 44px targets (52px for buttons).",
       "Do give every motion an instant fallback under `prefers-reduced-motion`."
     ],
     "donts": [
       "Don't add illustrative metaphors, diagrams, datasheet or chip costumes; the owner rejected that world as cartoonish. Contour lines are a chart texture, not an illustration.",
       "Don't invent imagery: a project without a real screenshot gets the named soft-wash panel, never a mock or stock image.",
       "Don't put contours, textures or gradients on the plain ground between bands.",
+      "Don't make fonts or radius a per-theme choice; Archivo, Hanken Grotesk, JetBrains Mono and 6px corners are shared by every theme.",
       "Don't reintroduce pill (999px) shapes; corners come from the radius tokens.",
       "Don't add uppercase tracked eyebrows or kickers above headings.",
-      "Don't use the sunset tone outside deep bands, or the accent as a large fill.",
-      "Don't load fonts or assets from third-party origins; everything is self-hosted under a strict CSP."
+      "Don't use the sun as a fill or text colour on the light ground; on the ground it appears only where a theme's dark-mode accent shares its value.",
+      "Don't load fonts or assets from third-party origins at runtime; everything is self-hosted under a strict CSP."
     ]
   }
 }
