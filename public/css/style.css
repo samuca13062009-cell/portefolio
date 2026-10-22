@@ -497,3 +497,6 @@ main > .bleed { padding-inline: var(--gut); }
   .has-photo::before { background: linear-gradient(180deg, color-mix(in srgb, var(--deep) 84%, transparent) 0%, color-mix(in srgb, var(--deep) 72%, transparent) 100%); }
   .photo-credit { position: static; text-align: left; margin-top: 24px; }
 }
+/* SkillConnect: a foto da equipa tem muito detalhe atrás do texto; véu um pouco mais forte e enquadramento próprio na faixa final */
+:root[data-skin="skillconnect"] .hero.has-photo::before { background: linear-gradient(90deg, color-mix(in srgb, var(--deep) 95%, transparent) 0%, color-mix(in srgb, var(--deep) 86%, transparent) 50%, color-mix(in srgb, var(--deep) 50%, transparent) 100%); }
+.cta.has-photo .band-img[data-for="skillconnect"] { object-position: center 20%; }

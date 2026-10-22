@@ -50,9 +50,14 @@ ${sel} { ${decl(t.light)} ${decl(t.deep)} color-scheme: light; }
   ${sel}:not([data-theme="light"]) { ${decl(t.dark)} ${decl(t.deepDark)} color-scheme: dark; }
 }
 ${sel}[data-theme="dark"] { ${decl(t.dark)} ${decl(t.deepDark)} color-scheme: dark; }
+${sel} .band-img[data-for="${id}"] { display: block; }
+${sel} .photo-credit[data-for="${id}"] { display: block; }
 `;
 }
 css += `
+/* Fotografias das faixas: só a do tema ativo aparece (regras acima) */
+.band-img[data-for], .photo-credit[data-for] { display: none; }
+
 /* Faixa de pré-visualização (quando o endereço tem ?tema=) */
 .preview-bar { position: sticky; top: 0; z-index: 25; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 16px; padding: 10px 16px; background: var(--deep); color: var(--deep-ink); font-size: 0.9375rem; text-align: center; }
 .preview-bar a { color: var(--deep-ink); font-weight: 600; }

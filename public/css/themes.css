@@ -7,6 +7,8 @@
   :root[data-skin="polvo"]:not([data-theme="light"]) { --bg: #0A1024; --surface: #121A35; --ink: #EEF0F8; --muted: #B3BAD2; --line: #1A2445; --line-strong: #6F7BA8; --accent: #F6C765; --accent-ink: #1A1405; --inv-bg: #EEF0F8; --inv-ink: #0A1024; --soft: #1A2445; --err: #FF9D85; --deep: #121A35; --deep-2: #1A2445; color-scheme: dark; }
 }
 :root[data-skin="polvo"][data-theme="dark"] { --bg: #0A1024; --surface: #121A35; --ink: #EEF0F8; --muted: #B3BAD2; --line: #1A2445; --line-strong: #6F7BA8; --accent: #F6C765; --accent-ink: #1A1405; --inv-bg: #EEF0F8; --inv-ink: #0A1024; --soft: #1A2445; --err: #FF9D85; --deep: #121A35; --deep-2: #1A2445; color-scheme: dark; }
+:root[data-skin="polvo"] .band-img[data-for="polvo"] { display: block; }
+:root[data-skin="polvo"] .photo-credit[data-for="polvo"] { display: block; }
 
 /* ---------- saltaplanetas ---------- */
 :root[data-skin="saltaplanetas"] { --bg: #F4F1FF; --surface: #FFFFFF; --ink: #1A1230; --muted: #4F4870; --line: #DDD6F3; --line-strong: #7E76A6; --accent: #7A43C8; --accent-ink: #FFFFFF; --inv-bg: #0B0820; --inv-ink: #F4F1FF; --soft: #E9E3FB; --err: #B0284F; --deep: #0B0820; --deep-2: #1A1230; --deep-ink: #F4F1FF; --deep-muted: #A9A3C9; --deep-line: #2A2050; --deep-line-strong: #6A5F9E; --sun: #FFD34D; color-scheme: light; }
@@ -14,6 +16,8 @@
   :root[data-skin="saltaplanetas"]:not([data-theme="light"]) { --bg: #0B0820; --surface: #1A1230; --ink: #F4F1FF; --muted: #A9A3C9; --line: #2A2050; --line-strong: #6A5F9E; --accent: #FFD34D; --accent-ink: #1A1230; --inv-bg: #F4F1FF; --inv-ink: #0B0820; --soft: #2A2050; --err: #FF8FA3; --deep: #160F33; --deep-2: #221947; color-scheme: dark; }
 }
 :root[data-skin="saltaplanetas"][data-theme="dark"] { --bg: #0B0820; --surface: #1A1230; --ink: #F4F1FF; --muted: #A9A3C9; --line: #2A2050; --line-strong: #6A5F9E; --accent: #FFD34D; --accent-ink: #1A1230; --inv-bg: #F4F1FF; --inv-ink: #0B0820; --soft: #2A2050; --err: #FF8FA3; --deep: #160F33; --deep-2: #221947; color-scheme: dark; }
+:root[data-skin="saltaplanetas"] .band-img[data-for="saltaplanetas"] { display: block; }
+:root[data-skin="saltaplanetas"] .photo-credit[data-for="saltaplanetas"] { display: block; }
 
 /* ---------- skillconnect ---------- */
 :root[data-skin="skillconnect"] { --bg: #F2F2F2; --surface: #FFFFFF; --ink: #0D0D0D; --muted: #4D4D4D; --line: #D6D6D6; --line-strong: #7A7A7A; --accent: #1B7F0A; --accent-ink: #FFFFFF; --inv-bg: #000000; --inv-ink: #F2F2F2; --soft: #E6E6E6; --err: #A8201A; --deep: #000000; --deep-2: #0D0D0D; --deep-ink: #F2F2F2; --deep-muted: #9A9A9A; --deep-line: #2E2E2E; --deep-line-strong: #5A5A5A; --sun: #39FF14; color-scheme: light; }
@@ -21,6 +25,8 @@
   :root[data-skin="skillconnect"]:not([data-theme="light"]) { --bg: #0D0D0D; --surface: #161616; --ink: #F2F2F2; --muted: #A0A0A0; --line: #2E2E2E; --line-strong: #6A6A6A; --accent: #39FF14; --accent-ink: #000000; --inv-bg: #F2F2F2; --inv-ink: #0D0D0D; --soft: #1F1F1F; --err: #FF8A80; --deep: #000000; --deep-2: #161616; color-scheme: dark; }
 }
 :root[data-skin="skillconnect"][data-theme="dark"] { --bg: #0D0D0D; --surface: #161616; --ink: #F2F2F2; --muted: #A0A0A0; --line: #2E2E2E; --line-strong: #6A6A6A; --accent: #39FF14; --accent-ink: #000000; --inv-bg: #F2F2F2; --inv-ink: #0D0D0D; --soft: #1F1F1F; --err: #FF8A80; --deep: #000000; --deep-2: #161616; color-scheme: dark; }
+:root[data-skin="skillconnect"] .band-img[data-for="skillconnect"] { display: block; }
+:root[data-skin="skillconnect"] .photo-credit[data-for="skillconnect"] { display: block; }
 
 /* ---------- arduino ---------- */
 :root[data-skin="arduino"] { --bg: #EEF5F5; --surface: #FFFFFF; --ink: #0F2A2B; --muted: #46605F; --line: #CFE0DF; --line-strong: #6E8C8B; --accent: #00797C; --accent-ink: #FFFFFF; --inv-bg: #003B3D; --inv-ink: #E9F7F7; --soft: #DDEBEA; --err: #A8201A; --deep: #003234; --deep-2: #00494C; --deep-ink: #E9F7F7; --deep-muted: #A6CFCF; --deep-line: #0B5F62; --deep-line-strong: #4FA3A5; --sun: #F5964E; color-scheme: light; }
@@ -28,6 +34,11 @@
   :root[data-skin="arduino"]:not([data-theme="light"]) { --bg: #071B1C; --surface: #0E2A2B; --ink: #E9F7F7; --muted: #A6CFCF; --line: #1C3C3D; --line-strong: #5D8A8B; --accent: #3FC6CA; --accent-ink: #071B1C; --inv-bg: #E9F7F7; --inv-ink: #071B1C; --soft: #1C3C3D; --err: #FF9C93; --deep: #003A3C; --deep-2: #00514F; color-scheme: dark; }
 }
 :root[data-skin="arduino"][data-theme="dark"] { --bg: #071B1C; --surface: #0E2A2B; --ink: #E9F7F7; --muted: #A6CFCF; --line: #1C3C3D; --line-strong: #5D8A8B; --accent: #3FC6CA; --accent-ink: #071B1C; --inv-bg: #E9F7F7; --inv-ink: #071B1C; --soft: #1C3C3D; --err: #FF9C93; --deep: #003A3C; --deep-2: #00514F; color-scheme: dark; }
+:root[data-skin="arduino"] .band-img[data-for="arduino"] { display: block; }
+:root[data-skin="arduino"] .photo-credit[data-for="arduino"] { display: block; }
+
+/* Fotografias das faixas: só a do tema ativo aparece (regras acima) */
+.band-img[data-for], .photo-credit[data-for] { display: none; }
 
 /* Faixa de pré-visualização (quando o endereço tem ?tema=) */
 .preview-bar { position: sticky; top: 0; z-index: 25; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 16px; padding: 10px 16px; background: var(--deep); color: var(--deep-ink); font-size: 0.9375rem; text-align: center; }

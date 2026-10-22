@@ -480,32 +480,6 @@
     }
   ],
   "photos": {
-    "hero": {
-      "src": "/img/fotos/santa-cruz-por-do-sol",
-      "alt": {
-        "pt": "Pôr do sol na Praia Formosa, em Santa Cruz, Torres Vedras",
-        "en": "Sunset at Praia Formosa, Santa Cruz, Torres Vedras"
-      },
-      "credit": {
-        "author": "Alexkom000",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "page": "https://commons.wikimedia.org/wiki/File:2025-12-14_Sunset_at_Praia_Formosa,_Santa_Cruz,_Torres_Vedras_5.jpg"
-      }
-    },
-    "cta": {
-      "src": "/img/fotos/praia-formosa-dourado",
-      "alt": {
-        "pt": "Rochas e mar ao pôr do sol na Praia Formosa, Santa Cruz",
-        "en": "Rocks and sea at sunset at Praia Formosa, Santa Cruz"
-      },
-      "credit": {
-        "author": "Alexkom000",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "page": "https://commons.wikimedia.org/wiki/File:2025-12-14_Sunset_at_Praia_Formosa,_Santa_Cruz,_Torres_Vedras_1.jpg"
-      }
-    },
     "place": {
       "src": "/img/fotos/praia-santa-cruz",
       "alt": {
@@ -521,6 +495,120 @@
         "license": "CC BY 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
         "page": "https://commons.wikimedia.org/wiki/File:2025-12-14_Praia_de_Santa_Cruz,_Torres_Vedras.jpg"
+      }
+    },
+    "byTheme": {
+      "polvo": {
+        "hero": {
+          "src": "/img/fotos/santa-cruz-por-do-sol",
+          "alt": {
+            "pt": "Pôr do sol na Praia Formosa, em Santa Cruz, Torres Vedras",
+            "en": "Sunset at Praia Formosa, Santa Cruz, Torres Vedras"
+          },
+          "credit": {
+            "author": "Alexkom000",
+            "license": "CC BY 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+            "page": "https://commons.wikimedia.org/wiki/File:2025-12-14_Sunset_at_Praia_Formosa,_Santa_Cruz,_Torres_Vedras_5.jpg"
+          }
+        },
+        "cta": {
+          "src": "/img/fotos/praia-formosa-dourado",
+          "alt": {
+            "pt": "Rochas e mar ao pôr do sol na Praia Formosa, Santa Cruz",
+            "en": "Rocks and sea at sunset at Praia Formosa, Santa Cruz"
+          },
+          "credit": {
+            "author": "Alexkom000",
+            "license": "CC BY 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+            "page": "https://commons.wikimedia.org/wiki/File:2025-12-14_Sunset_at_Praia_Formosa,_Santa_Cruz,_Torres_Vedras_1.jpg"
+          }
+        }
+      },
+      "saltaplanetas": {
+        "hero": {
+          "src": "/img/fotos/via-lactea-alentejo",
+          "alt": {
+            "pt": "Via Láctea sobre a Mina de São Domingos, no Alentejo",
+            "en": "The Milky Way over the São Domingos mine, Alentejo"
+          },
+          "credit": {
+            "author": "S. Conceiçao",
+            "license": "CC BY 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+            "page": "https://commons.wikimedia.org/wiki/File:Milky_Way_over_Mina_de_S_Domingos,_Achada_do_Gamo,_in_Alentejo,_Portugal_(ann22043a).jpg"
+          }
+        },
+        "cta": {
+          "src": "/img/fotos/ceu-estrelado",
+          "alt": {
+            "pt": "Céu estrelado sobre a copa das árvores",
+            "en": "A starry sky above the treetops"
+          },
+          "credit": {
+            "author": "Dennis",
+            "license": "CC BY 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+            "page": "https://commons.wikimedia.org/wiki/File:Milky_Way_1.jpg"
+          }
+        }
+      },
+      "skillconnect": {
+        "hero": {
+          "src": "/img/fotos/equipa-portateis",
+          "alt": {
+            "pt": "Duas pessoas a trabalhar juntas com portáteis e um esquema em papel",
+            "en": "Two people working together with laptops and a paper sketch"
+          },
+          "credit": {
+            "author": "helloquence",
+            "license": "CC0",
+            "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0",
+            "page": "https://commons.wikimedia.org/wiki/File:Helloquence-61189.jpg"
+          }
+        },
+        "cta": {
+          "src": "/img/fotos/equipa-portateis",
+          "alt": {
+            "pt": "Duas pessoas a trabalhar juntas com portáteis e um esquema em papel",
+            "en": "Two people working together with laptops and a paper sketch"
+          },
+          "credit": {
+            "author": "helloquence",
+            "license": "CC0",
+            "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0",
+            "page": "https://commons.wikimedia.org/wiki/File:Helloquence-61189.jpg"
+          }
+        }
+      },
+      "arduino": {
+        "hero": {
+          "src": "/img/fotos/bancada-eletronica",
+          "alt": {
+            "pt": "Bancada de eletrónica com breadboard, osciloscópio e fonte de alimentação",
+            "en": "Electronics workbench with a breadboard, an oscilloscope and a power supply"
+          },
+          "credit": {
+            "author": "Windell Oskay from Sunnyvale, CA, USA",
+            "license": "CC BY 2.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+            "page": "https://commons.wikimedia.org/wiki/File:Soldering_workbench.jpg"
+          }
+        },
+        "cta": {
+          "src": "/img/fotos/arduino-uno",
+          "alt": {
+            "pt": "Placa Arduino Uno",
+            "en": "Arduino Uno board"
+          },
+          "credit": {
+            "author": "Creative Tools",
+            "license": "CC BY 2.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+            "page": "https://commons.wikimedia.org/wiki/File:Arduino-uno-perspective.jpg"
+          }
+        }
       }
     }
   }

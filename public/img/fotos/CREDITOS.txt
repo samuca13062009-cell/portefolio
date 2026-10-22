@@ -1,6 +1,10 @@
-Fotografias usadas no site, alojadas localmente. Licenças Creative Commons; créditos também na página Termos de Utilização.
+Fotografias usadas no site, alojadas localmente. Licenças Creative Commons ou domínio público (CC0); créditos também na página Termos de Utilização.
 
+praia-santa-cruz: Alexkom000, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:2025-12-14_Praia_de_Santa_Cruz,_Torres_Vedras.jpg. Redimensionada.
 santa-cruz-por-do-sol: Alexkom000, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:2025-12-14_Sunset_at_Praia_Formosa,_Santa_Cruz,_Torres_Vedras_5.jpg. Redimensionada.
 praia-formosa-dourado: Alexkom000, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:2025-12-14_Sunset_at_Praia_Formosa,_Santa_Cruz,_Torres_Vedras_1.jpg. Redimensionada.
-praia-santa-cruz: Alexkom000, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:2025-12-14_Praia_de_Santa_Cruz,_Torres_Vedras.jpg. Redimensionada.
+via-lactea-alentejo: S. Conceiçao, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Milky_Way_over_Mina_de_S_Domingos,_Achada_do_Gamo,_in_Alentejo,_Portugal_(ann22043a).jpg. Redimensionada.
+ceu-estrelado: Dennis, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Milky_Way_1.jpg. Redimensionada.
+equipa-portateis: helloquence, CC0 (https://creativecommons.org/publicdomain/zero/1.0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Helloquence-61189.jpg. Redimensionada.
+bancada-eletronica: Windell Oskay from Sunnyvale, CA, USA, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Soldering_workbench.jpg. Redimensionada.
 arduino-uno: Creative Tools, CC BY 2.0 (https://creativecommons.org/licenses/by/2.0), via Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Arduino-uno-perspective.jpg. Redimensionada.
