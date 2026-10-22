@@ -2,6 +2,24 @@
 (function () {
   var en = document.documentElement.lang.indexOf('en') === 0;
   var $ = function (id) { return document.getElementById(id); };
+  var docEl = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var canMove = function () { return Boolean(document.startViewTransition) && !reduce.matches; };
+
+  // A nova aparência espalha-se em círculo a partir do botão que a pediu.
+  var reveal = function (from, change) {
+    if (!canMove() || !from) { change(); return; }
+    var r = from.getBoundingClientRect();
+    var x = r.left + r.width / 2, y = r.top + r.height / 2;
+    var rad = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    docEl.classList.add('vt-reveal');
+    var t = document.startViewTransition(change);
+    t.ready.then(function () {
+      docEl.animate({ clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + rad + 'px at ' + x + 'px ' + y + 'px)'] },
+        { duration: 620, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', pseudoElement: '::view-transition-new(root)' });
+    }).catch(function () { /* transição saltada: a mudança já foi feita */ });
+    t.finished.then(function () { docEl.classList.remove('vt-reveal'); }, function () { docEl.classList.remove('vt-reveal'); });
+  };
 
   // ---------- Pré-visualização de tema ----------
   // Com ?tema= no endereço, as ligações internas mantêm o tema enquanto se navega.
@@ -40,9 +58,9 @@
     skinOpts.forEach(function (opt) {
       opt.addEventListener('click', function () {
         var value = opt.dataset.skinValue;
-        root.setAttribute('data-skin', value);
-        showSkin(value);
+        var change = function () { root.setAttribute('data-skin', value); showSkin(value); };
         openSkins(false);
+        if (root.hasAttribute('data-skin-locked')) change(); else reveal(skinToggle, change);
         try {
           localStorage.setItem('skin', value);
           localStorage.setItem('skinBase', root.getAttribute('data-skin-default'));
@@ -73,7 +91,7 @@
       var current = root.getAttribute('data-theme') ||
         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       var next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
+      reveal(toggle, function () { root.setAttribute('data-theme', next); });
       try { localStorage.setItem('tema', next); } catch (e) { /* ignora */ }
       toggle.setAttribute('aria-pressed', String(next === 'dark'));
     });
@@ -101,10 +119,22 @@
       count.textContent = shown + ' ' + (shown === 1 ? count.dataset.one : count.dataset.many);
       empty.hidden = shown !== 0;
     };
+    var moving = function (fn) {
+      if (!canMove()) { fn(); return; }
+      cards.forEach(function (c, i) { c.style.viewTransitionName = 'pcard-' + i; });
+      docEl.classList.add('vt-list');
+      var done = function () {
+        cards.forEach(function (c) { c.style.viewTransitionName = ''; });
+        docEl.classList.remove('vt-list');
+      };
+      document.startViewTransition(fn).finished.then(done, done);
+    };
     var setCat = function (value) {
-      cat = value;
-      chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.filter === value)); });
-      apply();
+      moving(function () {
+        cat = value;
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.filter === value)); });
+        apply();
+      });
     };
     chips.forEach(function (chip) {
       chip.addEventListener('click', function () { setCat(chip.dataset.filter); });

@@ -28,9 +28,6 @@
 [data-skin="terminal"] .display { letter-spacing: -0.045em; }
 [data-skin="terminal"] .display.xl { font-size: clamp(2.5rem, 6.2vw, 5.25rem); line-height: 1; }
 [data-skin="terminal"] .display.lg { font-size: clamp(2.1rem, 4.4vw, 3.5rem); line-height: 1.05; }
-[data-skin="terminal"] .cover-name, [data-skin="terminal"] .card-title, [data-skin="terminal"] .pager-name { letter-spacing: -0.04em; }
-[data-skin="terminal"] .btn, [data-skin="terminal"] .chip, [data-skin="terminal"] .pill-btn, [data-skin="terminal"] .icon-btn, [data-skin="terminal"] .tags li { border-radius: 6px; }
-[data-skin="terminal"] .cover, [data-skin="terminal"] .facts, [data-skin="terminal"] .panel, [data-skin="terminal"] .cta, [data-skin="terminal"] .cv-sheet { border-radius: 6px; }
 
 /* ---------- Editorial ---------- */
 :root[data-skin="editorial"] {
@@ -67,7 +64,7 @@
   --inv-bg: #0A2230; --inv-ink: #EEF4F5; --soft: #DAE7EA; --err: #A8201A;
   --cover-a-bg: #0A6C78; --cover-a-ink: #FFFFFF;
   --cover-b-bg: #0A2230; --cover-b-ink: #EEF4F5;
-  --cover-c-bg: #FFB199; --cover-c-ink: #0A2230;
+  --cover-c-bg: #7CB9E8; --cover-c-ink: #0A2230;
   --display: 'Outfit', system-ui, sans-serif;
   --body: 'DM Sans', system-ui, sans-serif;
   --mono: 'DM Mono', ui-monospace, monospace;
@@ -85,9 +82,16 @@
   --inv-bg: #E6F2F4; --inv-ink: #071A24; --soft: #12303D; --err: #FF9C93;
 }
 [data-skin="atlantico"] .display { font-weight: 600; letter-spacing: -0.035em; }
-[data-skin="atlantico"] .cover, [data-skin="atlantico"] .facts, [data-skin="atlantico"] .panel, [data-skin="atlantico"] .cv-sheet { border-radius: 24px; }
-[data-skin="atlantico"] .cta { border-radius: 32px; }
 
 /* Faixa de pré-visualização (quando o endereço tem ?tema=) */
 .preview-bar { position: sticky; top: 0; z-index: 15; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 16px; padding: 10px 16px; background: var(--inv-bg); color: var(--inv-ink); font-size: 0.9375rem; text-align: center; }
 .preview-bar a { color: var(--inv-ink); font-weight: 600; }
+
+/* Cor de sinal (estado ativo) de cada tema */
+:root[data-skin="terminal"] { --signal: #FFD23F; --signal-ink: #10130E; }
+:root[data-skin="editorial"] { --signal: #E8C24A; --signal-ink: #1E1A16; }
+:root[data-skin="atlantico"] { --signal: #FFB199; --signal-ink: #0A2230; }
+
+/* Raio dos cantos de cada tema */
+:root[data-skin="terminal"] { --r: 6px; }
+:root[data-skin="atlantico"] { --r: 18px; }

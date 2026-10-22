@@ -59,6 +59,10 @@ function readStatic(pathname) {
   } catch { return null; }
 }
 
+function safeDecode(p) {
+  try { return decodeURIComponent(p); } catch { return p; }
+}
+
 function readBody(req, limit) {
   return new Promise((resolve, reject) => {
     let size = 0;
@@ -78,7 +82,7 @@ const server = http.createServer(async (req, res) => {
     const url = new URL(req.url, 'http://localhost');
     const request = {
       method: req.method,
-      path: decodeURIComponent(url.pathname),
+      path: safeDecode(url.pathname),
       query: url.searchParams,
       headers: req.headers,
       ip: req.socket.remoteAddress || '',
@@ -91,8 +95,9 @@ const server = http.createServer(async (req, res) => {
     res.end(req.method === 'HEAD' ? undefined : out.body);
   } catch (e) {
     console.error(e);
-    if (!res.headersSent) res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
-    res.end('Erro interno');
+    const out = app.serverError({ path: '/' });
+    if (!res.headersSent) res.writeHead(out.status, out.headers);
+    res.end(out.body);
   }
 });
 

@@ -13,3 +13,6 @@ PALAVRA-PASSE-BACKOFFICE.txt
 data/ratelimit.json
 data/secret.json
 .netlify/
+.impeccable/review/
+.impeccable/decision-directions.json
+.impeccable/.cdp-*/

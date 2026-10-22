@@ -6,6 +6,8 @@ import storeModule from '../../lib/store.js';
 const { createApp } = appModule;
 const { blobStore } = storeModule;
 
+const safeDecode = (p) => { try { return decodeURIComponent(p); } catch { return p; } };
+
 let appPromise;
 function getApp(siteUrl) {
   if (!appPromise) {
@@ -24,7 +26,7 @@ export default async (req, context) => {
   const headers = Object.fromEntries(req.headers);
   const request = {
     method: req.method,
-    path: decodeURIComponent(url.pathname),
+    path: safeDecode(url.pathname),
     query: url.searchParams,
     headers,
     ip: context.ip || headers['x-nf-client-connection-ip'] || '',

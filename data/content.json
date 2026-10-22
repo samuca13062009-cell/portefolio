@@ -309,7 +309,16 @@
         "JavaScript",
         "Node.js"
       ],
-      "repo": "https://github.com/samuca13062009-cell/o-polvo"
+      "repo": "https://github.com/samuca13062009-cell/o-polvo",
+      "images": [
+        {
+          "src": "/img/projetos/o-polvo-site",
+          "alt": {
+            "pt": "Página inicial do site do restaurante O Polvo, com o horário do dia e a carta",
+            "en": "Home page of the O Polvo restaurant website, with the day schedule and the menu"
+          }
+        }
+      ]
     },
     {
       "slug": "skillconnect",
@@ -395,7 +404,16 @@
         "Three.js",
         "WebGL"
       ],
-      "repo": "https://github.com/samuca13062009-cell/saltaplanetas"
+      "repo": "https://github.com/samuca13062009-cell/saltaplanetas",
+      "images": [
+        {
+          "src": "/img/projetos/saltaplanetas",
+          "alt": {
+            "pt": "Ecrã inicial do jogo Saltaplanetas, com um planeta 3D e as instruções",
+            "en": "Start screen of the Saltaplanetas game, with a 3D planet and the instructions"
+          }
+        }
+      ]
     },
     {
       "slug": "arduino-bluetooth",
