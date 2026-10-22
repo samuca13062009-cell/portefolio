@@ -71,7 +71,7 @@
       });
     });
     document.addEventListener('click', function (e) {
-      if (!skinList.hidden && !skinList.contains(e.target) && e.target !== skinToggle) openSkins(false);
+      if (!skinList.hidden && !skinList.contains(e.target) && !skinToggle.contains(e.target)) openSkins(false);
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !skinList.hidden) { openSkins(false); skinToggle.focus(); }

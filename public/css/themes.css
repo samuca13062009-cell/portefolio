@@ -1,112 +1,34 @@
-/* Temas alternativos. O tema "cobalto" é o de base, definido em style.css.
-   Cada tema tem a versão clara e a escura (sistema ou botão do cabeçalho). */
+/* Gerado por tools/make-themes.js. Cada tema usa as cores de um projeto.
+   O tema por omissão do site é escolhido no backoffice; o visitante pode mudar no menu Tema. */
 
-/* ---------- Terminal ---------- */
-:root[data-skin="terminal"] {
-  --bg: #F1F5EE; --surface: #FFFFFF; --ink: #0B1A10; --muted: #4A5D50;
-  --line: #CFD9CC; --line-strong: #6E8373; --accent: #0B6B34; --accent-ink: #FFFFFF;
-  --inv-bg: #0B1A10; --inv-ink: #E6F5E9; --soft: #DDE6DA; --err: #A8201A;
-  --cover-a-bg: #0B6B34; --cover-a-ink: #FFFFFF;
-  --cover-b-bg: #0B0F0C; --cover-b-ink: #4ADE80;
-  --cover-c-bg: #4ADE80; --cover-c-ink: #06200F;
-  --display: 'JetBrains Mono', ui-monospace, monospace;
-  --body: 'IBM Plex Sans', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
-}
+/* ---------- polvo ---------- */
+:root[data-skin="polvo"] { --bg: #F6F0E6; --surface: #FFFAF3; --ink: #1A1930; --muted: #524D60; --line: #E2D7C5; --line-strong: #8A7A63; --accent: #16224D; --accent-ink: #FFFFFF; --inv-bg: #0A1024; --inv-ink: #EEF0F8; --soft: #EFE6D8; --err: #A3261B; --deep: #0A1024; --deep-2: #121A35; --deep-ink: #EEF0F8; --deep-muted: #B3BAD2; --deep-line: #1A2445; --deep-line-strong: #6F7BA8; --sun: #F6C765; color-scheme: light; }
 @media (prefers-color-scheme: dark) {
-  :root[data-skin="terminal"]:not([data-theme="light"]) {
-    --bg: #0B0F0C; --surface: #121813; --ink: #D7F5DD; --muted: #8FB39A;
-    --line: #1F2A22; --line-strong: #4E6A57; --accent: #4ADE80; --accent-ink: #06200F;
-    --inv-bg: #D7F5DD; --inv-ink: #0B0F0C; --soft: #18211A; --err: #FF9C93;
-  }
+  :root[data-skin="polvo"]:not([data-theme="light"]) { --bg: #0A1024; --surface: #121A35; --ink: #EEF0F8; --muted: #B3BAD2; --line: #1A2445; --line-strong: #6F7BA8; --accent: #F6C765; --accent-ink: #1A1405; --inv-bg: #EEF0F8; --inv-ink: #0A1024; --soft: #1A2445; --err: #FF9D85; --deep: #121A35; --deep-2: #1A2445; color-scheme: dark; }
 }
-:root[data-skin="terminal"][data-theme="dark"] {
-  --bg: #0B0F0C; --surface: #121813; --ink: #D7F5DD; --muted: #8FB39A;
-  --line: #1F2A22; --line-strong: #4E6A57; --accent: #4ADE80; --accent-ink: #06200F;
-  --inv-bg: #D7F5DD; --inv-ink: #0B0F0C; --soft: #18211A; --err: #FF9C93;
-}
-[data-skin="terminal"] .display { letter-spacing: -0.045em; }
-[data-skin="terminal"] .display.xl { font-size: clamp(2.5rem, 6.2vw, 5.25rem); line-height: 1; }
-[data-skin="terminal"] .display.lg { font-size: clamp(2.1rem, 4.4vw, 3.5rem); line-height: 1.05; }
+:root[data-skin="polvo"][data-theme="dark"] { --bg: #0A1024; --surface: #121A35; --ink: #EEF0F8; --muted: #B3BAD2; --line: #1A2445; --line-strong: #6F7BA8; --accent: #F6C765; --accent-ink: #1A1405; --inv-bg: #EEF0F8; --inv-ink: #0A1024; --soft: #1A2445; --err: #FF9D85; --deep: #121A35; --deep-2: #1A2445; color-scheme: dark; }
 
-/* ---------- Editorial ---------- */
-:root[data-skin="editorial"] {
-  --bg: #F6F1E7; --surface: #FFFDF8; --ink: #1E1A16; --muted: #5E554B;
-  --line: #DDD3C2; --line-strong: #877A68; --accent: #B3371A; --accent-ink: #FFFFFF;
-  --inv-bg: #1E1A16; --inv-ink: #F6F1E7; --soft: #E9E0CF; --err: #A8201A;
-  --cover-a-bg: #B3371A; --cover-a-ink: #FFFFFF;
-  --cover-b-bg: #1E1A16; --cover-b-ink: #F6F1E7;
-  --cover-c-bg: #E8C24A; --cover-c-ink: #1E1A16;
-  --display: 'Fraunces', Georgia, serif;
-  --body: 'Source Sans 3', system-ui, sans-serif;
-  --mono: 'IBM Plex Mono', ui-monospace, monospace;
-}
+/* ---------- saltaplanetas ---------- */
+:root[data-skin="saltaplanetas"] { --bg: #F4F1FF; --surface: #FFFFFF; --ink: #1A1230; --muted: #4F4870; --line: #DDD6F3; --line-strong: #7E76A6; --accent: #7A43C8; --accent-ink: #FFFFFF; --inv-bg: #0B0820; --inv-ink: #F4F1FF; --soft: #E9E3FB; --err: #B0284F; --deep: #0B0820; --deep-2: #1A1230; --deep-ink: #F4F1FF; --deep-muted: #A9A3C9; --deep-line: #2A2050; --deep-line-strong: #6A5F9E; --sun: #FFD34D; color-scheme: light; }
 @media (prefers-color-scheme: dark) {
-  :root[data-skin="editorial"]:not([data-theme="light"]) {
-    --bg: #17130F; --surface: #201B16; --ink: #F3EBDD; --muted: #B5A996;
-    --line: #342C24; --line-strong: #74685A; --accent: #FF8A66; --accent-ink: #1E1A16;
-    --inv-bg: #F3EBDD; --inv-ink: #17130F; --soft: #2A231C; --err: #FF9C93;
-  }
+  :root[data-skin="saltaplanetas"]:not([data-theme="light"]) { --bg: #0B0820; --surface: #1A1230; --ink: #F4F1FF; --muted: #A9A3C9; --line: #2A2050; --line-strong: #6A5F9E; --accent: #FFD34D; --accent-ink: #1A1230; --inv-bg: #F4F1FF; --inv-ink: #0B0820; --soft: #2A2050; --err: #FF8FA3; --deep: #160F33; --deep-2: #221947; color-scheme: dark; }
 }
-:root[data-skin="editorial"][data-theme="dark"] {
-  --bg: #17130F; --surface: #201B16; --ink: #F3EBDD; --muted: #B5A996;
-  --line: #342C24; --line-strong: #74685A; --accent: #FF8A66; --accent-ink: #1E1A16;
-  --inv-bg: #F3EBDD; --inv-ink: #17130F; --soft: #2A231C; --err: #FF9C93;
-}
-[data-skin="editorial"] .display { font-weight: 600; letter-spacing: -0.02em; }
-[data-skin="editorial"] .cover-name { font-weight: 600; }
-[data-skin="editorial"] body { font-size: 1.0625rem; }
+:root[data-skin="saltaplanetas"][data-theme="dark"] { --bg: #0B0820; --surface: #1A1230; --ink: #F4F1FF; --muted: #A9A3C9; --line: #2A2050; --line-strong: #6A5F9E; --accent: #FFD34D; --accent-ink: #1A1230; --inv-bg: #F4F1FF; --inv-ink: #0B0820; --soft: #2A2050; --err: #FF8FA3; --deep: #160F33; --deep-2: #221947; color-scheme: dark; }
 
-/* ---------- Atlântico ---------- */
-:root[data-skin="atlantico"] {
-  --bg: #EEF4F5; --surface: #FFFFFF; --ink: #0A2230; --muted: #486270;
-  --line: #CCDCE0; --line-strong: #6A8590; --accent: #0A6C78; --accent-ink: #FFFFFF;
-  --inv-bg: #0A2230; --inv-ink: #EEF4F5; --soft: #DAE7EA; --err: #A8201A;
-  --cover-a-bg: #0A6C78; --cover-a-ink: #FFFFFF;
-  --cover-b-bg: #0A2230; --cover-b-ink: #EEF4F5;
-  --cover-c-bg: #7CB9E8; --cover-c-ink: #0A2230;
-  --display: 'Archivo', system-ui, sans-serif;
-  --body: 'Hanken Grotesk', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, monospace;
-}
+/* ---------- skillconnect ---------- */
+:root[data-skin="skillconnect"] { --bg: #F2F2F2; --surface: #FFFFFF; --ink: #0D0D0D; --muted: #4D4D4D; --line: #D6D6D6; --line-strong: #7A7A7A; --accent: #1B7F0A; --accent-ink: #FFFFFF; --inv-bg: #000000; --inv-ink: #F2F2F2; --soft: #E6E6E6; --err: #A8201A; --deep: #000000; --deep-2: #0D0D0D; --deep-ink: #F2F2F2; --deep-muted: #9A9A9A; --deep-line: #2E2E2E; --deep-line-strong: #5A5A5A; --sun: #39FF14; color-scheme: light; }
 @media (prefers-color-scheme: dark) {
-  :root[data-skin="atlantico"]:not([data-theme="light"]) {
-    --bg: #071A24; --surface: #0D2531; --ink: #E6F2F4; --muted: #9DB7C0;
-    --line: #1B3743; --line-strong: #56707B; --accent: #5FD4DE; --accent-ink: #071A24;
-    --inv-bg: #E6F2F4; --inv-ink: #071A24; --soft: #12303D; --err: #FF9C93;
-  }
+  :root[data-skin="skillconnect"]:not([data-theme="light"]) { --bg: #0D0D0D; --surface: #161616; --ink: #F2F2F2; --muted: #A0A0A0; --line: #2E2E2E; --line-strong: #6A6A6A; --accent: #39FF14; --accent-ink: #000000; --inv-bg: #F2F2F2; --inv-ink: #0D0D0D; --soft: #1F1F1F; --err: #FF8A80; --deep: #000000; --deep-2: #161616; color-scheme: dark; }
 }
-:root[data-skin="atlantico"][data-theme="dark"] {
-  --bg: #071A24; --surface: #0D2531; --ink: #E6F2F4; --muted: #9DB7C0;
-  --line: #1B3743; --line-strong: #56707B; --accent: #5FD4DE; --accent-ink: #071A24;
-  --inv-bg: #E6F2F4; --inv-ink: #071A24; --soft: #12303D; --err: #FF9C93;
+:root[data-skin="skillconnect"][data-theme="dark"] { --bg: #0D0D0D; --surface: #161616; --ink: #F2F2F2; --muted: #A0A0A0; --line: #2E2E2E; --line-strong: #6A6A6A; --accent: #39FF14; --accent-ink: #000000; --inv-bg: #F2F2F2; --inv-ink: #0D0D0D; --soft: #1F1F1F; --err: #FF8A80; --deep: #000000; --deep-2: #161616; color-scheme: dark; }
+
+/* ---------- arduino ---------- */
+:root[data-skin="arduino"] { --bg: #EEF5F5; --surface: #FFFFFF; --ink: #0F2A2B; --muted: #46605F; --line: #CFE0DF; --line-strong: #6E8C8B; --accent: #00797C; --accent-ink: #FFFFFF; --inv-bg: #003B3D; --inv-ink: #E9F7F7; --soft: #DDEBEA; --err: #A8201A; --deep: #003234; --deep-2: #00494C; --deep-ink: #E9F7F7; --deep-muted: #A6CFCF; --deep-line: #0B5F62; --deep-line-strong: #4FA3A5; --sun: #F5964E; color-scheme: light; }
+@media (prefers-color-scheme: dark) {
+  :root[data-skin="arduino"]:not([data-theme="light"]) { --bg: #071B1C; --surface: #0E2A2B; --ink: #E9F7F7; --muted: #A6CFCF; --line: #1C3C3D; --line-strong: #5D8A8B; --accent: #3FC6CA; --accent-ink: #071B1C; --inv-bg: #E9F7F7; --inv-ink: #071B1C; --soft: #1C3C3D; --err: #FF9C93; --deep: #003A3C; --deep-2: #00514F; color-scheme: dark; }
 }
-[data-skin="atlantico"] .display { font-weight: 800; font-stretch: 118%; letter-spacing: -0.02em; }
-[data-skin="atlantico"] .display.xl { font-size: clamp(2.75rem, 6.4vw, 5.5rem); }
-[data-skin="atlantico"] .feature-title, [data-skin="atlantico"] .card-title, [data-skin="atlantico"] .pager-name, [data-skin="atlantico"] .brand { font-weight: 800; font-stretch: 112%; letter-spacing: -0.01em; }
+:root[data-skin="arduino"][data-theme="dark"] { --bg: #071B1C; --surface: #0E2A2B; --ink: #E9F7F7; --muted: #A6CFCF; --line: #1C3C3D; --line-strong: #5D8A8B; --accent: #3FC6CA; --accent-ink: #071B1C; --inv-bg: #E9F7F7; --inv-ink: #071B1C; --soft: #1C3C3D; --err: #FF9C93; --deep: #003A3C; --deep-2: #00514F; color-scheme: dark; }
 
 /* Faixa de pré-visualização (quando o endereço tem ?tema=) */
-.preview-bar { position: sticky; top: 0; z-index: 15; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 16px; padding: 10px 16px; background: var(--inv-bg); color: var(--inv-ink); font-size: 0.9375rem; text-align: center; }
-.preview-bar a { color: var(--inv-ink); font-weight: 600; }
-
-/* Cor de sinal (estado ativo) de cada tema */
-:root[data-skin="terminal"] { --signal: #FFD23F; --signal-ink: #10130E; }
-:root[data-skin="editorial"] { --signal: #E8C24A; --signal-ink: #1E1A16; }
-:root[data-skin="atlantico"] { --signal: #FFB199; --signal-ink: #0A2230; }
-
-
-/* Raio dos cantos de cada tema */
-:root[data-skin="terminal"] { --r: 3px; --rc: 3px; }
-:root[data-skin="editorial"] { --r: 4px; --rc: 4px; }
-:root[data-skin="atlantico"] { --r: 6px; --rc: 6px; }
-
-/* Faixas de oceano de cada tema */
-:root[data-skin="terminal"] { --deep: #07120B; --deep-2: #0F1E14; --deep-ink: #D7F5DD; --deep-muted: #8FB39A; --deep-line: #1F3326; --deep-line-strong: #4E6A57; --sun: #FFD23F; }
-:root[data-skin="editorial"] { --deep: #241A14; --deep-2: #33261D; --deep-ink: #F6EDE0; --deep-muted: #C2B4A1; --deep-line: #4A3A2E; --deep-line-strong: #8A7663; --sun: #E8C24A; }
-:root[data-skin="atlantico"] { --deep: #0A2230; --deep-2: #103245; --deep-ink: #EAF3F4; --deep-muted: #A9C3CB; --deep-line: #1E4255; --deep-line-strong: #4F7A8A; --sun: #FF9A6B; }
-
-/* No modo escuro do Atlântico a faixa de oceano fica um pouco mais clara, para se destacar do fundo. */
-@media (prefers-color-scheme: dark) {
-  :root[data-skin="atlantico"]:not([data-theme="light"]) { --deep: #0F2C3D; --deep-2: #163A4F; }
-}
-:root[data-skin="atlantico"][data-theme="dark"] { --deep: #0F2C3D; --deep-2: #163A4F; }
+.preview-bar { position: sticky; top: 0; z-index: 25; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 16px; padding: 10px 16px; background: var(--deep); color: var(--deep-ink); font-size: 0.9375rem; text-align: center; }
+.preview-bar a { color: var(--deep-ink); font-weight: 600; }

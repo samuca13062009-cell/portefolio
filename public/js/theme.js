@@ -13,6 +13,7 @@
       localStorage.removeItem('skinBase');
       skin = null;
     }
-    if (skin && /^[a-z]+$/.test(skin) && !root.hasAttribute('data-skin-locked')) root.setAttribute('data-skin', skin);
+    var known = (root.getAttribute('data-skins') || '').split(' ');
+    if (skin && known.indexOf(skin) !== -1 && !root.hasAttribute('data-skin-locked')) root.setAttribute('data-skin', skin);
   } catch (e) { /* sem armazenamento: segue a preferência do sistema */ }
 })();

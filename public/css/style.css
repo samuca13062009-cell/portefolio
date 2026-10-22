@@ -16,9 +16,9 @@
   --err: #A8201A;
   --signal: #F2B705;
   --signal-ink: #10130E;
-  --display: 'Bricolage Grotesque', system-ui, sans-serif;
-  --body: 'IBM Plex Sans', system-ui, sans-serif;
-  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --display: 'Archivo', system-ui, sans-serif;
+  --body: 'Hanken Grotesk', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --r: 6px;
   --rc: 6px;
@@ -68,7 +68,7 @@ table { font-variant-numeric: tabular-nums; }
 .skip:focus { left: 8px; }
 
 /* ---------- Tipografia ---------- */
-.display { font-family: var(--display); font-weight: 700; font-size: 2.5rem; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
+.display { font-family: var(--display); font-weight: 800; font-stretch: 118%; font-size: 2.5rem; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
 .display.xl { font-size: clamp(3rem, 7vw, 6rem); line-height: 0.96; letter-spacing: -0.035em; }
 .display.lg { font-size: clamp(2.4rem, 5vw, 4.25rem); line-height: 1.02; letter-spacing: -0.03em; }
 .display.sm { font-size: 1.875rem; line-height: 1.15; }
@@ -82,7 +82,7 @@ table { font-variant-numeric: tabular-nums; }
 .stack { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
 
 /* ---------- Cabeçalho ---------- */
-.site-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.site-header { position: relative; z-index: 20; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; padding: 20px 0; border-bottom: 1px solid var(--line); }
 .brand { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-family: var(--display); font-weight: 700; font-size: 1.1875rem; text-decoration: none; white-space: nowrap; }
 .brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 4px; background: var(--ink); color: var(--bg); font-family: var(--display); font-size: 0.875rem; letter-spacing: 0.02em; }
 .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0 28px; }
@@ -464,3 +464,7 @@ html.vt-list::view-transition-new(*):only-child { animation: 0.36s var(--ease-ou
 .page-head.narrow > * { max-width: 56rem; }
 /* As faixas a toda a largura mantêm o conteúdo na coluna central (ganha às regras de padding de cada secção). */
 main > .bleed { padding-inline: var(--gut); }
+
+/* Letra larga e forte também nos títulos dos projetos e na marca */
+.feature-title, .card-title, .pager-name, .brand, .cv-name, .cv-h, .legal h2 { font-weight: 800; font-stretch: 112%; letter-spacing: -0.01em; }
+.display.xl { font-size: clamp(2.75rem, 6.4vw, 5.5rem); letter-spacing: -0.02em; }
