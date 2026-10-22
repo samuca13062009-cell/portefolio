@@ -468,3 +468,32 @@ main > .bleed { padding-inline: var(--gut); }
 /* Letra larga e forte também nos títulos dos projetos e na marca */
 .feature-title, .card-title, .pager-name, .brand, .cv-name, .cv-h, .legal h2 { font-weight: 800; font-stretch: 112%; letter-spacing: -0.01em; }
 .display.xl { font-size: clamp(2.75rem, 6.4vw, 5.5rem); letter-spacing: -0.02em; }
+
+/* ---------- Fotografias nas faixas ----------
+   Foto de fundo (Wikimedia Commons, ver Termos) por baixo de um véu da cor do tema, para o texto ler bem. */
+.has-photo { overflow: hidden; }
+.band-img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 72%; }
+.has-photo::before {
+  -webkit-mask: none; mask: none; opacity: 1;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--deep) 86%, transparent) 0%, color-mix(in srgb, var(--deep) 62%, transparent) 42%, color-mix(in srgb, var(--deep) 12%, transparent) 100%);
+}
+.cta.has-photo::before { background: linear-gradient(90deg, color-mix(in srgb, var(--deep) 86%, transparent) 0%, color-mix(in srgb, var(--deep) 58%, transparent) 55%, color-mix(in srgb, var(--deep) 18%, transparent) 100%); }
+.cta.has-photo .band-img { object-position: center 45%; }
+.photo-credit { position: absolute; right: var(--gut); bottom: 12px; max-width: 60ch; font-size: 0.75rem; color: var(--deep-muted); text-align: right; }
+.photo-credit a { color: var(--deep-muted); }
+.hero.has-photo { position: relative; }
+.hero.has-photo .facts { background: color-mix(in srgb, var(--deep) 78%, transparent); backdrop-filter: blur(8px); }
+.has-photo .photo-credit { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); color: var(--deep-ink); }
+.has-photo .photo-credit a { color: var(--deep-ink); }
+.cta.has-photo { position: relative; }
+/* "Além do código": fotografia de Santa Cruz */
+.place { display: flex; flex-direction: column; gap: 10px; }
+.place img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--r); box-shadow: var(--shadow); }
+.place figcaption { font-size: 0.9375rem; color: var(--muted); }
+.place .credit { display: block; margin-top: 4px; font-size: 0.8125rem; }
+.place .credit a { color: var(--muted); }
+.project-hero figcaption a { color: var(--muted); }
+@media (max-width: 960px) {
+  .has-photo::before { background: linear-gradient(180deg, color-mix(in srgb, var(--deep) 84%, transparent) 0%, color-mix(in srgb, var(--deep) 72%, transparent) 100%); }
+  .photo-credit { position: static; text-align: left; margin-top: 24px; }
+}

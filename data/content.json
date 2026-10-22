@@ -457,7 +457,71 @@
         "Arduino",
         "Bluetooth"
       ],
-      "repo": ""
+      "repo": "",
+      "images": [
+        {
+          "src": "/img/fotos/arduino-uno",
+          "sizes": [
+            960,
+            1920
+          ],
+          "alt": {
+            "pt": "Placa Arduino Uno (foto ilustrativa, não é a montagem original do projeto)",
+            "en": "Arduino Uno board (illustrative photo, not the original project build)"
+          },
+          "credit": {
+            "author": "Creative Tools",
+            "license": "CC BY 2.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+            "page": "https://commons.wikimedia.org/wiki/File:Arduino-uno-perspective.jpg"
+          }
+        }
+      ]
     }
-  ]
+  ],
+  "photos": {
+    "hero": {
+      "src": "/img/fotos/santa-cruz-por-do-sol",
+      "alt": {
+        "pt": "Pôr do sol na Praia Formosa, em Santa Cruz, Torres Vedras",
+        "en": "Sunset at Praia Formosa, Santa Cruz, Torres Vedras"
+      },
+      "credit": {
+        "author": "Alexkom000",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:2025-12-14_Sunset_at_Praia_Formosa,_Santa_Cruz,_Torres_Vedras_5.jpg"
+      }
+    },
+    "cta": {
+      "src": "/img/fotos/praia-formosa-dourado",
+      "alt": {
+        "pt": "Rochas e mar ao pôr do sol na Praia Formosa, Santa Cruz",
+        "en": "Rocks and sea at sunset at Praia Formosa, Santa Cruz"
+      },
+      "credit": {
+        "author": "Alexkom000",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:2025-12-14_Sunset_at_Praia_Formosa,_Santa_Cruz,_Torres_Vedras_1.jpg"
+      }
+    },
+    "place": {
+      "src": "/img/fotos/praia-santa-cruz",
+      "alt": {
+        "pt": "Praia de Santa Cruz, em Torres Vedras, com o rochedo e a vila ao fundo",
+        "en": "Santa Cruz beach in Torres Vedras, with the big rock and the village behind"
+      },
+      "caption": {
+        "pt": "Santa Cruz, Torres Vedras: é aqui que fica o restaurante O Polvo, onde trabalho.",
+        "en": "Santa Cruz, Torres Vedras: home of the O Polvo restaurant, where I work."
+      },
+      "credit": {
+        "author": "Alexkom000",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "page": "https://commons.wikimedia.org/wiki/File:2025-12-14_Praia_de_Santa_Cruz,_Torres_Vedras.jpg"
+      }
+    }
+  }
 }
