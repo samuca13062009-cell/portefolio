@@ -343,7 +343,7 @@ dl.meta dd { font-size: 1.0625rem; font-weight: 600; }
 ::view-transition-group(*) { animation-duration: 0.5s; animation-timing-function: var(--ease-out); }
 ::view-transition-old(root) { animation: 0.14s ease-in both vt-sai; }
 ::view-transition-new(root) { animation: 0.45s var(--ease-out) 0.11s both vt-entra; }
-::view-transition-group(cover) { animation-duration: 0.62s; border-radius: 12px; overflow: clip; }
+::view-transition-group(cover) { animation-duration: 0.62s; border-radius: var(--r); overflow: clip; }
 ::view-transition-old(cover), ::view-transition-new(cover) { height: 100%; object-fit: cover; mix-blend-mode: normal; }
 ::view-transition-old(cover) { animation: 0.22s ease-in both vt-apaga; }
 ::view-transition-new(cover) { animation: 0.4s ease-out 0.12s both vt-acende; }

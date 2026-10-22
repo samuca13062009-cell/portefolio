@@ -104,3 +104,9 @@
 :root[data-skin="terminal"] { --deep: #07120B; --deep-2: #0F1E14; --deep-ink: #D7F5DD; --deep-muted: #8FB39A; --deep-line: #1F3326; --deep-line-strong: #4E6A57; --sun: #FFD23F; }
 :root[data-skin="editorial"] { --deep: #241A14; --deep-2: #33261D; --deep-ink: #F6EDE0; --deep-muted: #C2B4A1; --deep-line: #4A3A2E; --deep-line-strong: #8A7663; --sun: #E8C24A; }
 :root[data-skin="atlantico"] { --deep: #0A2230; --deep-2: #103245; --deep-ink: #EAF3F4; --deep-muted: #A9C3CB; --deep-line: #1E4255; --deep-line-strong: #4F7A8A; --sun: #FF9A6B; }
+
+/* No modo escuro do Atlântico a faixa de oceano fica um pouco mais clara, para se destacar do fundo. */
+@media (prefers-color-scheme: dark) {
+  :root[data-skin="atlantico"]:not([data-theme="light"]) { --deep: #0F2C3D; --deep-2: #163A4F; }
+}
+:root[data-skin="atlantico"][data-theme="dark"] { --deep: #0F2C3D; --deep-2: #163A4F; }
