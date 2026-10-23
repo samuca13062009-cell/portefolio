@@ -6,6 +6,18 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   var canMove = function () { return Boolean(document.startViewTransition) && !reduce.matches; };
 
+  // Antes de trocar de tema, descarrega e descodifica as fotos desse tema (estavam escondidas),
+  // para a transição não parar à espera delas. Nunca espera mais de 700 ms.
+  var preloadSkin = function (skin) {
+    var imgs = Array.prototype.slice.call(document.querySelectorAll('img[data-for="' + skin + '"]'));
+    if (!imgs.length) return Promise.resolve();
+    var all = Promise.all(imgs.map(function (img) {
+      img.loading = 'eager';
+      return img.decode ? img.decode().catch(function () {}) : Promise.resolve();
+    }));
+    return Promise.race([all, new Promise(function (r) { setTimeout(r, 700); })]);
+  };
+
   // A nova aparência espalha-se em círculo a partir do botão que a pediu.
   var reveal = function (from, change) {
     if (!canMove() || !from) { change(); return; }
@@ -16,7 +28,7 @@
     var t = document.startViewTransition(change);
     t.ready.then(function () {
       docEl.animate({ clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + rad + 'px at ' + x + 'px ' + y + 'px)'] },
-        { duration: 620, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', pseudoElement: '::view-transition-new(root)' });
+        { duration: 1100, easing: 'cubic-bezier(0.65, 0, 0.25, 1)', pseudoElement: '::view-transition-new(root)' });
     }).catch(function () { /* transição saltada: a mudança já foi feita */ });
     t.finished.then(function () { docEl.classList.remove('vt-reveal'); }, function () { docEl.classList.remove('vt-reveal'); });
   };
@@ -60,7 +72,8 @@
         var value = opt.dataset.skinValue;
         var change = function () { root.setAttribute('data-skin', value); showSkin(value); };
         openSkins(false);
-        if (root.hasAttribute('data-skin-locked')) change(); else reveal(skinToggle, change);
+        if (root.hasAttribute('data-skin-locked')) change();
+        else preloadSkin(value).then(function () { reveal(skinToggle, change); });
         try {
           localStorage.setItem('skin', value);
           localStorage.setItem('skinBase', root.getAttribute('data-skin-default'));

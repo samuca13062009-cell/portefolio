@@ -216,15 +216,14 @@
     } catch (e) { /* sem armazenamento */ }
     setSkin(saved && r.data.themes[saved] ? saved : siteTheme, false);
   }
-  const modeBtn = $('mode-toggle');
+  const modeBtns = document.querySelectorAll('.mode-opt');
   const isDark = () => { const t = root.getAttribute('data-theme'); return t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches; };
-  const showMode = () => modeBtn.setAttribute('aria-pressed', String(isDark()));
-  modeBtn.addEventListener('click', () => {
-    const next = isDark() ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('tema', next); } catch (e) { /* sem armazenamento */ }
+  const showMode = () => modeBtns.forEach((b) => b.setAttribute('aria-pressed', String((b.dataset.mode === 'dark') === isDark())));
+  modeBtns.forEach((b) => b.addEventListener('click', () => {
+    root.setAttribute('data-theme', b.dataset.mode);
+    try { localStorage.setItem('tema', b.dataset.mode); } catch (e) { /* sem armazenamento */ }
     showMode();
-  });
+  }));
   showMode();
   $('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();

@@ -355,6 +355,8 @@ dl.meta dd { font-size: 1.0625rem; font-weight: 600; }
 /* Mudança de tema ou de modo: a página nova é revelada por um círculo (app.js). */
 html.vt-reveal::view-transition-old(root), html.vt-reveal::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 html.vt-reveal .site-header, html.vt-reveal .nav-mark { view-transition-name: none; }
+html.vt-reveal::view-transition-new(root) { will-change: clip-path; }
+html.vt-reveal .facts, html.vt-reveal * { backdrop-filter: none !important; }
 
 /* Filtros: os cartões que ficam deslizam para o novo lugar; os outros saem depressa. */
 html.vt-list::view-transition-old(root), html.vt-list::view-transition-new(root) { animation-duration: 0.2s; }
