@@ -271,12 +271,13 @@
     const b = h('button', { type: 'button', class: 'btn' }, 'Publicar no site');
     b.addEventListener('click', async () => {
       b.disabled = true;
-      b.textContent = 'A publicar…';
+      b.textContent = 'A publicar… (até 1 minuto)';
       const r = await api('POST', '/api/admin/publish');
       b.disabled = false;
       b.textContent = 'Publicar no site';
-      if (r.ok) toast(r.data.nothing ? 'Não há alterações por publicar.' : 'Enviado. O site online atualiza-se em cerca de um minuto.');
-      else toast(r.data.error === 'push' ? 'Não foi possível enviar para o GitHub. Verifica a ligação à internet.' : 'Não foi possível publicar.', true);
+      if (r.ok) toast('Publicado. O site online já está atualizado.');
+      else toast(r.data.error === 'push' ? 'Não foi possível enviar para o GitHub. Verifica a ligação à internet.'
+        : r.data.error === 'netlify' ? 'Enviado para o GitHub, mas a publicação no Netlify falhou. Tenta de novo.' : 'Não foi possível publicar.', true);
     });
     return b;
   }
@@ -307,7 +308,7 @@
       : h('p', { class: 'empty-note' }, 'Ainda não recebeste mensagens.');
     main.replaceChildren(
       head('Sessão iniciada', 'Dashboard', h('div', { class: 'row-actions' }, publishButton(), h('button', { type: 'button', class: 'btn primary', onclick: () => editProject(null) }, 'Novo projeto'))),
-      h('p', { class: 'hint' }, 'As alterações ficam primeiro neste computador. "Publicar no site" envia-as para o GitHub e o Netlify atualiza o site online em cerca de um minuto.'),
+      h('p', { class: 'hint' }, 'As alterações ficam primeiro neste computador. "Publicar no site" envia-as para o GitHub e atualiza o site online (demora cerca de um minuto).'),
       h('div', { class: 'stats' },
         stat('Projetos publicados', d.projects.published, `${d.projects.draft} em rascunho`),
         stat('Mensagens por ler', d.messages.unread, `${d.messages.month} recebidas este mês`),

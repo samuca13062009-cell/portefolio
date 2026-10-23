@@ -28,12 +28,20 @@ loadEnv();
 const PORT = Number(process.env.PORT) || 4180;
 // Pasta dos dados. Num alojamento com disco, DATA_DIR aponta para o disco persistente.
 const DATA = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(ROOT, 'data');
-// Com NETLIFY_SITE_ID e NETLIFY_AUTH_TOKEN no .env, as mensagens e as estatísticas do site
+// Com NETLIFY_SITE_ID no .env (e a sessão do Netlify neste computador), as mensagens e as estatísticas do site
 // publicado são lidas do Netlify, para o backoffice deste computador as mostrar.
 const REMOTE_KEYS = ['messages', 'stats'];
-const remote = process.env.NETLIFY_SITE_ID && process.env.NETLIFY_AUTH_TOKEN
-  ? remoteBlobStore({ siteID: process.env.NETLIFY_SITE_ID, token: process.env.NETLIFY_AUTH_TOKEN })
-  : null;
+// Sem NETLIFY_AUTH_TOKEN, usa a sessão da ferramenta do Netlify (netlify login) deste computador.
+function netlifyToken() {
+  if (process.env.NETLIFY_AUTH_TOKEN) return process.env.NETLIFY_AUTH_TOKEN;
+  try {
+    const cfg = JSON.parse(fs.readFileSync(path.join(process.env.APPDATA || '', 'netlify', 'Config', 'config.json'), 'utf8'));
+    const user = cfg.users && cfg.users[cfg.userId];
+    return (user && user.auth && user.auth.token) || '';
+  } catch { return ''; }
+}
+const token = process.env.NETLIFY_SITE_ID ? netlifyToken() : '';
+const remote = process.env.NETLIFY_SITE_ID && token ? remoteBlobStore({ siteID: process.env.NETLIFY_SITE_ID, token }) : null;
 const app = createApp({
   store: remote ? splitStore(fileStore(DATA), remote, REMOTE_KEYS) : fileStore(DATA),
   siteUrl: process.env.SITE_URL || `http://localhost:${PORT}`,
