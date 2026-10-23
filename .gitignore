@@ -16,3 +16,5 @@ data/secret.json
 .impeccable/review/
 .impeccable/decision-directions.json
 .impeccable/.cdp-*/
+# Tentativas do limite de pedidos (uma por ficheiro)
+data/rl%3A*
