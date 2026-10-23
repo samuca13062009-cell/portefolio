@@ -509,13 +509,19 @@
   };
 
   // ---------- Contactos ----------
-  const DELIVERY = { enviado: 'Enviada por email (Brevo)', falhou: 'O envio por email falhou', 'brevo-por-configurar': 'Guardada; Brevo por configurar' };
+  const DELIVERY = { enviado: 'Email confirmado · enviada para o teu email', falhou: 'Email confirmado · o envio para o teu email falhou', 'brevo-por-configurar': 'Guardada; Brevo por configurar', bloqueada: 'Bloqueada como spam' };
+  let showBlocked = false;
   VIEWS.messages = async () => {
     const r = await api('GET', '/api/admin/messages');
     if (!r.ok) return;
-    const all = r.data.messages;
+    const everything = r.data.messages;
+    const inbox = everything.filter((m) => !m.status || m.status === 'confirmada');
+    const blocked = everything.filter((m) => m.status === 'spam');
+    const pending = everything.filter((m) => m.status === 'por-confirmar').length;
+    const all = showBlocked ? blocked : inbox;
     const gmail = r.data.replyGmail || '';
-    setUnread(all.filter((m) => !m.read).length);
+    const unread = () => inbox.filter((m) => !m.read).length;
+    setUnread(unread());
     // Responder: abre o Gmail na conta certa, com o destinatário, o assunto e a mensagem original citada.
     const replyLink = (m, subject) => {
       if (!gmail) return `mailto:${m.email}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
@@ -526,17 +532,20 @@
     const open = (m) => {
       const mark = async (read) => {
         const res = await api('PATCH', `/api/admin/messages/${m.id}`, { read });
-        if (res.ok) { m.read = read; setUnread(all.filter((x) => !x.read).length); }
+        if (res.ok) { m.read = read; setUnread(unread()); }
       };
-      if (!m.read) mark(true);
+      if (!m.read && m.status !== 'spam') mark(true);
       main.replaceChildren(
         head('Mensagem', m.subject, h('button', { type: 'button', class: 'btn', onclick: () => go('messages') }, 'Voltar à lista')),
         h('section', { class: 'box msg' },
           h('div', { class: 'msg-meta' }, h('span', null, h('strong', null, m.name)), h('a', { href: replyLink(m, ''), target: gmail ? '_blank' : null, rel: gmail ? 'noopener' : null }, m.email), h('span', null, date(m.date)), h('span', null, DELIVERY[m.delivery] || m.delivery), m.consent && h('span', null, `Consentimento: ${date(m.consent.at)}`)),
+          m.spam && h('p', { class: 'hint' }, `Bloqueada automaticamente: ${m.spam}. Não foi enviada para o teu email e é apagada ao fim de 30 dias.`),
           h('div', { class: 'msg-body' }, m.message),
           h('div', { class: 'row-actions' },
             h('a', { class: 'btn primary small', href: replyLink(m, `Re: ${m.subject}`), target: gmail ? '_blank' : null, rel: gmail ? 'noopener' : null }, gmail ? 'Responder no Gmail' : 'Responder por email', gmail && h('span', { class: 'sr' }, ' (abre noutro separador)')),
-            h('button', { type: 'button', class: 'btn small', onclick: async () => { await mark(false); go('messages'); } }, 'Marcar como não lida'),
+            m.status === 'spam'
+              ? h('button', { type: 'button', class: 'btn small', onclick: async () => { const res = await api('PATCH', `/api/admin/messages/${m.id}`, { notSpam: true }); if (res.ok) { toast('Passou para a caixa de entrada.'); showBlocked = false; go('messages'); } } }, 'Não é spam')
+              : h('button', { type: 'button', class: 'btn small', onclick: async () => { await mark(false); go('messages'); } }, 'Marcar como não lida'),
             dangerButton('Eliminar', async () => {
               const res = await api('DELETE', `/api/admin/messages/${m.id}`);
               if (res.ok) { toast('Mensagem eliminada.'); go('messages'); }
@@ -544,15 +553,19 @@
       main.focus();
     };
     main.replaceChildren(
-      head('Gestão de contactos', 'Contactos'),
+      head('Gestão de contactos', showBlocked ? 'Bloqueadas como spam' : 'Contactos',
+        h('button', { type: 'button', class: 'btn small', onclick: () => { showBlocked = !showBlocked; go('messages'); } }, showBlocked ? 'Voltar às mensagens' : `Ver bloqueadas (${blocked.length})`)),
+      h('p', { class: 'hint' }, showBlocked
+        ? 'Mensagens que pareciam spam (ligações a mais, publicidade, outro alfabeto). Não foram enviadas para o teu email e apagam-se ao fim de 30 dias.'
+        : `Só aparecem mensagens de quem confirmou o email na ligação que recebeu.${pending ? ` ${pending} ${pending === 1 ? 'mensagem está' : 'mensagens estão'} à espera de confirmação (apagadas ao fim de 48 horas se ninguém confirmar).` : ''}`),
       h('section', { class: 'box' }, h('div', { class: 'table-wrap' }, all.length
         ? h('table', null,
           h('thead', null, h('tr', null, ['Estado', 'Nome', 'Email', 'Assunto', 'Recebida', 'Ações'].map((t) => h('th', { scope: 'col' }, t)))),
           h('tbody', null, all.map((m) => h('tr', null,
-            h('td', null, h('span', { class: m.read ? 'state quiet' : 'state new' }, m.read ? 'Lida' : 'Nova')),
-            h('td', { class: m.read ? '' : 'strong' }, m.name), h('td', null, m.email), h('td', null, m.subject), h('td', { class: 'nowrap' }, date(m.date)),
+            h('td', null, h('span', { class: m.status === 'spam' || m.read ? 'state quiet' : 'state new' }, m.status === 'spam' ? 'Spam' : m.read ? 'Lida' : 'Nova')),
+            h('td', { class: m.read || m.status === 'spam' ? '' : 'strong' }, m.name), h('td', null, m.email), h('td', null, m.subject), h('td', { class: 'nowrap' }, date(m.date)),
             h('td', null, h('button', { type: 'button', class: 'btn small', onclick: () => open(m) }, 'Abrir'))))))
-        : h('p', { class: 'empty-note' }, 'Ainda não recebeste mensagens. As que chegarem pelo formulário de contacto aparecem aqui.'))));
+        : h('p', { class: 'empty-note' }, showBlocked ? 'Nenhuma mensagem bloqueada.' : 'Ainda não recebeste mensagens. As que chegarem pelo formulário de contacto aparecem aqui.'))));
   };
 
   // ---------- Conta ----------

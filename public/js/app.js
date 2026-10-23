@@ -179,6 +179,10 @@
       consent: 'To send, tick the box to accept the Privacy Policy.',
       rate: 'Too many messages in a short time. Try again in a few minutes.',
       server: 'The message could not be sent. Try again, or contact me on LinkedIn.',
+      expired: 'This page was open for a long time. Reload it and send again (copy your message first).',
+      'email-domain': 'This email does not seem to exist: its domain cannot receive email. Check the address.',
+      'email-disposable': 'Temporary email addresses cannot receive a reply. Use your usual email.',
+      'email-typo': 'Did you mean %s?',
       sending: 'Sending…'
     } : {
       name: 'Indique o seu nome.',
@@ -188,6 +192,10 @@
       consent: 'Para enviar, marque a caixa de aceitação da Política de Privacidade.',
       rate: 'Demasiadas mensagens em pouco tempo. Tente de novo daqui a uns minutos.',
       server: 'Não foi possível enviar a mensagem. Tente de novo ou contacte-me pelo LinkedIn.',
+      expired: 'Esta página esteve aberta muito tempo. Recarregue-a e envie de novo (copie a mensagem antes).',
+      'email-domain': 'Este email não parece existir: o domínio não recebe emails. Verifique o endereço.',
+      'email-disposable': 'Emails temporários não podem receber resposta. Use o seu email habitual.',
+      'email-typo': 'Queria dizer %s?',
       sending: 'A enviar…'
     };
     var FIELDS = [
@@ -233,7 +241,7 @@
       var firstBad = validate();
       if (firstBad) { firstBad.focus(); return; }
 
-      var payload = { website: $('website').value };
+      var payload = { website: $('website').value, t: form.getAttribute('data-t') || '', lang: en ? 'en' : 'pt' };
       FIELDS.forEach(function (f) { payload[f.key] = val(f); });
       button.disabled = true;
       button.textContent = MSG.sending;
@@ -246,6 +254,10 @@
         return r.json().catch(function () { return {}; }).then(function (data) { return { status: r.status, data: data }; });
       }).then(function (res) {
         if (res.status === 200 && res.data.ok) {
+          // Falta um passo: a pessoa tem de confirmar o email na ligação que recebeu.
+          if (res.data.confirm) {
+            ['sucesso-titulo', 'sucesso-texto'].forEach(function (id) { var el = $(id); if (el && el.dataset.confirm) el.textContent = el.dataset.confirm; });
+          }
           form.hidden = true;
           success.hidden = false;
           success.focus();
@@ -253,9 +265,16 @@
         }
         if (res.status === 422 && res.data.fields) {
           FIELDS.forEach(function (f) { mark(f, Boolean(res.data.fields[f.key])); });
+          // O email não serve: diz porquê no próprio campo.
+          if (MSG[res.data.error]) {
+            var emailError = $('email-erro');
+            emailError.textContent = MSG[res.data.error].replace('%s', res.data.suggestion || '');
+            emailError.hidden = false;
+            $('email').focus();
+          }
           return;
         }
-        sendError.textContent = res.status === 429 ? MSG.rate : MSG.server;
+        sendError.textContent = res.status === 429 ? MSG.rate : MSG[res.data.error] || MSG.server;
         sendError.hidden = false;
       }).catch(function () {
         sendError.textContent = MSG.server;
