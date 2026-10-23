@@ -186,8 +186,46 @@
   function showApp() {
     $('login').hidden = true;
     $('app').hidden = false;
+    syncTheme();
     go(view);
   }
+
+  // ---------- Tema e modo ----------
+  // O backoffice usa os mesmos temas do website: abre com o tema do site (ou o que escolheste
+  // no menu Tema do site) e pode mudar-se aqui; a escolha fica guardada para os dois.
+  const root = document.documentElement;
+  const skinSelect = $('skin-select');
+  let siteTheme = root.getAttribute('data-skin');
+  function setSkin(id, remember) {
+    root.setAttribute('data-skin', id);
+    skinSelect.value = id;
+    if (!remember) return;
+    try { localStorage.setItem('skin', id); localStorage.setItem('skinBase', siteTheme); } catch (e) { /* sem armazenamento */ }
+  }
+  skinSelect.addEventListener('change', () => setSkin(skinSelect.value, true));
+  async function syncTheme() {
+    const r = await api('GET', '/api/admin/content');
+    if (!r.ok) return;
+    siteTheme = r.data.theme;
+    root.setAttribute('data-skins', Object.keys(r.data.themes).join(' '));
+    skinSelect.replaceChildren(...Object.entries(r.data.themes).map(([id, t]) => h('option', { value: id }, t.name)));
+    let saved = null;
+    try {
+      saved = localStorage.getItem('skin');
+      if (saved && localStorage.getItem('skinBase') !== siteTheme) { localStorage.removeItem('skin'); localStorage.removeItem('skinBase'); saved = null; }
+    } catch (e) { /* sem armazenamento */ }
+    setSkin(saved && r.data.themes[saved] ? saved : siteTheme, false);
+  }
+  const modeBtn = $('mode-toggle');
+  const isDark = () => { const t = root.getAttribute('data-theme'); return t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches; };
+  const showMode = () => modeBtn.setAttribute('aria-pressed', String(isDark()));
+  modeBtn.addEventListener('click', () => {
+    const next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('tema', next); } catch (e) { /* sem armazenamento */ }
+    showMode();
+  });
+  showMode();
   $('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const err = $('login-error');
@@ -265,7 +303,16 @@
         h('section', { class: 'box' }, h('h2', null, 'Páginas mais vistas'), h('div', { class: 'table-wrap' }, top))),
       h('section', { class: 'box' },
         h('div', { class: 'box-head' }, h('h2', null, 'Mensagens recentes'), h('button', { type: 'button', class: 'btn small', onclick: () => go('messages') }, 'Ver todas')),
-        h('div', { class: 'table-wrap' }, recent)));
+        h('div', { class: 'table-wrap' }, recent)),
+      h('section', { class: 'box' },
+        h('div', { class: 'box-head' }, h('h2', null, 'Estatísticas'),
+          dangerButton('Apagar estatísticas', async () => {
+            const res = await api('DELETE', '/api/admin/stats');
+            if (!res.ok) { toast('Não foi possível apagar as estatísticas.', true); return; }
+            toast('Estatísticas apagadas.');
+            go('dashboard');
+          })),
+        h('p', { class: 'muted' }, 'Contam-se só visitas reais ao site publicado: não entram robôs, testes no computador nem as tuas visitas com sessão iniciada aqui. Não se guardam endereços IP nem cookies; só o número de visitas por página e por dia.')));
   };
 
   // ---------- Projetos ----------
@@ -424,6 +471,9 @@
         const res = await api('POST', '/api/admin/theme', { theme: id });
         if (!res.ok) { use.disabled = false; toast('Não foi possível mudar o tema.', true); return; }
         toast(`Tema ${t.name} aplicado ao website.`);
+        siteTheme = id;
+        try { localStorage.removeItem('skin'); localStorage.removeItem('skinBase'); } catch (e) { /* sem armazenamento */ }
+        setSkin(id, false);
         go('themes');
       });
       return h('section', { class: isActive ? 'box theme-card active' : 'box theme-card' },

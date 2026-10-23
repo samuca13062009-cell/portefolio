@@ -8,7 +8,8 @@
     // Se o tema do site mudou no backoffice desde essa escolha, a escolha antiga é esquecida,
     // para que a mudança feita no backoffice se veja logo.
     var skin = localStorage.getItem('skin');
-    if (skin && localStorage.getItem('skinBase') !== root.getAttribute('data-skin-default')) {
+    var base = root.getAttribute('data-skin-default');
+    if (skin && base && localStorage.getItem('skinBase') !== base) {
       localStorage.removeItem('skin');
       localStorage.removeItem('skinBase');
       skin = null;

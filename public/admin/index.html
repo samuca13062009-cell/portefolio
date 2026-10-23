@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-PT">
+<html lang="pt-PT" data-skin="polvo" data-skins="polvo saltaplanetas skillconnect arduino">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/fonts.css">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/themes.css">
 <link rel="stylesheet" href="/admin/admin.css">
 <script src="/js/theme.js"></script>
 </head>
@@ -51,6 +52,11 @@
 <button type="button" class="side-link" data-view="messages">Contactos <span class="badge" id="unread-badge" hidden></span></button>
 <button type="button" class="side-link" data-view="account">Conta</button>
 </nav>
+<div class="side-theme">
+<label class="mono" for="skin-select">Cores do backoffice</label>
+<select id="skin-select"></select>
+<button type="button" class="side-link" id="mode-toggle" aria-pressed="false">Modo escuro</button>
+</div>
 <div class="side-nav side-foot">
 <a class="side-link" href="/" target="_blank" rel="noopener">Ver website<span class="sr"> (abre noutro separador)</span></a>
 <button type="button" class="side-link" id="logout">Terminar sessão</button>
