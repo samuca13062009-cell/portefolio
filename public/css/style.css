@@ -502,3 +502,29 @@ main > .bleed { padding-inline: var(--gut); }
 /* SkillConnect: a foto da equipa tem muito detalhe atrás do texto; véu um pouco mais forte e enquadramento próprio na faixa final */
 :root[data-skin="skillconnect"] .hero.has-photo::before { background: linear-gradient(90deg, color-mix(in srgb, var(--deep) 95%, transparent) 0%, color-mix(in srgb, var(--deep) 86%, transparent) 50%, color-mix(in srgb, var(--deep) 50%, transparent) 100%); }
 .cta.has-photo .band-img[data-for="skillconnect"] { object-position: center 20%; }
+
+/* ---------- Abertura em ecrã inteiro ----------
+   Na página inicial, a foto de abertura vai do cabeçalho até ao fundo do ecrã, ao pixel.
+   --header-h é medido em app.js (o cabeçalho muda de altura no telemóvel); 85px é o valor no computador. */
+.hero.has-photo { min-height: calc(100svh - var(--header-h, 85px)); align-content: center; }
+
+/* ---------- Transições ao fazer scroll ----------
+   Ligadas ao scroll (sem JavaScript), só com transform e opacity, que não pesam.
+   Browsers sem suporte e quem pede menos movimento veem tudo parado. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Abertura: a foto desce mais devagar do que a página e o texto afasta-se */
+    .hero.has-photo .band-img { animation: paralaxe linear both; animation-timeline: scroll(root); animation-range: 150px 120svh; }
+    .hero.has-photo .hero-text, .hero.has-photo > .facts { animation: afasta linear both; animation-timeline: scroll(root); animation-range: 0 75svh; }
+    /* Convite final: a foto move-se dentro da faixa */
+    .cta.has-photo .band-img { animation: paralaxe-faixa linear both; animation-timeline: view(); }
+    /* Blocos que sobem ao entrar no ecrã */
+    .section-head, .feature-media, .more, .split > *, .cta > .display, .cta > .btn,
+    .rows > *, .skills > *, .grid > * { animation: sobe linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+    .feature-text { animation: sobe linear both; animation-timeline: view(); animation-range: entry 15% entry 85%; }
+  }
+}
+@keyframes paralaxe { to { transform: translateY(22%); } }
+@keyframes afasta { to { opacity: 0; transform: translateY(-64px); } }
+@keyframes paralaxe-faixa { from { transform: translateY(-9%) scale(1.2); } to { transform: translateY(9%) scale(1.2); } }
+@keyframes sobe { from { opacity: 0; transform: translateY(56px); } }

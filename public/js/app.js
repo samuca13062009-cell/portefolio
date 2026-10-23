@@ -3,6 +3,14 @@
   var en = document.documentElement.lang.indexOf('en') === 0;
   var $ = function (id) { return document.getElementById(id); };
   var docEl = document.documentElement;
+
+  // Altura até ao fundo do cabeçalho, para a abertura da página inicial acabar no fundo do ecrã.
+  var siteHeader = document.querySelector('.site-header');
+  if (siteHeader) {
+    var setHeaderH = function () { docEl.style.setProperty('--header-h', Math.round(siteHeader.getBoundingClientRect().bottom + window.scrollY) + 'px'); };
+    setHeaderH();
+    if (window.ResizeObserver) new ResizeObserver(setHeaderH).observe(siteHeader);
+  }
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   var canMove = function () { return Boolean(document.startViewTransition) && !reduce.matches; };
 
