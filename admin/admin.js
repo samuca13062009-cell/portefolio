@@ -514,7 +514,15 @@
     const r = await api('GET', '/api/admin/messages');
     if (!r.ok) return;
     const all = r.data.messages;
+    const gmail = r.data.replyGmail || '';
     setUnread(all.filter((m) => !m.read).length);
+    // Responder: abre o Gmail na conta certa, com o destinatário, o assunto e a mensagem original citada.
+    const replyLink = (m, subject) => {
+      if (!gmail) return `mailto:${m.email}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
+      const quoted = subject ? `\n\n\nEm ${date(m.date)}, ${m.name} escreveu:\n> ${m.message.slice(0, 1200).split('\n').join('\n> ')}` : '';
+      const q = new URLSearchParams({ authuser: gmail, view: 'cm', fs: '1', to: m.email, su: subject || '', body: quoted });
+      return `https://mail.google.com/mail/?${q}`;
+    };
     const open = (m) => {
       const mark = async (read) => {
         const res = await api('PATCH', `/api/admin/messages/${m.id}`, { read });
@@ -524,10 +532,10 @@
       main.replaceChildren(
         head('Mensagem', m.subject, h('button', { type: 'button', class: 'btn', onclick: () => go('messages') }, 'Voltar à lista')),
         h('section', { class: 'box msg' },
-          h('div', { class: 'msg-meta' }, h('span', null, h('strong', null, m.name)), h('a', { href: `mailto:${m.email}` }, m.email), h('span', null, date(m.date)), h('span', null, DELIVERY[m.delivery] || m.delivery), m.consent && h('span', null, `Consentimento: ${date(m.consent.at)}`)),
+          h('div', { class: 'msg-meta' }, h('span', null, h('strong', null, m.name)), h('a', { href: replyLink(m, ''), target: gmail ? '_blank' : null, rel: gmail ? 'noopener' : null }, m.email), h('span', null, date(m.date)), h('span', null, DELIVERY[m.delivery] || m.delivery), m.consent && h('span', null, `Consentimento: ${date(m.consent.at)}`)),
           h('div', { class: 'msg-body' }, m.message),
           h('div', { class: 'row-actions' },
-            h('a', { class: 'btn primary small', href: `mailto:${m.email}?subject=${encodeURIComponent('Re: ' + m.subject)}` }, 'Responder por email'),
+            h('a', { class: 'btn primary small', href: replyLink(m, `Re: ${m.subject}`), target: gmail ? '_blank' : null, rel: gmail ? 'noopener' : null }, gmail ? 'Responder no Gmail' : 'Responder por email', gmail && h('span', { class: 'sr' }, ' (abre noutro separador)')),
             h('button', { type: 'button', class: 'btn small', onclick: async () => { await mark(false); go('messages'); } }, 'Marcar como não lida'),
             dangerButton('Eliminar', async () => {
               const res = await api('DELETE', `/api/admin/messages/${m.id}`);
