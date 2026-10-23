@@ -289,11 +289,11 @@
     const d = r.data;
     setUnread(d.messages.unread);
     const stat = (label, num, note) => h('div', { class: 'stat' }, h('div', { class: 'muted' }, label), h('div', { class: 'stat-num' }, num), h('div', { class: 'muted' }, note));
-    const max = Math.max(1, ...d.visits.days.map((x) => x.total));
-    const chart = h('div', { class: 'chart', role: 'img', 'aria-label': `Visitas por dia nos últimos 30 dias, ${d.visits.total} no total` },
+    const max = Math.max(1, ...d.visits.days.map((x) => x.people));
+    const chart = h('div', { class: 'chart', role: 'img', 'aria-label': `Visitantes por dia nos últimos 30 dias, ${d.visits.people} no total` },
       d.visits.days.map((x) => {
-        const bar = h('div', { class: x.total ? 'bar' : 'bar zero', title: `${x.day}: ${x.total}` });
-        bar.style.height = `${Math.max(2, Math.round((x.total / max) * 100))}%`;
+        const bar = h('div', { class: x.people ? 'bar' : 'bar zero', title: `${x.day}: ${x.people} visitantes, ${x.total} páginas vistas` });
+        bar.style.height = `${Math.max(2, Math.round((x.people / max) * 100))}%`;
         return bar;
       }));
     const top = d.visits.top.length
@@ -312,10 +312,10 @@
       h('div', { class: 'stats' },
         stat('Projetos publicados', d.projects.published, `${d.projects.draft} em rascunho`),
         stat('Mensagens por ler', d.messages.unread, `${d.messages.month} recebidas este mês`),
-        stat('Visitas nos últimos 30 dias', d.visits.total, d.visits.top[0] ? `Página mais vista: ${d.visits.top[0][0]}` : 'Sem visitas ainda'),
+        stat('Visitantes nos últimos 30 dias', d.visits.people, `${d.visits.total} páginas vistas`),
         stat('Descargas do CV', d.cvDownloads, 'Nos últimos 30 dias')),
       h('div', { class: 'two' },
-        h('section', { class: 'box' }, h('h2', null, 'Visitas por dia'), chart, h('div', { class: 'chart-foot' }, h('span', null, d.visits.days[0].day), h('span', null, 'hoje'))),
+        h('section', { class: 'box' }, h('h2', null, 'Visitantes por dia'), chart, h('div', { class: 'chart-foot' }, h('span', null, d.visits.days[0].day), h('span', null, 'hoje'))),
         h('section', { class: 'box' }, h('h2', null, 'Páginas mais vistas'), h('div', { class: 'table-wrap' }, top))),
       h('section', { class: 'box' },
         h('div', { class: 'box-head' }, h('h2', null, 'Mensagens recentes'), h('button', { type: 'button', class: 'btn small', onclick: () => go('messages') }, 'Ver todas')),
@@ -328,7 +328,10 @@
             toast('Estatísticas apagadas.');
             go('dashboard');
           })),
-        h('p', { class: 'muted' }, 'Contam-se só visitas reais ao site publicado: não entram robôs, testes no computador nem as tuas visitas com sessão iniciada aqui. Não se guardam endereços IP nem cookies; só o número de visitas por página e por dia.')));
+        h('p', { class: 'muted' }, 'Contam-se só visitas reais ao site online: não entram robôs, pré-carregamentos, testes neste computador nem os teus browsers marcados. Cada pessoa conta uma vez por dia, mesmo que atualize a página. Não se guardam endereços IP nem cookies de visitantes.'),
+        d.siteOnline && h('div', { class: 'row-actions' },
+          h('a', { class: 'btn small', href: `${d.siteOnline}/nao-contar`, target: '_blank', rel: 'noopener' }, 'Não contar as minhas visitas', h('span', { class: 'sr' }, ' (abre o site noutro separador)'))),
+        d.siteOnline && h('p', { class: 'hint' }, `Abre esta ligação uma vez em cada browser teu. No telemóvel, abre ${d.siteOnline}/nao-contar. Esse browser deixa de contar durante 2 anos, ou até apagares os cookies.`)));
   };
 
   // ---------- Projetos ----------
