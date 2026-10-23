@@ -356,7 +356,6 @@ dl.meta dd { font-size: 1.0625rem; font-weight: 600; }
 html.vt-reveal::view-transition-old(root), html.vt-reveal::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 html.vt-reveal .site-header, html.vt-reveal .nav-mark { view-transition-name: none; }
 html.vt-reveal::view-transition-new(root) { will-change: clip-path; }
-html.vt-reveal .facts, html.vt-reveal * { backdrop-filter: none !important; }
 
 /* Filtros: os cartões que ficam deslizam para o novo lugar; os outros saem depressa. */
 html.vt-list::view-transition-old(root), html.vt-list::view-transition-new(root) { animation-duration: 0.2s; }
@@ -484,7 +483,8 @@ main > .bleed { padding-inline: var(--gut); }
 .photo-credit { position: absolute; right: var(--gut); bottom: 12px; max-width: 60ch; font-size: 0.75rem; color: var(--deep-muted); text-align: right; }
 .photo-credit a { color: var(--deep-muted); }
 .hero.has-photo { position: relative; }
-.hero.has-photo .facts { background: color-mix(in srgb, var(--deep) 78%, transparent); backdrop-filter: blur(8px); }
+/* Sem desfoque por trás (backdrop-filter): com a foto a mexer no scroll, obrigava a refazer o desfoque em cada frame. */
+.hero.has-photo .facts { background: color-mix(in srgb, var(--deep) 90%, transparent); }
 .has-photo .photo-credit { text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); color: var(--deep-ink); }
 .has-photo .photo-credit a { color: var(--deep-ink); }
 .cta.has-photo { position: relative; }
@@ -514,6 +514,9 @@ main > .bleed { padding-inline: var(--gut); }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     /* Abertura: a foto desce mais devagar do que a página e o texto afasta-se */
+    /* Fotos e blocos animados ficam na sua própria camada: o scroll só os move, sem os voltar a desenhar. */
+    .has-photo { contain: paint; }
+    .has-photo .band-img { will-change: transform; backface-visibility: hidden; }
     .hero.has-photo .band-img { animation: paralaxe linear both; animation-timeline: scroll(root); animation-range: 150px 120svh; }
     .hero.has-photo .hero-text, .hero.has-photo > .facts { animation: afasta linear both; animation-timeline: scroll(root); animation-range: 0 75svh; }
     /* Convite final: a foto move-se dentro da faixa */
