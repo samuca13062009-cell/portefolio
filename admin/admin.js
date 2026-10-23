@@ -266,6 +266,21 @@
     return r.ok;
   }
 
+  // ---------- Publicar ----------
+  function publishButton() {
+    const b = h('button', { type: 'button', class: 'btn' }, 'Publicar no site');
+    b.addEventListener('click', async () => {
+      b.disabled = true;
+      b.textContent = 'A publicar…';
+      const r = await api('POST', '/api/admin/publish');
+      b.disabled = false;
+      b.textContent = 'Publicar no site';
+      if (r.ok) toast(r.data.nothing ? 'Não há alterações por publicar.' : 'Enviado. O site online atualiza-se em cerca de um minuto.');
+      else toast(r.data.error === 'push' ? 'Não foi possível enviar para o GitHub. Verifica a ligação à internet.' : 'Não foi possível publicar.', true);
+    });
+    return b;
+  }
+
   // ---------- Dashboard ----------
   VIEWS.dashboard = async () => {
     const r = await api('GET', '/api/admin/dashboard');
@@ -291,7 +306,8 @@
           h('td', { class: 'strong' }, m.name), h('td', null, m.subject), h('td', { class: 'nowrap' }, date(m.date))))))
       : h('p', { class: 'empty-note' }, 'Ainda não recebeste mensagens.');
     main.replaceChildren(
-      head('Sessão iniciada', 'Dashboard', h('button', { type: 'button', class: 'btn primary', onclick: () => editProject(null) }, 'Novo projeto')),
+      head('Sessão iniciada', 'Dashboard', h('div', { class: 'row-actions' }, publishButton(), h('button', { type: 'button', class: 'btn primary', onclick: () => editProject(null) }, 'Novo projeto'))),
+      h('p', { class: 'hint' }, 'As alterações ficam primeiro neste computador. "Publicar no site" envia-as para o GitHub e o Netlify atualiza o site online em cerca de um minuto.'),
       h('div', { class: 'stats' },
         stat('Projetos publicados', d.projects.published, `${d.projects.draft} em rascunho`),
         stat('Mensagens por ler', d.messages.unread, `${d.messages.month} recebidas este mês`),

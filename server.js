@@ -6,10 +6,12 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { createApp } = require('./lib/app');
-const { fileStore } = require('./lib/store');
+const { fileStore, remoteBlobStore, splitStore } = require('./lib/store');
 
 const ROOT = __dirname;
 const PUBLIC = path.join(ROOT, 'public');
+// O backoffice fica fora de public/: não vai para o Netlify e só existe neste computador.
+const ADMIN = path.join(ROOT, 'admin');
 
 // ---------- Configuração (.env) ----------
 function loadEnv() {
@@ -26,8 +28,14 @@ loadEnv();
 const PORT = Number(process.env.PORT) || 4180;
 // Pasta dos dados. Num alojamento com disco, DATA_DIR aponta para o disco persistente.
 const DATA = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(ROOT, 'data');
+// Com NETLIFY_SITE_ID e NETLIFY_AUTH_TOKEN no .env, as mensagens e as estatísticas do site
+// publicado são lidas do Netlify, para o backoffice deste computador as mostrar.
+const REMOTE_KEYS = ['messages', 'stats'];
+const remote = process.env.NETLIFY_SITE_ID && process.env.NETLIFY_AUTH_TOKEN
+  ? remoteBlobStore({ siteID: process.env.NETLIFY_SITE_ID, token: process.env.NETLIFY_AUTH_TOKEN })
+  : null;
 const app = createApp({
-  store: fileStore(DATA),
+  store: remote ? splitStore(fileStore(DATA), remote, REMOTE_KEYS) : fileStore(DATA),
   siteUrl: process.env.SITE_URL || `http://localhost:${PORT}`,
   local: true,
   root: ROOT,
@@ -44,8 +52,10 @@ function readStatic(pathname) {
   if (pathname === '/admin' || pathname === '/admin/') pathname = '/admin/index.html';
   const ext = path.extname(pathname).toLowerCase();
   if (!MIME[ext]) return null;
-  const file = path.normalize(path.join(PUBLIC, pathname));
-  if (!file.startsWith(PUBLIC + path.sep)) return null;
+  const isAdmin = pathname.startsWith('/admin/');
+  const base = isAdmin ? ADMIN : PUBLIC;
+  const file = path.normalize(path.join(base, isAdmin ? pathname.slice('/admin'.length) : pathname));
+  if (!file.startsWith(base + path.sep)) return null;
   try {
     return {
       status: 200,
@@ -101,7 +111,9 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`Portefólio em http://localhost:${PORT}`);
+// Só aceita ligações deste computador (127.0.0.1): outros aparelhos da rede não chegam ao backoffice.
+server.listen(PORT, '127.0.0.1', () => {
+  console.log(`Portefólio em http://localhost:${PORT} (backoffice em /admin, só neste computador)`);
+  if (remote) console.log('Mensagens e estatísticas: lidas do site publicado no Netlify.');
   if (!app.brevoReady) console.log('Aviso: Brevo por configurar (.env). As mensagens ficam só guardadas em data/messages.json.');
 });

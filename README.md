@@ -115,7 +115,7 @@ lib/render.js      geração das páginas (PT e EN)
 lib/admin.js       autenticação e API do backoffice
 lib/legal.js       textos legais (privacidade, cookies, termos)
 lib/themes.js      temas visuais
-public/admin/      interface do backoffice
+admin/            interface do backoffice (só no servidor local)
 data/content.json  todos os conteúdos do site
 public/            CSS, JavaScript, favicon e PDF do CV
 tools/build-cv.js  gera os PDF do CV
