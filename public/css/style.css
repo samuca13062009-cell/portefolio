@@ -84,7 +84,9 @@ table { font-variant-numeric: tabular-nums; }
 /* ---------- Cabeçalho ---------- */
 .site-header { position: relative; z-index: 20; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 32px; padding: 20px 0; border-bottom: 1px solid var(--line); }
 .brand { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-family: var(--display); font-weight: 700; font-size: 1.1875rem; text-decoration: none; white-space: nowrap; }
-.brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 4px; background: var(--ink); color: var(--bg); font-family: var(--display); font-size: 0.875rem; letter-spacing: 0.02em; }
+/* Identidade "Sinal" (brand/README.md): símbolo e logótipo desenhados, cor por currentColor */
+.brand-mark { display: block; flex: none; height: 30px; width: auto; color: var(--accent); }
+.brand-word { display: block; flex: none; height: 19px; width: auto; color: var(--ink); }
 .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0 28px; }
 .nav-link { position: relative; display: inline-flex; align-items: center; min-height: 44px; font-size: 0.9375rem; font-weight: 500; text-decoration: none; }
 .nav-link[aria-current="page"] { font-weight: 600; }
@@ -283,7 +285,8 @@ dl.meta dd { font-size: 1.0625rem; font-weight: 600; }
   :root { --gut: 16px; }
   .site-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; padding: 12px 0; }
   .brand { font-size: 1rem; gap: 10px; }
-  .brand-mark { width: 30px; height: 30px; font-size: 0.75rem; }
+  .brand-mark { height: 26px; }
+  .brand-word { height: 16px; }
   .tema-txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   #skin-toggle { padding: 0; }
   .tools { gap: 6px; }

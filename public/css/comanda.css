@@ -36,7 +36,8 @@ body.cx .band-img, body.cx .band-img[data-for], body.cx .photo-credit, body.cx .
 
 /* ---------- Cabeçalho: cápsula flutuante ---------- */
 body.cx .site-header { position: sticky; top: 14px; z-index: 30; margin-top: 14px; padding: 8px 8px 8px 18px; border: 1px solid var(--line-strong); border-radius: 999px; background: color-mix(in srgb, var(--cx-bg) 78%, transparent); backdrop-filter: blur(12px); }
-body.cx .brand-mark { background: var(--cx-hi); color: var(--cx-bg); border-radius: 50%; }
+body.cx .brand-mark { color: var(--cx-hi); }
+body.cx .brand-word { color: var(--cx-ink); }
 body.cx .nav-link { font-weight: 600; }
 body.cx .nav-link[aria-current="page"] { color: var(--cx-hi); }
 body.cx .nav-mark { background: var(--cx-hi); }
