@@ -299,3 +299,56 @@
     });
   }
 })();
+
+// ---------- Capítulos e leitura ao vivo ----------
+// Cada secção com data-forma vira um capítulo (A, B, C…) na barra de cima: círculos ligados por uma
+// linha, o ativo destacado com o nome por baixo. Clicar leva à secção.
+(function () {
+  var rail = document.getElementById('capitulos');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('main [data-forma]'));
+  if (rail && secs.length > 1) {
+    var NS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'cap-linha'); svg.setAttribute('aria-hidden', 'true');
+    var line = document.createElementNS(NS, 'polyline');
+    svg.appendChild(line); rail.appendChild(svg);
+    var btns = secs.map(function (sec, i) {
+      var head = sec.querySelector('h1, h2');
+      var name = (sec.getAttribute('data-capitulo') || (head ? head.textContent : '')).trim();
+      if (!sec.id) sec.id = 'cap-' + (i + 1);
+      var a = document.createElement('a');
+      a.className = 'cap'; a.href = '#' + sec.id;
+      a.innerHTML = '<span class="cap-letra"></span><span class="cap-nome"></span>';
+      a.querySelector('.cap-letra').textContent = String.fromCharCode(65 + i);
+      a.querySelector('.cap-nome').textContent = name;
+      a.setAttribute('aria-label', String.fromCharCode(65 + i) + ': ' + name);
+      rail.appendChild(a);
+      return a;
+    });
+    var drawLine = function () {
+      var box = rail.getBoundingClientRect();
+      line.setAttribute('points', btns.map(function (b) { var r = b.querySelector('.cap-letra').getBoundingClientRect(); return (r.left + r.width / 2 - box.left) + ',' + (r.top + r.height / 2 - box.top); }).join(' '));
+      svg.setAttribute('width', box.width); svg.setAttribute('height', box.height);
+    };
+    rail.hidden = false;
+    drawLine();
+    window.addEventListener('resize', drawLine);
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var i = secs.indexOf(e.target);
+          btns.forEach(function (b, j) { if (j === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      secs.forEach(function (s) { io.observe(s); });
+    }
+  }
+  // Hora de Torres Vedras na barra de leitura, atualizada a cada 20 segundos.
+  var clock = document.getElementById('hora');
+  if (clock) {
+    var fmt = new Intl.DateTimeFormat('pt-PT', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Lisbon' });
+    var tick = function () { var d = new Date(); clock.textContent = fmt.format(d); clock.setAttribute('datetime', d.toISOString()); };
+    tick(); setInterval(tick, 20000);
+  }
+})();

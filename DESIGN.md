@@ -155,6 +155,8 @@ components:
 
 # Design System: Samuel Camargo, Portefólio
 
+> **Redesenho de novembro de 2026: mundo "Frequência".** O site público passou a viver num campo de partículas escuro (canvas fixo `public/js/campo.js`) que muda de forma por secção (anel, onda, nuvem, linhas, esfera, marcadas com `data-forma`), na cor do tema (`--campo`: o sol no escuro, o acento no claro). As faixas ficaram transparentes e as fotos de fundo dos temas deixaram de aparecer. Títulos em JetBrains Mono 500, maiúsculas, espaçados; etiquetas pequenas em maiúsculas com um ponto; botões e chips em cápsula fina; navegação por capítulos (círculos A, B, C… ligados por uma linha, gerada a partir das secções com `data-forma`); barra de leitura ao vivo no rodapé (hora de Torres Vedras e o que procura). Modo escuro por omissão; o claro continua disponível. Tudo escrito em `body.mundo` no fim de `public/css/style.css`; o backoffice mantém o sistema descrito abaixo. Com "reduzir movimento" o campo fica parado. Inspirado na linguagem visual de byotone.com, com implementação, textos e imagens próprios.
+
 ## Overview
 
 **Creative North Star: "The Work on the Table, in Its Own Colours"**
