@@ -322,3 +322,5 @@ body.cx .project > h1.display { align-self: flex-start; display: inline; padding
 .cx-squiggle path { stroke: var(--cx-hi); stroke-width: 2; }
 .cx-squiggle circle { fill: var(--cx-bg); stroke: var(--cx-hi); stroke-width: 2; vector-effect: non-scaling-stroke; }
 .cx-marquee .cx-track::before { content: "> "; }
+/* CV: o título está dentro de um bloco, por isso precisa de inline-block para a fita rodar e inclinar */
+body.cx .cv-head .display { display: inline-block; font-style: oblique 10deg; transform: rotate(-2deg); margin-bottom: 22px; }
