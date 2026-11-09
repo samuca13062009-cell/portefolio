@@ -1,7 +1,7 @@
 'use strict';
 // Interações da identidade "Comanda nº 21" (só no site público, body.cx).
 // Tudo é opcional: sem JavaScript a página funciona e fica parada. Com "reduzir movimento" não há
-// impressão animada, inclinação dos talões, cursor seguidor nem marquise ligada ao scroll.
+// impressão animada, inclinação dos talões nem marquise ligada ao scroll.
 (function () {
   if (!document.body.classList.contains('cx')) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -50,21 +50,6 @@
       });
       el.addEventListener('pointerleave', function () { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
     });
-  }
-
-  // Cursor seguidor: um anel que acompanha o rato e cresce sobre o que se pode clicar.
-  if (finePointer && !reduce) {
-    var ring = document.createElement('div');
-    ring.className = 'cx-cursor'; ring.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(ring);
-    var tx = -100, ty = -100, cx = -100, cy = -100;
-    document.addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; });
-    document.addEventListener('pointerover', function (e) { ring.classList.toggle('sobre', !!e.target.closest('a, button, [data-drag], .tk')); });
-    (function follow() {
-      cx += (tx - cx) * 0.22; cy += (ty - cy) * 0.22;
-      ring.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
-      requestAnimationFrame(follow);
-    })();
   }
 
   // Ligado ao scroll: o risco laranja desenha-se e a marquise grande desliza.

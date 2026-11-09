@@ -194,10 +194,6 @@ body.cx .pill-btn, body.cx .icon-btn { border-radius: 999px; background: transpa
 .cx-links a { display: inline-flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-stretch: 112%; font-size: clamp(1.4rem, 3vw, 2.4rem); color: var(--cx-ink); text-decoration: none; background: linear-gradient(var(--cx-hi), var(--cx-hi)) left bottom / 0 3px no-repeat; transition: background-size 0.35s var(--ease-out), color 0.2s; }
 .cx-links a:hover, .cx-links a:focus-visible { color: var(--cx-hi); background-size: 100% 3px; }
 
-/* ---------- Cursor seguidor (só com rato, sem "reduzir movimento") ---------- */
-.cx-cursor { position: fixed; left: 0; top: 0; z-index: 60; width: 28px; height: 28px; margin: -14px 0 0 -14px; border: 1.5px solid var(--cx-hi); border-radius: 50%; pointer-events: none; transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), margin 0.25s var(--ease-out), background-color 0.25s; }
-.cx-cursor.sobre { width: 56px; height: 56px; margin: -28px 0 0 -28px; background: color-mix(in srgb, var(--cx-hi) 18%, transparent); }
-
 /* ---------- As outras páginas no mesmo mundo ---------- */
 body.cx .page-head.deep { padding-top: clamp(64px, 9vw, 120px); padding-bottom: clamp(40px, 6vw, 80px); }
 body.cx .page-head .display { align-self: flex-start; display: inline; padding: 0.04em 0.3em 0.08em; background: var(--cx-hi); color: var(--cx-bg); font-stretch: 125%; font-style: oblique 10deg; text-transform: uppercase; transform: rotate(-2deg); box-decoration-break: clone; -webkit-box-decoration-break: clone; line-height: 1.05; }
@@ -227,7 +223,6 @@ body.cx .text-link:hover { color: var(--cx-hi); }
   .cx-hero .cx-rib, .rc-paper.imprime, .rc-paper.imprime .rc-lines li { animation: none; }
   .cx-marquee .cx-track { animation: none; }
   .tk { transition: none; }
-  .cx-cursor { display: none; }
 }
 /* Página de um projeto: título em fita, como as outras páginas */
 body.cx .project > h1.display { align-self: flex-start; display: inline; padding: 0.04em 0.3em 0.08em; background: var(--cx-hi); color: var(--cx-bg); font-stretch: 125%; font-style: oblique 10deg; text-transform: uppercase; transform: rotate(-1.5deg); box-decoration-break: clone; -webkit-box-decoration-break: clone; line-height: 1.12; }
