@@ -155,6 +155,8 @@ components:
 
 # Design System: Samuel Camargo, Portefólio
 
+> **Redesenho "Comanda nº 21" (novembro de 2026, ramo local redesign-comanda, não publicado).** O site público é o sistema de pedidos de um empregado de mesa que programa: azul-meia-noite com grelha de planta, ciano elétrico, acento laranja e papel de talão. Nomes e títulos em fitas inclinadas (Archivo 800 a 125%, oblíqua); talões, carimbos e marquises em JetBrains Mono (o que é impresso); texto em Hanken Grotesk. Página inicial: fitas com o nome e "serve mesas / escreve código", talão "Comanda nº 21" que se imprime e reimprime com os factos reais, carimbos arrastáveis, marquise, frase grande com ícones e um risco que se desenha com o scroll, marquise contornada, projetos como talões numa calha (captura em duotone que ganha cor e talão que inclina com o cursor), competências como menu de pratos que se pedem, percurso como carimbos, contacto "fazer um pedido". Cursor seguidor só com rato. Os quatro temas mudam o ciano e o acento; modo claro em papel de planta. Tudo em `public/css/comanda.css` e `public/js/cx.js`, em `body.cx`; o backoffice mantém o sistema abaixo. Com "reduzir movimento" fica tudo parado. Inspirado nos princípios de rogerjunior.com, com paleta, textos e elementos próprios.
+
 ## Overview
 
 **Creative North Star: "The Work on the Table, in Its Own Colours"**
