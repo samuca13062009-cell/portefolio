@@ -97,7 +97,7 @@ body.cx .pill-btn, body.cx .icon-btn { border-radius: 6px; background: transpare
 .cx-stamp.agarrado { cursor: grabbing; transition: none; }
 .cx-stamp.s1 { right: 4%; top: 6%; transform: rotate(8deg); }
 .cx-stamp.s2 { left: 46%; bottom: 8%; transform: rotate(-6deg); border-color: var(--cx-acc); color: var(--cx-acc); }
-.cx-stamp.s3 { right: 30%; top: 18%; transform: rotate(-12deg); font-size: 1rem; }
+.cx-stamp.s3 { right: 30%; top: 3%; transform: rotate(-12deg); font-size: 1rem; }
 
 /* ---------- Marquises ---------- */
 .cx-marquee { overflow: hidden; margin-inline: calc(var(--gut) * -1); background: var(--cx-hi); color: var(--cx-bg); transform: rotate(-1.2deg); border-block: 2px solid var(--cx-bg); }
@@ -217,6 +217,18 @@ body.cx .text-link:hover { color: var(--cx-hi); }
   .cx-squiggle { display: none; }
   .cx-tickets { grid-template-columns: 1fr; gap: 56px; }
   .tk:nth-of-type(even) { margin-top: 0; }
+}
+/* Nada sai para o lado: as fitas, a marquise e o terminal rodados não podem criar scroll horizontal
+   (sem isto, num telemóvel a página fica mais larga que o ecrã e desalinha ao saltar para os projetos). */
+html:has(body.cx), body.cx { overflow-x: clip; }
+@media (max-width: 640px) {
+  .cx-name { font-size: clamp(2.25rem, 11.5vw, 3rem); }
+  .cx-name .r2 { transform: rotate(2deg); }
+  .cx-rib { max-width: 100%; overflow-wrap: anywhere; }
+  .cx-receipt { width: calc(100% - 12px); transform: rotate(1.5deg); }
+  .rc-print { right: 0; }
+  body.cx .page-head .display, body.cx .project > h1.display { max-width: 100%; font-size: clamp(1.4rem, 7vw, 2.4rem); overflow-wrap: anywhere; }
+  .cx-links a { font-size: clamp(1.1rem, 5.4vw, 1.4rem); overflow-wrap: anywhere; }
 }
 
 /* ---------- Menos movimento: tudo parado ---------- */
