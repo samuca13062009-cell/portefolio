@@ -326,7 +326,22 @@
       "featured": false,
       "category": "android",
       "cover": "Pista",
-      "images": [],
+      "images": [
+        {
+          "src": "/img/projetos/pista-criar",
+          "alt": {
+            "pt": "Aplicação Pista: lista de percursos, editor de percurso com três pistas e partilha por QR",
+            "en": "Pista app: trail list, trail editor with three clues and sharing by QR"
+          }
+        },
+        {
+          "src": "/img/projetos/pista-jogar",
+          "alt": {
+            "pt": "Aplicação Pista a jogar: pista com cronómetro, ajuda aberta e ecrã final com o tempo",
+            "en": "Pista app in play: clue with timer, hint shown and final screen with the time"
+          }
+        }
+      ],
       "role": {
         "pt": "",
         "en": ""
