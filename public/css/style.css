@@ -545,11 +545,11 @@ time, .row-when, .facts dd, .meta dd { font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) { .btn.is-busy::before, .loading::before { animation-duration: 2.4s; } }
 
 /* =====================================================================
-   Mundo "Frequência" (redesenho de novembro de 2026, segunda versão)
-   O campo de partículas (public/js/campo.js) é a assinatura: na abertura forma as iniciais "SC";
-   cada captura de projeto é primeiro desenhada pelos pontos e só depois aparece a imagem real.
-   Títulos na letra da marca (Archivo larga e pesada); monoespaçado só para sinais: etiquetas,
-   navegação, botões, capítulos e a barra de leitura. Só em body.mundo; o backoffice não muda.
+   Mundo "Frequência" (redesenho de novembro de 2026)
+   O site público vive num campo de partículas escuro: o canvas fixo (#campo) fica por trás de tudo
+   e muda de forma por secção; as faixas deixam de ter fundo próprio para o campo se ver; títulos
+   largos em monoespaçado, etiquetas pequenas com ponto, navegação por capítulos e barra de leitura.
+   Só se aplica a body.mundo (o backoffice não muda). Cores: as dos quatro temas, modo escuro por omissão.
    ===================================================================== */
 .mundo { --campo: var(--sun); --etq: 0.6875rem; background: var(--bg); }
 /* No modo claro as faixas usam as cores do resto da página (são transparentes) e o destaque é o acento do tema,
@@ -566,75 +566,81 @@ time, .row-when, .facts dd, .meta dd { font-variant-numeric: tabular-nums; }
 .mundo .deep a:not(.btn):hover { color: var(--campo); }
 .mundo .deep .lead, .mundo .page-head.deep .lead { color: var(--muted); }
 
-/* Títulos: a letra da marca; a última palavra da abertura e os títulos de página na cor do campo */
-.mundo .display { letter-spacing: -0.025em; }
-.mundo .display.xl { font-size: clamp(3rem, 7.4vw, 6.25rem); line-height: 0.94; }
-.mundo .page-head .display { color: var(--campo); }
-.mundo .tint h2.display, .mundo .section h2.display { font-size: clamp(2rem, 3.6vw, 3rem); }
-
-/* Sinais em monoespaçado: etiquetas com ponto, navegação, botões, chips, capítulos, leitura */
-.mundo .etq, .mundo .meta dt, .mundo .facts dt, .mundo .cover-tech, .mundo .card-meta, .mundo .row-when, .mundo .meta { font-family: var(--mono); font-size: var(--etq); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+/* Tipografia: títulos largos em monoespaçado, maiúsculas, espaçados */
+.mundo .display { font-family: var(--mono); font-weight: 500; font-stretch: normal; text-transform: uppercase; letter-spacing: 0.04em; word-spacing: 0.18em; line-height: 1.12; }
+.mundo .display.xl { font-size: clamp(2.2rem, 6.2vw, 5.4rem); }
+.mundo .display.lg { font-size: clamp(1.9rem, 4.6vw, 3.8rem); color: var(--campo); }
+.mundo h2.display { font-size: clamp(1.5rem, 2.8vw, 2.4rem); }
+.mundo .feature-title, .mundo .card-title, .mundo .pager-name { font-family: var(--mono); font-weight: 500; font-stretch: normal; text-transform: uppercase; letter-spacing: 0.03em; }
+/* Etiquetas: pequenas, maiúsculas, com um ponto da cor do campo */
+.mundo .etq, .mundo .meta dt, .mundo .facts dt, .mundo .cover-tech, .mundo .card-meta, .mundo .row-when { font-family: var(--mono); font-size: var(--etq); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 .mundo .facts dt::before, .mundo .etq::before { content: ""; display: inline-block; width: 5px; height: 5px; margin-right: 8px; border-radius: 50%; background: var(--campo); vertical-align: 0.15em; }
-.mundo .site-header { border-bottom: 0; padding-block: 18px; }
+
+/* Cabeçalho: transparente, navegação em etiquetas */
+.mundo .site-header { border-bottom: 0; padding-block: 18px; gap: 10px 28px; }
 .mundo .nav-link { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
 .mundo .nav-link[aria-current="page"] { color: var(--campo); }
 .mundo .nav-mark { background: var(--campo); }
 .mundo .pill-btn, .mundo .icon-btn { border-radius: 999px; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; background: color-mix(in srgb, var(--bg) 70%, transparent); }
-.mundo .brand-mark { border-radius: 50%; background: transparent; color: var(--campo); border: 1px solid var(--campo); }
-.mundo .btn { border-radius: 999px; min-height: 50px; padding: 0 26px; border-width: 1px; font-family: var(--mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: color-mix(in srgb, var(--bg) 75%, transparent); }
-.mundo .btn.primary, .mundo .cta .btn.inverse { background: var(--campo); border-color: var(--campo); color: var(--bg); }
-.mundo .btn.primary:hover, .mundo .cta .btn.inverse:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); filter: none; }
-.mundo .btn.big { min-height: 56px; padding: 0 32px; }
-.mundo .chip { border-radius: 999px; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
-.mundo .chip[aria-pressed="true"] { background: var(--campo); border-color: var(--campo); color: var(--bg); }
+.mundo .brand { font-family: var(--mono); font-weight: 500; font-stretch: normal; font-size: 0.875rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.mundo .brand-mark { border-radius: 50%; background: transparent; color: var(--campo); border: 1px solid var(--campo); font-family: var(--mono); font-weight: 500; font-size: 0.6875rem; }
 
-/* Abertura: texto à esquerda, as iniciais em pontos à direita, os factos numa linha em baixo */
-.mundo .hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; text-align: left; min-height: calc(100svh - var(--header-h, 85px)); padding-block: 48px 40px; }
-.mundo .hero .hero-text { max-width: 40rem; align-items: flex-start; gap: 22px; }
-.mundo .hero .display.xl { color: var(--ink); }
-.mundo .hero.deep .words .w:last-child { color: var(--campo); }
-.mundo .hero-role, .mundo .hero.deep .hero-role { font-family: var(--mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--campo); }
-.mundo .hero .lead { max-width: 34rem; }
-.mundo .hero .facts, .mundo .hero.has-photo .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 32px; margin-top: 72px; padding: 22px 0 0; background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; box-shadow: none; backdrop-filter: none; }
-.mundo .hero .facts > div { padding: 0; border: 0; gap: 8px; }
-.mundo .hero .facts dd { font-size: 0.9375rem; font-weight: 600; color: var(--ink); }
-@media (max-width: 960px) { .mundo .hero .facts, .mundo .hero.has-photo .facts { grid-template-columns: 1fr 1fr; margin-top: 48px; } }
-
-/* Capturas: primeiro desenhadas pelos pontos, depois a imagem real por cima */
-.mundo .cover, .mundo .cover.has-shot { border-radius: 4px; border: 1px solid var(--line-strong); box-shadow: none; background: transparent; transition: background-color 0.6s, box-shadow 0.9s; }
-.mundo .cover.has-shot.vista { background: var(--surface); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.85); }
-.js-campo .mundo .cover.has-shot .shot { opacity: 0; transform: scale(1.015); transition: opacity 0.9s var(--ease-out), transform 1.4s var(--ease-out); }
-.js-campo .mundo .cover.has-shot.vista .shot { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .js-campo .mundo .cover.has-shot .shot { opacity: 1; transform: none; transition: none; } }
-.mundo .feature-title { font-size: clamp(1.75rem, 2.8vw, 2.5rem); }
-
-/* Secções, painéis e convite final */
-.mundo .section { border-top: 1px solid var(--line); }
-.mundo .tint { border-block: 0; }
-.mundo .panel, .mundo .cv-sheet { background: color-mix(in srgb, var(--surface) 90%, transparent); border: 1px solid var(--line-strong); border-radius: 4px; box-shadow: none; backdrop-filter: blur(8px); }
-.mundo .cta { flex-direction: column; align-items: flex-start; min-height: 78svh; justify-content: center; gap: 32px; }
-.mundo .cta .display { flex: none; max-width: 15ch; font-size: clamp(2.5rem, 5.6vw, 4.75rem); color: var(--ink); }
-.mundo .page-head.deep { padding-top: clamp(72px, 10vw, 140px); padding-bottom: clamp(48px, 6vw, 88px); }
-
-/* Capítulos: coluna fixa à esquerda, círculos ligados por uma linha em zigue-zague */
-.capitulos { position: fixed; left: max(14px, calc(var(--gut) / 2 - 22px)); top: 50%; z-index: 16; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; }
+/* Capítulos: círculos ligados por uma linha; o ativo cheio, com o nome por baixo */
+.capitulos { position: relative; display: flex; align-items: flex-start; gap: 10px; }
 .capitulos[hidden] { display: none; }
 .cap-linha { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
 .cap-linha polyline { fill: none; stroke: var(--line-strong); stroke-width: 1; }
-.cap { position: relative; display: flex; align-items: center; text-decoration: none; color: var(--muted); }
-.cap:nth-of-type(even) { margin-left: 14px; }
+.cap { position: relative; display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--muted); min-width: 30px; }
+.cap:nth-of-type(even) { margin-top: 12px; }
 .cap-letra { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--bg); font-family: var(--mono); font-size: 0.6875rem; transition: background-color 0.25s, color 0.25s, border-color 0.25s, transform 0.25s var(--ease-out); }
 .cap:hover .cap-letra { border-color: var(--campo); color: var(--campo); }
-.cap[aria-current="true"] .cap-letra { background: var(--campo); border-color: var(--campo); color: var(--bg); transform: scale(1.1); }
-.cap-nome { position: absolute; left: 40px; white-space: nowrap; font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--campo); opacity: 0; transform: translateX(-4px); transition: opacity 0.25s, transform 0.25s var(--ease-out); pointer-events: none; }
-.cap:hover .cap-nome, .cap:focus-visible .cap-nome { opacity: 1; transform: none; }
-.cap-nome { background: var(--bg); padding: 4px 8px; border: 1px solid var(--line); border-radius: 999px; }
-@media (max-width: 1239px) { .capitulos { display: none !important; } }
+.cap[aria-current="true"] .cap-letra { background: var(--campo); border-color: var(--campo); color: var(--bg); transform: scale(1.08); }
+.cap-nome { position: absolute; top: 36px; white-space: nowrap; font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--campo); opacity: 0; transform: translateY(-3px); transition: opacity 0.25s, transform 0.25s var(--ease-out); pointer-events: none; }
+.cap[aria-current="true"] .cap-nome, .cap:hover .cap-nome, .cap:focus-visible .cap-nome { opacity: 1; transform: none; }
+@media (max-width: 1100px) { .capitulos { display: none !important; } }
 
-/* Barra de leitura: fina, opaca, fixa no computador (não deixa conteúdo transparecer) */
-.leitura { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding: 12px var(--gut); font-family: var(--mono); font-size: var(--etq, 0.6875rem); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; border-top: 1px solid var(--line); }
+/* Botões: cápsulas finas, texto em etiqueta */
+.mundo .btn { border-radius: 999px; min-height: 48px; padding: 0 24px; border-width: 1px; font-family: var(--mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: color-mix(in srgb, var(--bg) 75%, transparent); }
+.mundo .btn.primary, .mundo .cta .btn.inverse { background: color-mix(in srgb, var(--campo) 14%, var(--bg)); border-color: var(--campo); color: var(--campo); }
+.mundo .btn.primary:hover, .mundo .cta .btn.inverse:hover { background: var(--campo); color: var(--bg); filter: none; }
+.mundo .btn.big { min-height: 54px; padding: 0 30px; }
+
+/* Abertura: centrada no anel do campo, com os factos a flutuar à volta */
+.mundo .hero { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: calc(100svh - var(--header-h, 85px)); padding-block: 72px; }
+.mundo .hero .hero-text { align-items: center; max-width: 52rem; }
+.mundo .hero .display.xl { color: var(--campo); }
+.mundo .hero.deep .words .w:last-child { color: var(--ink); }
+.mundo .hero-role, .mundo .hero.deep .hero-role { font-family: var(--mono); font-size: 0.8125rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+.mundo .hero .lead { max-width: 34rem; font-size: 1.125rem; }
+.mundo .hero .actions { justify-content: center; }
+.mundo .hero .facts, .mundo .hero.has-photo .facts { position: absolute; inset: 0; display: block; background: none; border: 0; box-shadow: none; padding: 0; pointer-events: none; backdrop-filter: none; }
+.mundo .hero .facts > div { position: absolute; max-width: 15rem; padding: 0; border: 0; text-align: left; }
+.mundo .hero .facts > div:nth-child(1) { left: var(--gut); top: 14%; }
+.mundo .hero .facts > div:nth-child(2) { right: var(--gut); top: 14%; text-align: right; }
+.mundo .hero .facts > div:nth-child(3) { left: var(--gut); bottom: 12%; }
+.mundo .hero .facts > div:nth-child(4) { right: var(--gut); bottom: 12%; text-align: right; }
+.mundo .hero .facts dd { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+@media (max-width: 960px) {
+  .mundo .hero .facts, .mundo .hero.has-photo .facts { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; margin-top: 40px; pointer-events: auto; }
+  .mundo .hero .facts > div { position: static; max-width: none; text-align: left !important; }
+}
+
+/* Secções, capturas e painéis no campo escuro */
+.mundo .section { border-top: 1px solid var(--line); }
+.mundo .cover, .mundo .cover.has-shot { border-radius: 4px; border: 1px solid var(--line-strong); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8); background: var(--surface); }
+.mundo .tint { border-block: 0; }
+.mundo .panel, .mundo .cv-sheet { background: color-mix(in srgb, var(--surface) 88%, transparent); border: 1px solid var(--line-strong); border-radius: 4px; box-shadow: none; backdrop-filter: blur(6px); }
+.mundo .chip { border-radius: 999px; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.mundo .chip[aria-pressed="true"] { background: var(--campo); border-color: var(--campo); color: var(--bg); }
+.mundo .cta { flex-direction: column; align-items: center; text-align: center; min-height: 80svh; justify-content: center; }
+.mundo .cta .display { flex: none; max-width: 48rem; color: var(--campo); }
+.mundo .page-head.deep { padding-top: clamp(72px, 10vw, 140px); padding-bottom: clamp(48px, 6vw, 88px); }
+
+/* Barra de leitura ao vivo (fixa no computador, normal no telemóvel) */
+.leitura { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding: 14px var(--gut); font-family: var(--mono); font-size: var(--etq, 0.6875rem); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
 .leitura time { color: var(--campo); }
 @media (min-width: 961px) {
-  .mundo .leitura { position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(6px); }
-  .mundo .site-footer { padding-bottom: 64px; }
+  .mundo .leitura { position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; pointer-events: none; background: linear-gradient(transparent, color-mix(in srgb, var(--bg) 85%, transparent)); }
+  .mundo .site-footer { padding-bottom: 56px; }
 }
+.mundo .page-head .display { color: var(--campo); }
