@@ -244,6 +244,8 @@
       var payload = { website: $('website').value, t: form.getAttribute('data-t') || '', lang: en ? 'en' : 'pt' };
       FIELDS.forEach(function (f) { payload[f.key] = val(f); });
       button.disabled = true;
+      button.classList.add('is-busy');
+      button.setAttribute('aria-busy', 'true');
       button.textContent = MSG.sending;
 
       fetch('/api/contact', {
@@ -281,6 +283,8 @@
         sendError.hidden = false;
       }).then(function () {
         button.disabled = false;
+        button.classList.remove('is-busy');
+        button.removeAttribute('aria-busy');
         button.innerHTML = buttonHtml;
       });
     });

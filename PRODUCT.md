@@ -27,7 +27,7 @@ Two things a visitor must remember (confirmed): he makes real things that work, 
 
 - Server-rendered pages in plain Node.js (`lib/render.js`), PT and EN routes, data in `data/content.json` edited through the backoffice (`/admin`).
 - Hosted on Netlify (function + Netlify Blobs) or locally with `node server.js`.
-- Visitors may choose one of four visual themes (Cobalto, Terminal, Editorial, Atlântico) and light/dark mode; the site default is set in the backoffice.
+- Visitors may choose one of four visual themes taken from his own projects (O Polvo, Saltaplanetas, SkillConnect, Arduino) and light/dark mode; the site default is set in the backoffice.
 
 ## Capabilities and Constraints
 
@@ -36,7 +36,7 @@ Two things a visitor must remember (confirmed): he makes real things that work, 
 - Must keep the four themes and dark mode (owner's explicit limit).
 - WCAG 2.1 AA: contrast checked per theme and mode, keyboard-friendly forms, screen-reader labels.
 - Legal pages (privacy, cookies, terms) and a consent box on the contact form must remain.
-- Real screenshots exist for O Polvo and Saltaplanetas (public/img/projetos, captured from the running projects). SkillConnect and the Arduino project have no images yet. A photo of the owner (from his LinkedIn) is wanted but not yet in the project; content.site.photo shows it when added.
+- Real screenshots exist for O Polvo, Saltaplanetas and Pista (public/img/projetos, captured from the running projects; Pista from the Android emulator). The Arduino project uses an illustrative, credited photo of an Arduino Uno. A photo of the owner (from his LinkedIn) is wanted but not yet in the project; content.site.photo shows it when added.
 
 ## Brand Commitments
 
@@ -46,11 +46,11 @@ Two things a visitor must remember (confirmed): he makes real things that work, 
 
 ## Evidence on Hand
 
-- Projects (all real, from LinkedIn and GitHub): O Polvo (restaurant site with bookings and admin), SkillConnect (web platform and Android app), Saltaplanetas (3D browser game, Three.js), Arduino control over Bluetooth (Android app in Java, internship at LabCenter, Jul–Sep 2026).
+- Projects (all real, from LinkedIn and GitHub): O Polvo (restaurant site with bookings and admin), Pista (Android treasure-hunt app, group project with three classmates), Saltaplanetas (3D browser game, Three.js), Arduino control over Bluetooth (Android app in Java, internship at LabCenter, Jul–Sep 2026).
 - Experience: waiter at Restaurante O Polvo since July 2025; programming intern (work placement) at LabCenter, Jul–Sep 2026.
 - Education: ESCO, Vocational Diploma in IT Systems Management and Programming, 2024–2027.
 - Languages: Portuguese (native), English (C1).
-- Not available, never to be invented: testimonials, client logos, metrics, screenshots of SkillConnect or the Arduino project.
+- Not available, never to be invented: testimonials, client logos, metrics, screenshots of the Arduino project, his individual role in group projects unless he states it.
 
 ## Product Principles
 

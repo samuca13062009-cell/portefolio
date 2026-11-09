@@ -109,7 +109,12 @@ table { font-variant-numeric: tabular-nums; }
 .btn.inverse { background: var(--inv-ink); border-color: var(--inv-ink); color: var(--inv-bg); }
 .btn.inverse:hover { color: var(--inv-bg); filter: brightness(0.94); }
 .btn.big { min-height: 56px; padding: 0 30px; font-size: 1.0625rem; }
-.btn[disabled] { opacity: 0.6; cursor: progress; }
+.btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+/* A trabalhar: o botão mantém a cor (não parece desligado) e mostra um indicador a rodar. */
+.btn.is-busy { opacity: 1; cursor: progress; }
+.btn.is-busy::before { content: ""; flex: none; width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: roda 0.7s linear infinite; }
+.btn.is-busy .ic { display: none; }
+@keyframes roda { to { transform: rotate(360deg); } }
 .text-link { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; }
 
 /* ---------- Abertura ---------- */
@@ -531,3 +536,10 @@ main > .bleed { padding-inline: var(--gut); }
 @keyframes afasta { to { opacity: 0; transform: translateY(-64px); } }
 @keyframes paralaxe-faixa { from { transform: translateY(-9%) scale(1.2); } to { transform: translateY(9%) scale(1.2); } }
 @keyframes sobe { from { opacity: 0; transform: translateY(56px); } }
+
+/* Títulos partidos em linhas equilibradas; parágrafos sem palavras órfãs. */
+h1, h2, h3 { text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+/* Números alinhados onde se comparam: datas e contagens. */
+time, .row-when, .facts dd, .meta dd { font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) { .btn.is-busy::before, .loading::before { animation-duration: 2.4s; } }

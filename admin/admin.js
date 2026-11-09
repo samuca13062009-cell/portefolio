@@ -31,6 +31,8 @@
     t.textContent = text;
     t.className = bad ? 'toast bad' : 'toast';
     t.hidden = false;
+    // Reinicia a animação de entrada quando chega um aviso novo com outro ainda visível.
+    t.classList.remove('in'); void t.offsetWidth; t.classList.add('in');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => { t.hidden = true; }, 4000);
   }
@@ -106,7 +108,7 @@
         const input = f.area
           ? h('textarea', { id, rows: f.rows || 3, value: (v && v[lang]) || '' })
           : h('input', { id, type: 'text', value: (v && v[lang]) || '' });
-        return { input, el: h('div', null, h('label', { class: 'mono', for: id }, lang === 'pt' ? 'Português' : 'Inglês'), input) };
+        return { input, el: h('div', null, h('label', { class: 'lang', for: id }, lang === 'pt' ? 'Português' : 'Inglês'), input) };
       };
       const pt = make('pt');
       const en = make('en');
@@ -150,7 +152,7 @@
           box.insertBefore(row.el, rows[i].el);
         } }, 'Subir');
         const remove = dangerButton('Remover', () => { rows.splice(rows.indexOf(row), 1); row.el.remove(); });
-        row.el = h('div', { class: 'item' }, h('div', { class: 'item-head' }, h('span', { class: 'mono' }, f.itemLabel), h('div', { class: 'row-actions' }, up, remove)), form.el);
+        row.el = h('div', { class: 'item' }, h('div', { class: 'item-head' }, h('span', { class: 'item-label' }, f.itemLabel), h('div', { class: 'row-actions' }, up, remove)), form.el);
         rows.push(row);
         box.append(row.el);
       };
@@ -229,7 +231,10 @@
     e.preventDefault();
     const err = $('login-error');
     err.hidden = true;
+    const sub = e.target.querySelector('button[type=submit]');
+    sub.disabled = true; sub.classList.add('is-busy'); sub.setAttribute('aria-busy', 'true');
     const r = await api('POST', '/api/admin/login', { user: $('l-user').value.trim(), password: $('l-pass').value });
+    sub.disabled = false; sub.classList.remove('is-busy'); sub.removeAttribute('aria-busy');
     if (r.ok) { csrf = r.data.csrf; view = 'dashboard'; showApp(); return; }
     err.textContent = r.status === 429
       ? 'Demasiadas tentativas. Tenta de novo daqui a 15 minutos.'
@@ -249,12 +254,14 @@
       if (b.dataset.view === name) b.setAttribute('aria-current', 'page');
       else b.removeAttribute('aria-current');
     });
-    main.replaceChildren(h('p', { class: 'muted' }, 'A carregar…'));
-    VIEWS[name]();
+    // Estado de carregamento: o indicador só aparece se a vista demorar (não pisca em respostas rápidas).
+    main.setAttribute('aria-busy', 'true');
+    main.replaceChildren(h('p', { class: 'loading', role: 'status' }, 'A carregar…'));
+    Promise.resolve(VIEWS[name]()).finally(() => main.removeAttribute('aria-busy'));
   }
   document.querySelectorAll('.side-link[data-view]').forEach((b) => b.addEventListener('click', () => go(b.dataset.view)));
 
-  const head = (kicker, title, action) => h('div', { class: 'view-head' }, h('div', null, h('p', { class: 'mono' }, kicker), h('h1', { class: 'display' }, title)), action);
+  const head = (title, action) => h('div', { class: 'view-head' }, h('h1', { class: 'display' }, title), action);
   function setUnread(n) {
     const badge = $('unread-badge');
     badge.textContent = n;
@@ -270,10 +277,10 @@
   function publishButton() {
     const b = h('button', { type: 'button', class: 'btn' }, 'Publicar no site');
     b.addEventListener('click', async () => {
-      b.disabled = true;
+      b.disabled = true; b.classList.add('is-busy'); b.setAttribute('aria-busy', 'true');
       b.textContent = 'A publicar… (até 1 minuto)';
       const r = await api('POST', '/api/admin/publish');
-      b.disabled = false;
+      b.disabled = false; b.classList.remove('is-busy'); b.removeAttribute('aria-busy');
       b.textContent = 'Publicar no site';
       if (r.ok) toast('Publicado. O site online já está atualizado.');
       else toast(r.data.error === 'push' ? 'Não foi possível enviar para o GitHub. Verifica a ligação à internet.'
@@ -307,7 +314,7 @@
           h('td', { class: 'strong' }, m.name), h('td', null, m.subject), h('td', { class: 'nowrap' }, date(m.date))))))
       : h('p', { class: 'empty-note' }, 'Ainda não recebeste mensagens.');
     main.replaceChildren(
-      head('Sessão iniciada', 'Dashboard', h('div', { class: 'row-actions' }, publishButton(), h('button', { type: 'button', class: 'btn primary', onclick: () => editProject(null) }, 'Novo projeto'))),
+      head('Dashboard', h('div', { class: 'row-actions' }, publishButton(), h('button', { type: 'button', class: 'btn primary', onclick: () => editProject(null) }, 'Novo projeto'))),
       h('p', { class: 'hint' }, 'As alterações ficam primeiro neste computador. "Publicar no site" envia-as para o GitHub e atualiza o site online (demora cerca de um minuto).'),
       h('div', { class: 'stats' },
         stat('Projetos publicados', d.projects.published, `${d.projects.draft} em rascunho`),
@@ -349,7 +356,7 @@
           if (r.ok) { toast('Projeto eliminado.'); go('projects'); } else toast('Não foi possível eliminar.', true);
         })))));
     main.replaceChildren(
-      head('Gestão de projetos', 'Projetos', h('button', { type: 'button', class: 'btn primary', onclick: () => editProject(null) }, 'Novo projeto')),
+      head('Projetos', h('button', { type: 'button', class: 'btn primary', onclick: () => editProject(null) }, 'Novo projeto')),
       h('section', { class: 'box' }, h('div', { class: 'table-wrap' }, content.projects.length
         ? h('table', null, h('thead', null, h('tr', null, ['Projeto', 'Categoria', 'Estado', 'Destaque', 'Ações'].map((t) => h('th', { scope: 'col' }, t)))), h('tbody', null, rows))
         : h('p', { class: 'empty-note' }, 'Ainda não há projetos. Cria o primeiro.'))));
@@ -379,15 +386,15 @@
     save.addEventListener('click', async () => {
       const data = { ...form.get(), ...flags.get() };
       if (!data.title.pt) { toast('O título em português é obrigatório.', true); return; }
-      save.disabled = true;
+      save.disabled = true; save.classList.add('is-busy'); save.setAttribute('aria-busy', 'true');
       const r = isNew ? await api('POST', '/api/admin/projects', data) : await api('PUT', `/api/admin/projects/${p.slug}`, data);
-      save.disabled = false;
+      save.disabled = false; save.classList.remove('is-busy'); save.removeAttribute('aria-busy');
       if (!r.ok) { toast('Não foi possível guardar. Verifica os campos.', true); return; }
       toast(isNew ? 'Projeto criado.' : 'Projeto guardado.');
       go('projects');
     });
     main.replaceChildren(
-      head(isNew ? 'Novo projeto' : 'Editar projeto', isNew ? 'Novo projeto' : p.title.pt, h('button', { type: 'button', class: 'btn', onclick: () => go('projects') }, 'Voltar à lista')),
+      head(isNew ? 'Novo projeto' : p.title.pt, h('button', { type: 'button', class: 'btn', onclick: () => go('projects') }, 'Voltar à lista')),
       h('section', { class: 'box' }, flags.el, form.el),
       h('div', { class: 'save-bar' }, save, !isNew && p.published !== false && h('a', { class: 'text-link', href: `/projetos/${p.slug}`, target: '_blank', rel: 'noopener' }, 'Ver no website', h('span', { class: 'sr' }, ' (abre noutro separador)'))));
     main.focus();
@@ -452,24 +459,24 @@
     save.addEventListener('click', async () => {
       const value = form.get();
       const next = { ...content, [key]: itemLabel ? value[key] : value };
-      save.disabled = true;
+      save.disabled = true; save.classList.add('is-busy'); save.setAttribute('aria-busy', 'true');
       const r = await api('PUT', '/api/admin/content', next);
-      save.disabled = false;
+      save.disabled = false; save.classList.remove('is-busy'); save.removeAttribute('aria-busy');
       if (!r.ok) { toast('Não foi possível guardar.', true); return; }
       content = r.data.content;
       toast('Conteúdos guardados. O website já mostra as alterações.');
     });
     const pdf = h('button', { type: 'button', class: 'btn' }, 'Atualizar PDF do CV');
     pdf.addEventListener('click', async () => {
-      pdf.disabled = true;
+      pdf.disabled = true; pdf.classList.add('is-busy'); pdf.setAttribute('aria-busy', 'true');
       pdf.textContent = 'A gerar PDF…';
       const r = await api('POST', '/api/admin/cv-pdf');
-      pdf.disabled = false;
+      pdf.disabled = false; pdf.classList.remove('is-busy'); pdf.removeAttribute('aria-busy');
       pdf.textContent = 'Atualizar PDF do CV';
       toast(r.ok ? 'PDF do CV atualizado.' : 'Não foi possível gerar o PDF. É preciso o Chrome ou o Edge no servidor.', !r.ok);
     });
     main.replaceChildren(
-      head('Gestão de conteúdos', 'Conteúdos'),
+      head('Conteúdos'),
       tabs,
       h('section', { class: 'box' }, h('h2', null, title), form.el),
       h('div', { class: 'save-bar' }, save, canBuildCv ? pdf : null, h('span', { class: 'hint' }, canBuildCv
@@ -486,9 +493,9 @@
       const isActive = id === active;
       const use = h('button', { type: 'button', class: 'btn primary small', disabled: isActive }, isActive ? 'Tema em uso' : 'Usar este tema');
       use.addEventListener('click', async () => {
-        use.disabled = true;
+        use.disabled = true; use.classList.add('is-busy'); use.setAttribute('aria-busy', 'true');
         const res = await api('POST', '/api/admin/theme', { theme: id });
-        if (!res.ok) { use.disabled = false; toast('Não foi possível mudar o tema.', true); return; }
+        if (!res.ok) { use.disabled = false; use.classList.remove('is-busy'); use.removeAttribute('aria-busy'); toast('Não foi possível mudar o tema.', true); return; }
         toast(`Tema ${t.name} aplicado ao website.`);
         siteTheme = id;
         try { localStorage.removeItem('skin'); localStorage.removeItem('skinBase'); } catch (e) { /* sem armazenamento */ }
@@ -502,7 +509,7 @@
         h('div', { class: 'row-actions' }, use, h('a', { class: 'btn small', href: `/?tema=${id}`, target: '_blank', rel: 'noopener' }, 'Pré-visualizar', h('span', { class: 'sr' }, ' (abre noutro separador)'))));
     });
     main.replaceChildren(
-      head('Aparência', 'Temas'),
+      head('Temas do site'),
       h('p', { class: 'lead' }, 'Cada tema muda as cores e as letras de todo o website, nas versões clara e escura. A pré-visualização abre o site com o tema sem o aplicar.'),
       h('div', { class: 'theme-grid' }, cards),
       h('p', { class: 'hint' }, 'O PDF do CV usa o tema em uso: depois de mudar, atualiza-o em Conteúdos.'));
@@ -536,7 +543,7 @@
       };
       if (!m.read && m.status !== 'spam') mark(true);
       main.replaceChildren(
-        head('Mensagem', m.subject, h('button', { type: 'button', class: 'btn', onclick: () => go('messages') }, 'Voltar à lista')),
+        head(m.subject, h('button', { type: 'button', class: 'btn', onclick: () => go('messages') }, 'Voltar à lista')),
         h('section', { class: 'box msg' },
           h('div', { class: 'msg-meta' }, h('span', null, h('strong', null, m.name)), h('a', { href: replyLink(m, ''), target: gmail ? '_blank' : null, rel: gmail ? 'noopener' : null }, m.email), h('span', null, date(m.date)), h('span', null, DELIVERY[m.delivery] || m.delivery), m.consent && h('span', null, `Consentimento: ${date(m.consent.at)}`)),
           m.spam && h('p', { class: 'hint' }, `Bloqueada automaticamente: ${m.spam}. Não foi enviada para o teu email e é apagada ao fim de 30 dias.`),
@@ -553,7 +560,7 @@
       main.focus();
     };
     main.replaceChildren(
-      head('Gestão de contactos', showBlocked ? 'Bloqueadas como spam' : 'Contactos',
+      head(showBlocked ? 'Bloqueadas como spam' : 'Contactos',
         h('button', { type: 'button', class: 'btn small', onclick: () => { showBlocked = !showBlocked; go('messages'); } }, showBlocked ? 'Voltar às mensagens' : `Ver bloqueadas (${blocked.length})`)),
       h('p', { class: 'hint' }, showBlocked
         ? 'Mensagens que pareciam spam (ligações a mais, publicidade, outro alfabeto). Não foram enviadas para o teu email e apagam-se ao fim de 30 dias.'
@@ -586,7 +593,7 @@
       if (r.ok) { csrf = r.data.csrf || csrf; toast('Palavra-passe alterada.'); go('account'); return; }
       toast(r.data.error === 'current' ? 'A palavra-passe atual não está correta.' : 'Não foi possível alterar a palavra-passe.', true);
     });
-    main.replaceChildren(head('Conta', 'Conta'), h('section', { class: 'box' }, h('h2', null, 'Alterar palavra-passe'), wrapForm));
+    main.replaceChildren(head('Conta'), h('section', { class: 'box' }, h('h2', null, 'Alterar palavra-passe'), wrapForm));
   };
 
   // ---------- Arranque ----------

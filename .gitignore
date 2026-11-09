@@ -18,3 +18,5 @@ data/secret.json
 .impeccable/.cdp-*/
 # Tentativas do limite de pedidos (uma por ficheiro)
 data/rl%3A*
+# Mapa do código (graphify), gerado localmente
+graphify-out/

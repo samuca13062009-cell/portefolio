@@ -268,9 +268,22 @@
     {
       "slug": "o-polvo",
       "published": true,
-      "featured": true,
+      "featured": false,
       "category": "web",
       "cover": "O Polvo",
+      "images": [
+        {
+          "src": "/img/projetos/o-polvo-site",
+          "alt": {
+            "pt": "Página inicial do site do restaurante O Polvo, com o horário do dia e a carta",
+            "en": "Home page of the O Polvo restaurant website, with the day schedule and the menu"
+          }
+        }
+      ],
+      "role": {
+        "pt": "",
+        "en": ""
+      },
       "title": {
         "pt": "O Polvo: site de restaurante com sistema de reservas",
         "en": "O Polvo: restaurant website with booking system"
@@ -309,21 +322,12 @@
         "JavaScript",
         "Node.js"
       ],
-      "repo": "https://github.com/samuca13062009-cell/o-polvo",
-      "images": [
-        {
-          "src": "/img/projetos/o-polvo-site",
-          "alt": {
-            "pt": "Página inicial do site do restaurante O Polvo, com o horário do dia e a carta",
-            "en": "Home page of the O Polvo restaurant website, with the day schedule and the menu"
-          }
-        }
-      ]
+      "repo": "https://github.com/samuca13062009-cell/o-polvo"
     },
     {
       "slug": "pista",
       "published": true,
-      "featured": false,
+      "featured": true,
       "category": "android",
       "cover": "Pista",
       "images": [
