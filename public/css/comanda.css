@@ -129,7 +129,7 @@ body.cx .pill-btn, body.cx .icon-btn { border-radius: 6px; background: transpare
 .cx-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px; margin-bottom: 56px; }
 .cx-tickets { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 72px 56px; padding-top: 28px; }
 .cx-rail { position: absolute; left: -2%; right: -2%; top: 0; height: 10px; border-radius: 6px; background: linear-gradient(var(--cx-muted), color-mix(in srgb, var(--cx-muted) 40%, var(--cx-bg))); opacity: 0.6; }
-.tk { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 22px 22px 24px; background: var(--cx-paper); color: var(--cx-paper-ink); transform-style: preserve-3d; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotate(var(--rz, 0deg)); transition: transform 0.4s var(--ease-out), box-shadow 0.4s; box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.7);
+.tk { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 14px; padding: 22px 22px 24px; background: var(--cx-paper); color: var(--cx-paper-ink); transform-style: preserve-3d; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotate(var(--rz, 0deg)); transition: transform 0.4s var(--ease-out), box-shadow 0.4s; box-shadow: 0 24px 40px -24px rgba(0, 0, 0, 0.7);
   -webkit-mask: radial-gradient(circle at 8px 0, transparent 5px, #000 5.5px) top / 16px 10px repeat-x, linear-gradient(#000 0 0) bottom / 100% calc(100% - 10px) no-repeat;
   mask: radial-gradient(circle at 8px 0, transparent 5px, #000 5.5px) top / 16px 10px repeat-x, linear-gradient(#000 0 0) bottom / 100% calc(100% - 10px) no-repeat; }
 .tk::before { content: ""; position: absolute; top: -18px; left: 50%; width: 46px; height: 18px; margin-left: -23px; border-radius: 4px 4px 0 0; background: var(--cx-muted); opacity: 0.8; }
@@ -138,8 +138,8 @@ body.cx .pill-btn, body.cx .icon-btn { border-radius: 6px; background: transpare
 .tk:nth-of-type(even) { margin-top: 64px; }
 .tk:hover { box-shadow: 0 40px 60px -24px rgba(0, 0, 0, 0.8); }
 .tk-top { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--cx-paper-muted); font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cx-paper-muted); }
-.tk-shot { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--cx-paper-ink); }
-.tk-shot .shot { width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: grayscale(1) contrast(1.05); transition: filter 0.6s var(--ease-out), transform 0.8s var(--ease-out); }
+.tk-shot { position: relative; min-width: 0; aspect-ratio: 16 / 10; overflow: hidden; background: var(--cx-paper-ink); }
+.tk-shot .shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: grayscale(1) contrast(1.05); transition: filter 0.6s var(--ease-out), transform 0.8s var(--ease-out); }
 .tk-shot::after { content: ""; position: absolute; inset: 0; background: var(--cx-hi); mix-blend-mode: multiply; opacity: 0.55; transition: opacity 0.6s var(--ease-out); }
 .tk:hover .tk-shot .shot, .tk:focus-within .tk-shot .shot { filter: none; transform: scale(1.03); }
 .tk:hover .tk-shot::after, .tk:focus-within .tk-shot::after { opacity: 0; }
@@ -215,7 +215,7 @@ body.cx .text-link:hover { color: var(--cx-hi); }
   .cx-stamps { display: none; }
   .cx-about-grid { grid-template-columns: 1fr; }
   .cx-squiggle { display: none; }
-  .cx-tickets { grid-template-columns: 1fr; gap: 56px; }
+  .cx-tickets { grid-template-columns: minmax(0, 1fr); gap: 56px; }
   .tk:nth-of-type(even) { margin-top: 0; }
 }
 /* Nada sai para o lado: as fitas, a marquise e o terminal rodados não podem criar scroll horizontal
