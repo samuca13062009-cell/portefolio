@@ -53,7 +53,7 @@
   }
 
   // Ligado ao scroll: o risco laranja desenha-se e a marquise grande desliza.
-  var squiggle = $('.cx-squiggle'), outline = $('.cx-outline .cx-track');
+  var squiggle = $('.cx-squiggle'), outline = null; // a marquise grande passou a correr sozinha (CSS)
   if (!reduce && (squiggle || outline)) {
     var tick = false;
     var onScroll = function () {

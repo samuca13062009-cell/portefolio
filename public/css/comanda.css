@@ -106,6 +106,7 @@ body.cx .pill-btn, body.cx .icon-btn { border-radius: 6px; background: transpare
 @keyframes corre { to { transform: translateX(-50%); } }
 .cx-outline { overflow: hidden; margin: 72px calc(var(--gut) * -1) 40px; }
 .cx-outline .cx-track { display: inline-block; white-space: nowrap; font-family: var(--display); font-weight: 800; font-stretch: 125%; font-size: clamp(3.5rem, 11vw, 10rem); line-height: 1; letter-spacing: -0.03em; color: transparent; -webkit-text-stroke: 1.5px color-mix(in srgb, var(--cx-hi) 70%, transparent); will-change: transform; }
+.cx-outline .cx-track { animation: corre 100s linear infinite; }
 
 /* ---------- Sobre: frase grande com ícones no meio ---------- */
 .cx-about { position: relative; padding-block: 120px 40px; }
@@ -234,7 +235,7 @@ html:has(body.cx), body.cx { overflow-x: clip; }
 /* ---------- Menos movimento: tudo parado ---------- */
 @media (prefers-reduced-motion: reduce) {
   .cx-hero .cx-rib, .rc-paper.imprime, .rc-paper.imprime .rc-lines li { animation: none; }
-  .cx-marquee .cx-track { animation: none; }
+  .cx-marquee .cx-track, .cx-outline .cx-track { animation: none; }
   .tk { transition: none; }
 }
 /* Página de um projeto: título em fita, como as outras páginas */
