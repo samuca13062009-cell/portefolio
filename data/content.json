@@ -321,47 +321,57 @@
       ]
     },
     {
-      "slug": "skillconnect",
+      "slug": "pista",
       "published": true,
-      "featured": true,
+      "featured": false,
       "category": "android",
-      "cover": "SkillConnect",
+      "cover": "Pista",
+      "images": [],
+      "role": {
+        "pt": "",
+        "en": ""
+      },
       "title": {
-        "pt": "SkillConnect: plataforma web e aplicação Android",
-        "en": "SkillConnect: web platform and Android app"
+        "pt": "Pista: caça ao tesouro em qualquer lugar",
+        "en": "Pista: a treasure hunt anywhere"
       },
       "summary": {
-        "pt": "Plataforma que junta pessoas com competências diferentes, primeiro como site e depois como aplicação Android.",
-        "en": "A platform that brings together people with different skills, first as a website and then as an Android app."
+        "pt": "Aplicação Android em que uma pessoa cria um percurso de pistas e partilha-o por código ou QR para outros o jogarem no telemóvel.",
+        "en": "An Android app where one person creates a trail of clues and shares it by code or QR for others to play on their phone."
       },
       "description": {
         "pt": [
-          "Website focado em unir diversas competências entre pessoas. Foi desenvolvido primeiro como site e depois como aplicação Android, com criação de conta, início de sessão e área de administração.",
-          "Na versão Android, as contas ficam guardadas numa base de dados SQLite local, com as palavras-passe em hash com salt."
+          "Aplicação Android que transforma qualquer lugar numa caça ao tesouro. Quem cria escreve as pistas, as respostas e uma ajuda opcional para cada uma; a aplicação gera um código (ou um QR) e quem o introduzir joga o percurso no seu telemóvel, uma pista de cada vez.",
+          "Funciona sem internet: os percursos e os jogos ficam numa base de dados Room no telemóvel, e o código de partilha leva o percurso inteiro (JSON em Base64). Trabalho de grupo com André Cândido, Francisco Lopes e Francisco Severiano."
         ],
         "en": [
-          "A website focused on bringing together diverse skills among people. Built first as a website and then as an Android app, with sign-up, login and an admin area.",
-          "In the Android version, accounts are stored in a local SQLite database, with salted and hashed passwords."
+          "An Android app that turns any place into a treasure hunt. The creator writes the clues, the answers and an optional hint for each; the app generates a code (or a QR) and whoever enters it plays the trail on their phone, one clue at a time.",
+          "It works offline: trails and games are stored in a Room database on the phone, and the share code carries the whole trail (JSON in Base64). Group project with André Cândido, Francisco Lopes and Francisco Severiano."
         ]
       },
       "features": {
         "pt": [
-          "Criação de conta e início de sessão",
-          "Área de administração protegida por palavra-passe",
-          "Base de dados SQLite local com palavras-passe em hash com salt"
+          "Editor de percursos e de pistas, com resposta e ajuda opcional",
+          "Partilha por código ou QR, sem precisar de internet",
+          "Modo de jogo com cronómetro, progresso e ajudas",
+          "Respostas aceites sem contar maiúsculas, acentos ou espaços a mais",
+          "Ecrã final com o tempo, as ajudas usadas e a mensagem de quem criou"
         ],
         "en": [
-          "Sign-up and login",
-          "Password-protected admin area",
-          "Local SQLite database with salted, hashed passwords"
+          "Trail and clue editor, with answer and optional hint",
+          "Sharing by code or QR, no internet needed",
+          "Game mode with timer, progress and hints",
+          "Answers accepted regardless of capitals, accents or extra spaces",
+          "Final screen with time, hints used and the creator’s message"
         ]
       },
       "tech": [
         "Kotlin",
         "Jetpack Compose",
-        "SQLite"
+        "Room",
+        "ZXing"
       ],
-      "repo": "https://github.com/samuca13062009-cell/skillconnect-android"
+      "repo": "https://github.com/samuca13062009-cell/pista"
     },
     {
       "slug": "saltaplanetas",
@@ -418,9 +428,32 @@
     {
       "slug": "arduino-bluetooth",
       "published": true,
-      "featured": false,
+      "featured": true,
       "category": "android",
       "cover": "Arduino BT",
+      "images": [
+        {
+          "src": "/img/fotos/arduino-uno",
+          "alt": {
+            "pt": "Placa Arduino Uno (foto ilustrativa, não é a montagem original do projeto)",
+            "en": "Arduino Uno board (illustrative photo, not the original project build)"
+          },
+          "sizes": [
+            960,
+            1920
+          ],
+          "credit": {
+            "author": "Creative Tools",
+            "license": "CC BY 2.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+            "page": "https://commons.wikimedia.org/wiki/File:Arduino-uno-perspective.jpg"
+          }
+        }
+      ],
+      "role": {
+        "pt": "",
+        "en": ""
+      },
       "title": {
         "pt": "Controlo de Arduino por Bluetooth",
         "en": "Arduino control over Bluetooth"
@@ -457,26 +490,7 @@
         "Arduino",
         "Bluetooth"
       ],
-      "repo": "",
-      "images": [
-        {
-          "src": "/img/fotos/arduino-uno",
-          "sizes": [
-            960,
-            1920
-          ],
-          "alt": {
-            "pt": "Placa Arduino Uno (foto ilustrativa, não é a montagem original do projeto)",
-            "en": "Arduino Uno board (illustrative photo, not the original project build)"
-          },
-          "credit": {
-            "author": "Creative Tools",
-            "license": "CC BY 2.0",
-            "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-            "page": "https://commons.wikimedia.org/wiki/File:Arduino-uno-perspective.jpg"
-          }
-        }
-      ]
+      "repo": ""
     }
   ],
   "photos": {
