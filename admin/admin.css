@@ -116,3 +116,90 @@ td.nowrap { white-space: nowrap; }
 .loading { display: flex; align-items: center; gap: 12px; color: var(--muted); animation: aparece-tarde 0.2s 0.3s both; }
 .loading::before { content: ""; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line-strong); border-top-color: var(--accent); animation: roda 0.8s linear infinite; }
 @keyframes aparece-tarde { from { opacity: 0; } }
+
+/* =====================================================================
+   O mesmo sistema do site (comanda.css, carregado antes deste ficheiro): fundo de planta com as
+   manchas de luz do tema, superfícies em vidro, escala de espaço --s1…--s9, raio --r, cor de acento
+   só na ação principal de cada vista, títulos em fita, números tabulares.
+   ===================================================================== */
+body.cx.admin { --surface: color-mix(in srgb, var(--cx-bg) 55%, transparent); --bg: var(--cx-bg); }
+
+/* Campos: o mesmo raio dos botões, fundo translúcido, anel de foco na cor da marca */
+body.cx.admin input:not([type="checkbox"]), body.cx.admin select, body.cx.admin textarea {
+  background: var(--surface); border: 1px solid color-mix(in srgb, var(--cx-ink) 26%, transparent); border-radius: var(--r); color: var(--cx-ink);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+body.cx.admin input:not([type="checkbox"]):focus-visible, body.cx.admin select:focus-visible, body.cx.admin textarea:focus-visible {
+  outline: none; border-color: var(--cx-hi); box-shadow: 0 0 0 3px color-mix(in srgb, var(--cx-hi) 25%, transparent);
+}
+body.cx.admin input[type="checkbox"] { accent-color: var(--cx-hi); }
+
+/* Entrar: a marca em vidro à esquerda, o formulário em vidro à direita */
+body.cx.admin .login-brand { background: transparent; color: var(--cx-ink); }
+body.cx.admin .login-brand .brand { font-family: var(--display); font-weight: 800; font-stretch: 125%; text-transform: uppercase; display: inline-block; align-self: flex-start; padding: 0.06em 0.32em 0.1em; background: var(--cx-hi); color: var(--cx-bg); transform: rotate(-2deg); }
+body.cx.admin .login-claim { font-weight: 800; font-stretch: 112%; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.08; max-width: 14ch; text-wrap: balance; }
+body.cx.admin .login-main form { padding: clamp(var(--s5), 4vw, var(--s7)); gap: var(--s5); border: 1px solid var(--glass-line); border-radius: var(--r); background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shine), 0 24px 48px -28px rgba(0, 0, 0, 0.6); }
+body.cx.admin .login-main .display { font-style: normal; }
+
+/* Barra lateral em vidro fumado */
+body.cx.admin .side { margin: var(--s3); border: 1px solid var(--glass-line); border-radius: var(--r); background: var(--glass-bg-strong); color: var(--cx-ink);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shine); padding: var(--s5) var(--s3); gap: var(--s5); }
+body.cx.admin .side-head .brand { font-family: var(--display); font-weight: 800; font-stretch: 112%; font-size: 1.25rem; }
+body.cx.admin .side-sub, body.cx.admin .side-label { color: var(--cx-muted); }
+body.cx.admin .side-link { color: var(--cx-ink); }
+body.cx.admin .side-link:hover { background: color-mix(in srgb, var(--cx-ink) 8%, transparent); color: var(--cx-ink); }
+body.cx.admin .side-link[aria-current="page"] { background: var(--cx-hi); color: var(--cx-bg); }
+body.cx.admin .side-link[aria-current="page"] .badge { background: var(--cx-bg); color: var(--cx-hi); }
+body.cx.admin .side-theme, body.cx.admin .side-foot { border-top-color: var(--glass-line); }
+body.cx.admin .side-theme select, body.cx.admin .mode-switch { background: var(--surface); color: var(--cx-ink); border-color: var(--glass-line); }
+body.cx.admin .mode-opt { color: var(--cx-muted); border-radius: max(0px, calc(var(--r) - 3px)); }
+body.cx.admin .mode-opt:hover { color: var(--cx-ink); }
+body.cx.admin .mode-opt[aria-pressed="true"] { background: var(--cx-hi); color: var(--cx-bg); }
+body.cx.admin .badge { border-radius: var(--r); background: var(--cx-acc); color: var(--acc-ink); }
+
+/* Conteúdo: títulos em fita como as páginas do site, caixas em vidro, espaço da escala */
+body.cx.admin .main { gap: var(--s6); padding: clamp(var(--s5), 4vw, var(--s7)); }
+body.cx.admin .view-head { gap: var(--s4) var(--s6); }
+body.cx.admin .view-head .display { display: inline-block; padding: 0.04em 0.3em 0.08em; background: var(--cx-hi); color: var(--cx-bg); font-stretch: 125%; font-size: clamp(1.75rem, 3vw, 2.5rem); text-transform: uppercase; transform: rotate(-1.5deg); line-height: 1.05; }
+body.cx.admin .box, body.cx.admin .stat {
+  background: var(--glass-bg); border: 1px solid var(--glass-line); border-radius: var(--r); padding: var(--s5); gap: var(--s4);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shine), 0 24px 48px -28px rgba(0, 0, 0, 0.6);
+}
+body.cx.admin .box h2, body.cx.admin .box-title { font-weight: 800; font-stretch: 112%; font-size: 1.375rem; }
+body.cx.admin .stats, body.cx.admin .two { gap: var(--s4); }
+body.cx.admin .stat-num { font-weight: 800; font-stretch: 112%; }
+body.cx.admin .bar { background: var(--cx-hi); }
+body.cx.admin .item { background: color-mix(in srgb, var(--cx-ink) 4%, transparent); border-color: var(--glass-line); padding: var(--s4); gap: var(--s4); }
+body.cx.admin .msg-body { background: color-mix(in srgb, var(--cx-ink) 5%, transparent); }
+body.cx.admin th, body.cx.admin td { border-bottom-color: var(--cx-line); }
+body.cx.admin td { font-variant-numeric: tabular-nums; }
+body.cx.admin .state.new { border-radius: var(--r); background: var(--cx-hi); color: var(--cx-bg); }
+body.cx.admin .form { gap: var(--s5); }
+body.cx.admin .fgroup { gap: var(--s2); }
+
+/* Barra de guardar: vidro por cima do conteúdo que passa por baixo */
+body.cx.admin .save-bar { background: var(--glass-bg-strong); border-top-color: var(--glass-line); padding: var(--s4); margin-inline: calc(var(--s4) * -1); border-radius: var(--r) var(--r) 0 0;
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+
+/* Ação principal de cada vista (entrar, criar, guardar) com a cor de acento */
+body.cx.admin .login .btn.primary, body.cx.admin .view-head .btn.primary, body.cx.admin .save-bar .btn.primary, body.cx.admin .form .btn.primary[type="submit"] {
+  background: var(--cx-acc); border-color: var(--cx-acc); color: var(--acc-ink); font-weight: 700;
+  box-shadow: 0 12px 32px -12px color-mix(in srgb, var(--cx-acc) 70%, transparent); transition: transform 0.2s var(--ease-out), box-shadow 0.2s;
+}
+body.cx.admin .login .btn.primary:hover, body.cx.admin .view-head .btn.primary:hover, body.cx.admin .save-bar .btn.primary:hover, body.cx.admin .form .btn.primary[type="submit"]:hover { color: var(--acc-ink); transform: translateY(-2px); filter: none; }
+
+/* Aviso: mesmo raio que o resto */
+body.cx.admin .toast { border-radius: var(--r); }
+
+@media (max-width: 640px) {
+  body.cx.admin .side { margin: var(--s2); }
+  /* No telemóvel a barra de guardar fica numa linha baixa, para não tapar o formulário */
+  body.cx.admin .save-bar { padding: var(--s2) var(--s3); gap: var(--s2); }
+  body.cx.admin .save-bar .btn { min-height: 44px; padding: 0 var(--s4); font-size: 0.9375rem; }
+  body.cx.admin .save-bar .hint { flex-basis: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.cx.admin .btn.primary { transition: none; }
+  body.cx.admin .btn.primary:hover { transform: none; }
+}
