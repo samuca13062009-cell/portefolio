@@ -535,3 +535,58 @@ body.cx .set-lang { border-radius: max(0px, calc(var(--r) - 3px)); }
   body.cx .tk:hover, body.cx .btn.primary.cta:hover { transform: none; }
   .a-carregar, body.cx .cx-copy.copiado { animation: none; }
 }
+
+/* ---------- Sobre, CV e Contacto no mesmo sistema ---------- */
+body.cx .page-head.deep { padding-block: var(--s8) var(--s7); }
+body.cx .page-head .lead { margin-top: var(--s4); }
+body.cx .page-head .actions { margin-top: var(--s5); }
+body.cx .section.split { padding-block: var(--s7); gap: var(--s5) var(--s8); }
+
+/* Sobre: o título é uma frase, por isso fica em letra grande normal; a fita curta diz onde estamos */
+body.cx .kicker { margin: 0 0 var(--s4); font-size: clamp(1.1rem, 2vw, 1.5rem); }
+body.cx .about-title { margin: 0 0 var(--s5); max-width: 22ch; font-family: var(--display); font-weight: 800; font-stretch: 112%; font-size: clamp(1.9rem, 4.2vw, 3.4rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--cx-ink); }
+body.cx .prose { max-width: 40rem; display: flex; flex-direction: column; gap: var(--s4); }
+body.cx .prose p { margin: 0; }
+
+/* Linhas do percurso: data em coluna, espaço igual */
+body.cx .row { padding: var(--s5) 0; gap: var(--s1) var(--s6); }
+body.cx .row-what { gap: var(--s1); }
+body.cx .bullets { gap: var(--s2); padding-top: var(--s2); }
+
+/* Competências em etiquetas, como no início */
+body.cx .skills { gap: var(--s6) var(--s5); }
+body.cx .skills h3 { margin-bottom: var(--s2); }
+body.cx .skills ul { display: flex; flex-wrap: wrap; gap: var(--s2); }
+body.cx .skills li { padding: 2px var(--s3); border: 1px solid var(--cx-line); border-radius: var(--r); background: color-mix(in srgb, var(--cx-ink) 4%, transparent); color: var(--cx-ink); font-size: 0.9375rem; }
+
+/* CV: a folha é o próprio documento, fica em papel; só o raio segue o sistema */
+body.cx .cv-sheet { border-radius: var(--r); }
+body.cx .cv-head { align-items: end; gap: var(--s5); }
+body.cx .cv-head .display { margin-bottom: 0; }
+body.cx .after-cv { padding-block: var(--s7) var(--s8); }
+
+/* Contacto: formulário em vidro como o resto do site, campos com o mesmo raio dos botões */
+body.cx .panel {
+  background: var(--glass-bg); color: var(--cx-ink);
+  --ink: var(--cx-ink); --muted: var(--cx-muted); --surface: color-mix(in srgb, var(--cx-bg) 55%, transparent);
+  --line: var(--cx-line); --line-strong: color-mix(in srgb, var(--cx-ink) 30%, transparent); --accent: var(--cx-hi); --accent-ink: var(--cx-bg);
+  border: 1px solid var(--glass-line); border-radius: var(--r); padding: clamp(var(--s5), 4vw, var(--s7));
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shine), 0 24px 48px -28px rgba(0, 0, 0, 0.6);
+}
+body.cx .panel form { gap: var(--s5); }
+body.cx .field { gap: var(--s2); }
+body.cx .field-row { gap: var(--s5) var(--s4); }
+body.cx .panel input, body.cx .panel textarea { border-radius: var(--r); transition: border-color 0.2s, box-shadow 0.2s; }
+body.cx .panel input:focus-visible, body.cx .panel textarea:focus-visible { border-color: var(--cx-hi); box-shadow: 0 0 0 3px color-mix(in srgb, var(--cx-hi) 25%, transparent); outline: none; }
+body.cx .panel input[aria-invalid="true"], body.cx .panel textarea[aria-invalid="true"] { border-color: var(--err); animation: abana 0.3s var(--ease-out); }
+@keyframes abana { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+body.cx .contact { padding-block: 0 var(--s8); }
+body.cx .socials { gap: var(--s3); margin-top: var(--s5); }
+body.cx .social { width: 56px; height: 56px; border-radius: var(--r); background: var(--glass-bg); border-color: var(--glass-line); color: var(--cx-ink); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+body.cx .social svg { width: 24px; height: 24px; }
+body.cx .social:hover, body.cx .social:focus-visible { background: var(--cx-hi); border-color: var(--cx-hi); color: var(--cx-bg); }
+body.cx .where { margin-top: var(--s4); color: var(--cx-muted); }
+body.cx .btn.cta.is-busy { opacity: 0.85; }
+@media (prefers-reduced-motion: reduce) {
+  body.cx .panel input[aria-invalid="true"], body.cx .panel textarea[aria-invalid="true"] { animation: none; }
+}
