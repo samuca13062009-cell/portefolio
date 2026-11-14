@@ -424,3 +424,114 @@ body.cx .cx-menu-card {
   body.cx { --glass-bg: var(--cx-bg-2); --glass-bg-strong: var(--cx-bg-2); --glass-dark: #070B22; }
   body.cx::before { content: none; }
 }
+
+/* =====================================================================
+   Sistema de design (novembro 2026). Uma escala para tudo:
+   espaço   --s1 4 · --s2 8 · --s3 12 · --s4 16 · --s5 24 · --s6 32 · --s7 48 · --s8 72 · --s9 112 (px)
+   raio     --r 6px por fora; por dentro = raio de fora menos o espaço entre os dois
+   letra    títulos Archivo larga, texto Hanken Grotesk, monoespaçado só no terminal
+   cor      --cx-hi (marca, ligações), --cx-acc (acento: só a ação principal), tinta e cinzentos do tema
+   Esta secção vem no fim de propósito: limpa o que as anteriores tinham de decorativo.
+   ===================================================================== */
+body.cx {
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 72px; --s9: 112px;
+  --r: 6px;
+  --acc-ink: var(--cx-bg);
+}
+:root[data-theme="light"] body.cx { --acc-ink: #fff; }
+
+/* Títulos: sem itálico, quebram por palavras e equilibram as linhas */
+body.cx .cx-rib, body.cx .page-head .display, body.cx .project > h1.display, body.cx .cv-head .display { font-style: normal; }
+body.cx h1, body.cx h2, body.cx h3 { text-wrap: balance; }
+body.cx .cx-rib, body.cx .display, body.cx .page-head .display, body.cx .project > h1.display { hyphens: auto; overflow-wrap: break-word; }
+/* Alinhamento ótico: a fita sai um pouco para a esquerda para que a letra (e não o fundo) alinhe com o texto */
+@media (min-width: 641px) {
+  .cx-name .cx-rib, .cx-title .cx-rib { margin-inline-start: -0.3em; }
+}
+
+/* Monoespaçado só onde é código (o terminal): o resto passa para a letra do texto */
+body.cx .cx-marquee .cx-track, body.cx .tk-items, body.cx .tk-foot, body.cx .cx-when, body.cx .set-label, body.cx .set-lang { font-family: var(--body); }
+body.cx .cx-marquee .cx-track { font-weight: 600; letter-spacing: 0.04em; }
+body.cx .cx-marquee .cx-track::before { content: none; }
+body.cx .cx-when { font-size: 0.8125rem; letter-spacing: 0.02em; text-transform: none; font-weight: 600; }
+body.cx .set-label { letter-spacing: 0.04em; font-weight: 600; }
+
+/* Números alinhados em coluna */
+body.cx .cx-when, body.cx .rc-lines, body.cx .count, body.cx .row-when, body.cx time { font-variant-numeric: tabular-nums; }
+
+/* Sem enfeites: nada de carimbos, carris, pontos de janela nem cartões tortos */
+.cx-stamps, .cx-rail, .cx-squiggle, .cx-bigout, .tk::after, .tk-dots, .rc-print { display: none !important; }
+body.cx .tk { transform: none; margin-top: 0; }
+body.cx .cx-term { transform: none; }
+
+/* ---------- Projetos: a captura verdadeira, a cores, e o primeiro em destaque ---------- */
+body.cx .cx-tickets { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s6); padding-top: var(--s5); }
+body.cx .tk { padding: 0; gap: 0; overflow: hidden; border-radius: var(--r); transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s; }
+body.cx .tk:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--cx-hi) 50%, transparent); }
+/* A captura encosta às bordas do cartão (espaço 0), por isso o raio de dentro é igual ao de fora (o cartão recorta) */
+body.cx .tk-shot { margin: 0; border-radius: 0; border-bottom: 1px solid var(--glass-line); background: color-mix(in srgb, var(--cx-ink) 6%, transparent); }
+body.cx .tk-shot .shot, body.cx .card .cover .shot, body.cx .project-hero .shot { filter: none; transition: opacity 0.45s var(--ease-out), transform 0.8s var(--ease-out); }
+body.cx .tk-shot::after { content: none; }
+body.cx .tk:hover .tk-shot .shot { filter: none; transform: scale(1.02); }
+body.cx .tk-body { display: flex; flex-direction: column; gap: var(--s3); padding: var(--s5); }
+body.cx .tk-name, body.cx .tk-sum, body.cx .tk-items, body.cx .tk-foot { margin: 0; }
+body.cx .tk-name { font-size: clamp(1.3rem, 2vw, 1.6rem); }
+body.cx .tk-items { gap: var(--s2); font-size: 0.8125rem; font-weight: 500; }
+body.cx .tk-items li { padding: 2px var(--s3); }
+body.cx .tk-foot { font-size: 0.875rem; letter-spacing: 0; text-transform: none; }
+body.cx .tk-repo { color: var(--cx-hi); }
+@media (min-width: 961px) {
+  body.cx .tk-main { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: stretch; }
+  body.cx .tk-main .tk-shot { aspect-ratio: auto; min-height: 380px; border-bottom: 0; border-right: 1px solid var(--glass-line); }
+  body.cx .tk-main .tk-body { justify-content: center; padding: var(--s7) var(--s6); gap: var(--s4); }
+  body.cx .tk-main .tk-name { font-size: clamp(1.8rem, 2.6vw, 2.4rem); }
+  body.cx .tk-main .tk-sum { font-size: 1.125rem; }
+}
+@media (max-width: 960px) { body.cx .cx-tickets { grid-template-columns: minmax(0, 1fr); gap: var(--s5); } }
+
+/* A carregar: a moldura pulsa até a imagem chegar, depois a imagem aparece */
+.a-carregar { animation: a-carregar 1.2s ease-in-out infinite; }
+.a-carregar .shot { opacity: 0; }
+@keyframes a-carregar { 50% { background-color: color-mix(in srgb, var(--cx-ink) 14%, transparent); } }
+
+/* ---------- Agrupar pelo espaço ---------- */
+body.cx .cx-orders, body.cx .cx-menu, body.cx .cx-journey, body.cx .cx-contact { padding-block: var(--s8); }
+body.cx .cx-head { margin-bottom: var(--s5); align-items: end; gap: var(--s4); flex-wrap: wrap; }
+body.cx .cx-about { padding-block: var(--s8) var(--s6); }
+body.cx .cx-big { font-size: clamp(1.6rem, 3.6vw, 3rem); max-width: 26ch; }
+body.cx .cx-courses { gap: var(--s6) var(--s5); }
+body.cx .cx-course h3 { margin-bottom: var(--s2); }
+body.cx .cx-course ul { border-left: 0; margin-left: 0; display: flex; flex-wrap: wrap; gap: var(--s2); }
+body.cx .cx-course li { padding: 2px var(--s3); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: var(--r); color: #E7ECF5; font-size: 0.9375rem; }
+body.cx .cx-course li::before { content: none; }
+body.cx .cx-shifts { margin-top: var(--s5); }
+body.cx .cx-contact-lead { margin: var(--s5) 0; }
+body.cx .cx-contact-cta { margin-bottom: var(--s6); }
+body.cx .cx-links { gap: var(--s2); }
+body.cx .cx-links a { font-size: clamp(0.95rem, 4.4vw, 1.4rem); font-stretch: 100%; overflow-wrap: normal; }
+body.cx .cx-contact-card { padding: clamp(28px, 6vw, 72px); }
+body.cx .actions { gap: var(--s3); }
+
+/* ---------- Ação principal: a única coisa com a cor de acento ---------- */
+body.cx .btn.primary.cta { background: var(--cx-acc); border-color: var(--cx-acc); color: var(--acc-ink); min-height: 56px; padding: 0 var(--s6); font-size: 1.0625rem; font-weight: 700;
+  box-shadow: 0 12px 32px -12px color-mix(in srgb, var(--cx-acc) 70%, transparent); transition: transform 0.2s var(--ease-out), box-shadow 0.2s; }
+body.cx .btn.primary.cta:hover { color: var(--acc-ink); transform: translateY(-2px); box-shadow: 0 18px 40px -14px color-mix(in srgb, var(--cx-acc) 80%, transparent); filter: none; }
+body.cx .btn:active, body.cx .btn.primary.cta:active { transform: translateY(1px) scale(0.98); }
+body.cx .btn:focus-visible, body.cx .tk-name a:focus-visible { outline: 3px solid var(--cx-acc); outline-offset: 3px; }
+
+/* Copiar o email: confirma com cor e um pequeno salto */
+body.cx .cx-copy { min-width: 11rem; }
+body.cx .cx-copy.copiado { border-color: var(--cx-hi); color: var(--cx-hi); animation: confirma 0.35s var(--ease-out); }
+@keyframes confirma { 40% { transform: scale(1.05); } }
+
+/* Ícones: o mesmo tamanho e o mesmo traço em todo o lado */
+body.cx .btn .ic, body.cx .text-link .ic { width: 1.125em; height: 1.125em; }
+
+/* Raio de dentro = raio de fora menos o espaço: a escolha de língua tem 3px de folga, por isso 3px de raio */
+body.cx .set-lang { border-radius: max(0px, calc(var(--r) - 3px)); }
+
+@media (prefers-reduced-motion: reduce) {
+  body.cx .tk, body.cx .tk-shot .shot, body.cx .btn.primary.cta { transition: none; }
+  body.cx .tk:hover, body.cx .btn.primary.cta:hover { transform: none; }
+  .a-carregar, body.cx .cx-copy.copiado { animation: none; }
+}
