@@ -553,11 +553,12 @@ body.cx .row { padding: var(--s5) 0; gap: var(--s1) var(--s6); }
 body.cx .row-what { gap: var(--s1); }
 body.cx .bullets { gap: var(--s2); padding-top: var(--s2); }
 
-/* Competências em etiquetas, como no início */
-body.cx .skills { gap: var(--s6) var(--s5); }
-body.cx .skills h3 { margin-bottom: var(--s2); }
-body.cx .skills ul { display: flex; flex-wrap: wrap; gap: var(--s2); }
-body.cx .skills li { padding: 2px var(--s3); border: 1px solid var(--cx-line); border-radius: var(--r); background: color-mix(in srgb, var(--cx-ink) 4%, transparent); color: var(--cx-ink); font-size: 0.9375rem; }
+/* Competências em linhas, com o mesmo ritmo da experiência: grupo numa coluna fixa, lista corrida ao lado */
+body.cx .skill-row { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: var(--s1) var(--s6); padding: var(--s5) 0; border-bottom: 1px solid var(--line); }
+body.cx .skill-row h3 { margin: 0; padding-top: 2px; font-size: 0.9375rem; font-weight: 600; color: var(--cx-muted); }
+body.cx .skill-row ul { display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; font-size: 1.0625rem; line-height: 1.6; color: var(--cx-ink); }
+body.cx .skill-row li:not(:last-child)::after { content: "·"; margin: 0 0.55em; color: var(--cx-muted); }
+@media (max-width: 640px) { body.cx .skill-row { grid-template-columns: minmax(0, 1fr); } }
 
 /* CV: a folha é o próprio documento, fica em papel; só o raio segue o sistema */
 body.cx .cv-sheet { border-radius: var(--r); }
