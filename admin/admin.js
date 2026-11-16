@@ -233,12 +233,24 @@
     err.hidden = true;
     const sub = e.target.querySelector('button[type=submit]');
     sub.disabled = true; sub.classList.add('is-busy'); sub.setAttribute('aria-busy', 'true');
-    const r = await api('POST', '/api/admin/login', { user: $('l-user').value.trim(), password: $('l-pass').value });
+    const codeField = $('l-code-field');
+    const creds = { user: $('l-user').value.trim(), password: $('l-pass').value };
+    if (!codeField.hidden) creds.code = $('l-code').value.trim();
+    const r = await api('POST', '/api/admin/login', creds);
     sub.disabled = false; sub.classList.remove('is-busy'); sub.removeAttribute('aria-busy');
-    if (r.ok) { csrf = r.data.csrf; view = 'dashboard'; showApp(); return; }
+    if (r.ok) { csrf = r.data.csrf; view = 'dashboard'; codeField.hidden = true; $('l-code').value = ''; showApp(); return; }
+    if (r.data.error === 'totp') {
+      // Palavra-passe certa: falta o segundo fator.
+      codeField.hidden = false;
+      $('l-code').focus();
+      return;
+    }
     err.textContent = r.status === 429
       ? 'Demasiadas tentativas. Tenta de novo daqui a 15 minutos.'
-      : 'Utilizador ou palavra-passe incorretos.';
+      : r.data.error === 'totp-wrong'
+        ? 'Código errado ou já usado. Espera pelo próximo código da app.'
+        : 'Utilizador ou palavra-passe incorretos.';
+    if (r.data.error === 'totp-wrong') $('l-code').value = '';
     err.hidden = false;
   });
   $('logout').addEventListener('click', async () => {
@@ -593,8 +605,59 @@
       if (r.ok) { csrf = r.data.csrf || csrf; toast('Palavra-passe alterada.'); go('account'); return; }
       toast(r.data.error === 'current' ? 'A palavra-passe atual não está correta.' : 'Não foi possível alterar a palavra-passe.', true);
     });
-    main.replaceChildren(head('Conta'), h('section', { class: 'box' }, h('h2', null, 'Alterar palavra-passe'), wrapForm));
+    main.replaceChildren(head('Conta'), h('section', { class: 'box' }, h('h2', null, 'Alterar palavra-passe'), wrapForm), twoFactorBox());
   };
+
+  // Segundo fator: código de 6 dígitos de uma app autenticadora (Google Authenticator, Microsoft Authenticator, Aegis…)
+  function twoFactorBox() {
+    const box = h('section', { class: 'box' }, h('h2', null, 'Autenticação de dois fatores'), h('p', { class: 'loading', role: 'status' }, 'A carregar…'));
+    const codeInput = (id) => h('input', { id, type: 'text', inputmode: 'numeric', autocomplete: 'one-time-code', maxlength: '6', pattern: '[0-9]{6}' });
+    const render = async () => {
+      const st = await api('GET', '/api/admin/session');
+      const title = h('h2', null, 'Autenticação de dois fatores');
+      if (st.data.totp) {
+        const pw = h('input', { id: 'tf-pw', type: 'password', autocomplete: 'current-password' });
+        const code = codeInput('tf-off');
+        const form = h('form', { class: 'form', novalidate: true },
+          h('div', { class: 'field' }, h('label', { for: 'tf-pw' }, 'Palavra-passe'), pw),
+          h('div', { class: 'field' }, h('label', { for: 'tf-off' }, 'Código da app'), code),
+          h('div', null, h('button', { type: 'submit', class: 'btn danger' }, 'Desativar')));
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const r = await api('POST', '/api/admin/totp-disable', { password: pw.value, code: code.value.trim() });
+          if (r.ok) { csrf = r.data.csrf || csrf; toast('Dois fatores desativados.'); render(); return; }
+          toast(r.status === 429 ? 'Demasiadas tentativas. Tenta daqui a 15 minutos.' : r.data.error === 'current' ? 'A palavra-passe não está correta.' : 'Código errado ou já usado.', true);
+        });
+        box.replaceChildren(title, h('p', null, h('span', { class: 'state new' }, 'Ativa'), ' Para entrar pedimos a palavra-passe e o código da app.'), form);
+        return;
+      }
+      const start = h('button', { type: 'button', class: 'btn primary' }, 'Ativar');
+      start.addEventListener('click', async () => {
+        const r = await api('POST', '/api/admin/totp-setup');
+        if (!r.ok) { toast('Não foi possível começar.', true); return; }
+        const code = codeInput('tf-on');
+        const form = h('form', { class: 'form', novalidate: true },
+          h('ol', { class: 'steps' },
+            h('li', null, 'Abre a app autenticadora no telemóvel e escolhe adicionar conta com uma chave de configuração.'),
+            h('li', null, 'Nome: Portefólio. Chave (baseada no tempo):', h('code', { class: 'totp-key' }, r.data.secret.replace(/(.{4})/g, '$1 ').trim())),
+            h('li', null, 'Escreve aqui o código de 6 dígitos que a app mostrar.')),
+          h('p', { class: 'hint' }, 'Se a app abrir ligações otpauth neste computador, também podes ', h('a', { href: r.data.uri }, 'abrir a ligação'), '.'),
+          h('div', { class: 'field' }, h('label', { for: 'tf-on' }, 'Código da app'), code),
+          h('div', null, h('button', { type: 'submit', class: 'btn primary' }, 'Confirmar e ativar')));
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const res = await api('POST', '/api/admin/totp-enable', { code: code.value.trim() });
+          if (res.ok) { csrf = res.data.csrf || csrf; toast('Dois fatores ativados.'); render(); return; }
+          toast(res.status === 429 ? 'Demasiadas tentativas. Tenta daqui a 15 minutos.' : 'Código errado. Confirma a chave e tenta o código seguinte.', true);
+        });
+        box.replaceChildren(title, form);
+        code.focus();
+      });
+      box.replaceChildren(title, h('p', null, h('span', { class: 'state quiet' }, 'Desligada'), ' Além da palavra-passe, passa a ser pedido um código que muda a cada 30 segundos.'), h('div', null, start));
+    };
+    render();
+    return box;
+  }
 
   // ---------- Arranque ----------
   (async () => {

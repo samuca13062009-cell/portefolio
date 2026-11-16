@@ -203,3 +203,7 @@ body.cx.admin .toast { border-radius: var(--r); }
   body.cx.admin .btn.primary { transition: none; }
   body.cx.admin .btn.primary:hover { transform: none; }
 }
+
+/* Dois fatores: chave para copiar e passos */
+.totp-key { display: block; margin-top: 6px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; font-family: var(--mono, monospace); font-size: 1rem; letter-spacing: 0.08em; word-break: break-all; user-select: all; }
+.steps { display: grid; gap: 12px; margin: 0; padding-left: 1.25rem; }
