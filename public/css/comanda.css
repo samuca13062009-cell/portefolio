@@ -591,3 +591,98 @@ body.cx .btn.cta.is-busy { opacity: 0.85; }
 @media (prefers-reduced-motion: reduce) {
   body.cx .panel input[aria-invalid="true"], body.cx .panel textarea[aria-invalid="true"] { animation: none; }
 }
+
+/* =====================================================================
+   Animações (novembro 2026). Tudo desliga com "reduzir movimento".
+   Só se mexe transform, opacity, clip-path e filter.
+   ===================================================================== */
+@property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Fundo: as manchas de cor derivam devagar por trás do vidro */
+  body.cx::before { inset: -10%; animation: deriva 38s ease-in-out infinite alternate; will-change: transform; }
+  @keyframes deriva {
+    0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50% { transform: translate3d(4%, -3%, 0) scale(1.08) rotate(4deg); }
+    100% { transform: translate3d(-3%, 4%, 0) scale(1.02) rotate(-3deg); }
+  }
+
+  /* Barra de progresso da leitura */
+  .cx-progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 60; transform-origin: 0 50%; transform: scaleX(var(--p, 0)); background: linear-gradient(90deg, var(--cx-hi), var(--cx-acc)); pointer-events: none; }
+
+  /* Entrada da página: o hero monta-se por partes */
+  html.js-anim .site-header { animation: desce 0.7s var(--ease-out) both; }
+  @keyframes desce { from { opacity: 0; transform: translateY(-24px); } }
+  html.js-anim .cx-hero .cx-rib { animation: fita-entra 0.9s cubic-bezier(0.2, 0.9, 0.2, 1.15) both; }
+  html.js-anim .cx-hero .cx-rib.r2 { animation-delay: 0.15s; }
+  @keyframes fita-entra { from { clip-path: inset(0 100% 0 0); transform: translateX(-40px) rotate(-8deg); } to { clip-path: inset(-10% -5% -10% -5%); } }
+  html.js-anim .cx-hero-text > :not(h1) { animation: sobe 0.8s var(--ease-out) both; animation-delay: calc(0.45s + var(--i, 0) * 0.12s); }
+  html.js-anim .cx-hero .cx-term { animation: aparece-3d 1.1s var(--ease-out) 0.35s both; }
+  @keyframes sobe { from { opacity: 0; transform: translateY(28px); filter: blur(6px); } }
+  @keyframes aparece-3d { from { opacity: 0; transform: perspective(900px) rotateY(-28deg) rotateX(10deg) translateY(40px) scale(0.92); } }
+
+  /* Revelar ao fazer scroll, em cascata */
+  html.js-anim [data-rv] { opacity: 0; transform: translateY(40px) scale(0.98); filter: blur(8px); transition: opacity 0.8s var(--ease-out), transform 0.9s cubic-bezier(0.2, 0.9, 0.2, 1), filter 0.8s var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
+  html.js-anim [data-rv="left"] { transform: translateX(-60px); }
+  html.js-anim [data-rv="right"] { transform: translateX(60px) rotate(4deg); }
+  html.js-anim [data-rv="pop"] { transform: scale(0.85) translateY(30px); }
+  html.js-anim [data-rv].in { opacity: 1; transform: none; filter: none; }
+  /* Depois de entrar, o cartão volta às transições normais (para a inclinação com o rato) */
+  html.js-anim [data-rv].done { transition-delay: 0s; }
+  /* As fitas dos títulos desenrolam-se */
+  html.js-anim .cx-title[data-rv] { opacity: 1; transform: none; filter: none; }
+  html.js-anim .cx-title[data-rv] .cx-rib { clip-path: inset(0 100% 0 0); transition: clip-path 0.9s cubic-bezier(0.7, 0, 0.2, 1); }
+  html.js-anim .cx-title[data-rv].in .cx-rib { clip-path: inset(-10% -5% -10% -5%); }
+
+  /* Percurso: a linha desenha-se com o scroll e os pontos acendem */
+  html.js-anim .cx-shifts { position: relative; border-left-color: color-mix(in srgb, var(--cx-ink) 10%, transparent); }
+  html.js-anim .cx-shifts::before { content: ""; position: absolute; left: -2px; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--cx-hi), var(--cx-acc)); transform-origin: top; transform: scaleY(var(--draw, 0)); }
+  html.js-anim .cx-shift.in::before { animation: acende 0.7s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 90ms + 0.2s); }
+  @keyframes acende { 0% { transform: scale(0); } 60% { transform: scale(1.5); box-shadow: 0 0 0 10px color-mix(in srgb, var(--cx-hi) 30%, transparent); } 100% { transform: scale(1); } }
+
+  /* Cartões de vidro: inclinam com o rato e o brilho segue o cursor */
+  body.cx .cx-menu-card { position: relative; }
+  body.cx .tk::before, body.cx .cx-contact-card::before, body.cx .cx-menu-card::before {
+    content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.4s;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.14), transparent 45%);
+  }
+  body.cx .tk:hover::before, body.cx .cx-contact-card:hover::before, body.cx .cx-menu-card:hover::before { opacity: 1; }
+  body.cx .tk.tilting { transition: transform 0.12s linear, border-color 0.3s, box-shadow 0.3s; }
+
+  /* Borda animada: um brilho dá a volta ao projeto em destaque e ao cartão de contacto */
+  body.cx .tk-main, body.cx .cx-contact-card { border-color: transparent; background:
+      linear-gradient(var(--glass-bg-strong), var(--glass-bg-strong)) padding-box,
+      conic-gradient(from var(--ang), var(--glass-line) 0 55%, var(--cx-hi) 72%, var(--cx-acc) 84%, var(--glass-line) 96%) border-box;
+    animation: gira 6s linear infinite; }
+  @keyframes gira { to { --ang: 360deg; } }
+
+  /* Botões: brilho que atravessa e íman (o JS escreve --bx e --by) */
+  body.cx .btn { position: relative; overflow: hidden; translate: var(--bx, 0px) var(--by, 0px); transition: translate 0.25s var(--ease-out), background-color 0.2s, transform 0.2s var(--ease-out), box-shadow 0.2s; }
+  body.cx .btn::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%); transform: translateX(-120%); pointer-events: none; }
+  body.cx .btn:hover::after { transform: translateX(120%); transition: transform 0.75s var(--ease-out); }
+  body.cx .btn.primary.cta { animation: respira 3.2s ease-in-out infinite; }
+  @keyframes respira { 50% { box-shadow: 0 16px 44px -10px color-mix(in srgb, var(--cx-acc) 90%, transparent); } }
+  body.cx .btn .ic, body.cx .text-link .ic { transition: transform 0.3s var(--ease-out); }
+  body.cx .btn:hover .ic, body.cx .text-link:hover .ic { transform: translateX(4px); }
+
+  /* Ponto "disponível": está vivo, por isso pulsa */
+  body.cx .cx-term .rc-total span:last-child::before { animation: vivo 2s ease-out infinite; }
+  @keyframes vivo { 0% { box-shadow: 0 0 0 0 rgba(59, 227, 124, 0.6); } 100% { box-shadow: 0 0 0 10px rgba(59, 227, 124, 0); } }
+
+  /* Polaroide endireita e aproxima, logotipo roda */
+  body.cx .cx-polaroid { transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.2, 1.3), opacity 0.8s, filter 0.8s; }
+  body.cx .cx-polaroid.in:hover { transform: rotate(0deg) scale(1.04); }
+  body.cx .cx-polaroid img { transition: transform 1.2s var(--ease-out); }
+  body.cx .cx-polaroid:hover img { transform: scale(1.06); }
+  body.cx .brand > :first-child { transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.2, 1.4); }
+  body.cx .brand:hover > :first-child { transform: rotate(-12deg) scale(1.12); }
+
+  /* Competências: cada item salta ao passar; as tecnologias do cartão fazem uma onda */
+  body.cx .cx-course li { transition: transform 0.25s var(--ease-out), background-color 0.25s, border-color 0.25s; }
+  body.cx .cx-course li:hover { transform: translateY(-3px); border-color: var(--cx-hi); background: color-mix(in srgb, var(--cx-hi) 14%, transparent); }
+  body.cx .tk:hover .tk-items li { animation: onda 0.6s var(--ease-out) both; animation-delay: calc(var(--j, 0) * 50ms); }
+  @keyframes onda { 40% { transform: translateY(-4px); border-color: var(--cx-hi); } }
+
+  /* Marquise das tecnologias: acelera ao passar o rato em vez de parar */
+  .cx-marquee:hover .cx-track { animation-play-state: running; animation-duration: 14s; }
+}
