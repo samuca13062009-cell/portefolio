@@ -106,6 +106,11 @@ const server = http.createServer(async (req, res) => {
       ip: req.socket.remoteAddress || '',
       text: (limit) => readBody(req, limit),
     };
+    // As páginas do backoffice (ficheiros) só saem depois de passar a guarda do backoffice.
+    if (request.path === '/admin' || request.path.startsWith('/admin/')) {
+      const refused = await app.adminGuard(request);
+      if (refused) { res.writeHead(refused.status, refused.headers); res.end(req.method === 'HEAD' ? undefined : refused.body); return; }
+    }
     const out = (await app.handle(request))
       || ((req.method === 'GET' || req.method === 'HEAD') && readStatic(request.path))
       || (await app.notFound(request));

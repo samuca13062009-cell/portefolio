@@ -52,6 +52,10 @@
     }
     const data = await r.json().catch(() => ({}));
     if (r.status === 401 && url !== '/api/admin/login') showLogin();
+    if (r.status === 403 && data.error === '2fa-required' && view !== 'account') {
+      toast('Ativa primeiro a autenticação de dois fatores. Sem ela o backoffice fica bloqueado.', true);
+      setTimeout(() => go('account'), 0);
+    }
     return { ok: r.ok && data.ok !== false, status: r.status, data };
   }
 
@@ -605,8 +609,33 @@
       if (r.ok) { csrf = r.data.csrf || csrf; toast('Palavra-passe alterada.'); go('account'); return; }
       toast(r.data.error === 'current' ? 'A palavra-passe atual não está correta.' : 'Não foi possível alterar a palavra-passe.', true);
     });
-    main.replaceChildren(head('Conta'), h('section', { class: 'box' }, h('h2', null, 'Alterar palavra-passe'), wrapForm), twoFactorBox());
+    main.replaceChildren(head('Conta'), twoFactorBox(), h('section', { class: 'box' }, h('h2', null, 'Alterar palavra-passe'), wrapForm), securityBox());
   };
+
+  // Registo de segurança: tentativas de entrar, logins falhados e endereços bloqueados
+  function securityBox() {
+    const box = h('section', { class: 'box' }, h('h2', null, 'Registo de segurança'), h('p', { class: 'loading', role: 'status' }, 'A carregar…'));
+    const LABEL = { 'login-ok': 'Entrada', 'login-falhado': 'Login falhado', 'login-bloqueado': 'Login bloqueado', 'backoffice-recusado': 'Acesso recusado' };
+    api('GET', '/api/admin/security').then((r) => {
+      const title = h('h2', null, 'Registo de segurança');
+      if (!r.ok) { box.replaceChildren(title, h('p', { class: 'hint' }, r.data.error === '2fa-required' ? 'Disponível depois de ativares os dois fatores.' : 'Não foi possível ler o registo.')); return; }
+      const log = r.data.log || [];
+      const blocked = r.data.blocked || [];
+      box.replaceChildren(title,
+        h('p', { class: 'hint' }, 'Últimas 100 entradas, a mais recente primeiro. Fica só neste computador.'),
+        blocked.length ? h('p', null, h('strong', null, 'Endereços bloqueados: '), blocked.join(', ')) : h('p', { class: 'hint' }, 'Nenhum endereço bloqueado.'),
+        h('div', { class: 'table-wrap' }, log.length
+          ? h('table', null,
+            h('thead', null, h('tr', null, ['Quando', 'O quê', 'Endereço', 'Detalhe'].map((t) => h('th', { scope: 'col' }, t)))),
+            h('tbody', null, log.map((e) => h('tr', null,
+              h('td', { class: 'nowrap' }, date(e.date)),
+              h('td', null, h('span', { class: e.type === 'login-ok' ? 'state quiet' : 'state new' }, LABEL[e.type] || e.type)),
+              h('td', { class: 'nowrap' }, e.ip || '—'),
+              h('td', null, e.detail || '', e.ua ? h('div', { class: 'hint' }, e.ua) : null)))))
+          : h('p', { class: 'empty-note' }, 'Ainda não há entradas.')));
+    });
+    return box;
+  }
 
   // Segundo fator: código de 6 dígitos de uma app autenticadora (Google Authenticator, Microsoft Authenticator, Aegis…)
   function twoFactorBox() {

@@ -20,3 +20,6 @@ data/secret.json
 data/rl%3A*
 # Mapa do código (graphify), gerado localmente
 graphify-out/
+# Registo de segurança do backoffice e endereços bloqueados
+data/security.json
+data/blocked.json
