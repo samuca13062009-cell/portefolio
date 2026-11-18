@@ -649,12 +649,6 @@ body.cx .btn.cta.is-busy { opacity: 0.85; }
   body.cx .tk:hover::before, body.cx .cx-contact-card:hover::before, body.cx .cx-menu-card:hover::before { opacity: 1; }
   body.cx .tk.tilting { transition: transform 0.12s linear, border-color 0.3s, box-shadow 0.3s; }
 
-  /* Borda animada: um brilho dá a volta ao projeto em destaque e ao cartão de contacto */
-  body.cx .tk-main, body.cx .cx-contact-card { border-color: transparent; background:
-      linear-gradient(var(--glass-bg-strong), var(--glass-bg-strong)) padding-box,
-      conic-gradient(from var(--ang), var(--glass-line) 0 55%, var(--cx-hi) 72%, var(--cx-acc) 84%, var(--glass-line) 96%) border-box;
-    animation: gira 6s linear infinite; }
-  @keyframes gira { to { --ang: 360deg; } }
 
   /* Botões: brilho que atravessa ao passar o rato */
   body.cx .btn { position: relative; overflow: hidden; }
