@@ -207,7 +207,7 @@
     ];
     var val = function (f) { var el = $(f.id); return f.check ? el.checked : el.value.trim(); };
     var button = $('enviar');
-    var buttonHtml = button.innerHTML;
+    var buttonNodes = Array.prototype.slice.call(button.childNodes).map(function (n) { return n.cloneNode(true); });
     var sendError = $('erro-envio');
     var success = $('sucesso');
     var tried = false;
@@ -285,7 +285,7 @@
         button.disabled = false;
         button.classList.remove('is-busy');
         button.removeAttribute('aria-busy');
-        button.innerHTML = buttonHtml;
+        button.replaceChildren.apply(button, buttonNodes.map(function (n) { return n.cloneNode(true); }));
       });
     });
 

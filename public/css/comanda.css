@@ -656,12 +656,10 @@ body.cx .btn.cta.is-busy { opacity: 0.85; }
     animation: gira 6s linear infinite; }
   @keyframes gira { to { --ang: 360deg; } }
 
-  /* Botões: brilho que atravessa e íman (o JS escreve --bx e --by) */
-  body.cx .btn { position: relative; overflow: hidden; translate: var(--bx, 0px) var(--by, 0px); transition: translate 0.25s var(--ease-out), background-color 0.2s, transform 0.2s var(--ease-out), box-shadow 0.2s; }
+  /* Botões: brilho que atravessa ao passar o rato */
+  body.cx .btn { position: relative; overflow: hidden; }
   body.cx .btn::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%); transform: translateX(-120%); pointer-events: none; }
   body.cx .btn:hover::after { transform: translateX(120%); transition: transform 0.75s var(--ease-out); }
-  body.cx .btn.primary.cta { animation: respira 3.2s ease-in-out infinite; }
-  @keyframes respira { 50% { box-shadow: 0 16px 44px -10px color-mix(in srgb, var(--cx-acc) 90%, transparent); } }
   body.cx .btn .ic, body.cx .text-link .ic { transition: transform 0.3s var(--ease-out); }
   body.cx .btn:hover .ic, body.cx .text-link:hover .ic { transform: translateX(4px); }
 
@@ -686,3 +684,23 @@ body.cx .btn.cta.is-busy { opacity: 0.85; }
   /* Marquise das tecnologias: acelera ao passar o rato em vez de parar */
   .cx-marquee:hover .cx-track { animation-play-state: running; animation-duration: 14s; }
 }
+
+/* Botões sem brilho à volta (sombra colorida) e sem seguir o rato, em todo o site e no backoffice */
+body.cx .btn, body.cx .btn:hover, body.cx .btn:focus-visible, body.cx .btn.primary.cta, body.cx .btn.primary.cta:hover { box-shadow: none; animation: none; translate: none; }
+body.cx .btn.primary.cta:hover { transform: none; }
+
+/* Terminal onde se pode escrever */
+.cx-term .rc-paper { cursor: text; }
+.cx-term .rc-out { margin: 0 18px; max-height: 220px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.2) transparent; }
+.cx-term .rc-out:empty { display: none; }
+.cx-term .rc-o { margin: 0 0 4px; font-family: var(--mono); font-size: 0.8125rem; line-height: 1.5; color: #E7ECF5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cx-term .rc-o a { color: var(--cx-hi); }
+.cx-term .rc-echo { color: #8FA3C4; margin-top: 8px; }
+.cx-term .rc-dim { color: #8FA3C4; }
+.cx-term .rc-ok { color: var(--cx-hi); }
+.cx-term .rc-err { color: #FF8A80; }
+.cx-term .rc-prompt { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.cx-term .rc-prompt input { flex: 1; min-width: 0; padding: 4px 0; border: 0; background: transparent; color: #E7ECF5; font: inherit; font-family: var(--mono); caret-color: var(--cx-hi); outline: none; }
+.cx-term .rc-prompt input::placeholder { color: #5E7096; }
+.cx-term .rc-prompt:focus-within { box-shadow: 0 1px 0 color-mix(in srgb, var(--cx-hi) 60%, transparent); }
+:root[data-theme="light"] .cx-term .rc-ok, :root[data-theme="light"] .cx-term .rc-o a { color: #2EE6FF; }
